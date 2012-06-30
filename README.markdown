@@ -27,3 +27,5 @@ source of the d3 API wiki.
 
 # Blocks
 
+[d3]: https://github.com/mbostock/d3
+[blockly]: http://code.google.com/p/blockly
