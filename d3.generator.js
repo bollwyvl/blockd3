@@ -88,4 +88,13 @@ Blockly.JavaScript.d3_lambda = function() {
   ].join("");
 };
 
+Blockly.JavaScript.d3_data = function() {
+  // circle.data([1,2,3]);
+  return [
+    Blockly.JavaScript.valueToCode(this, 'ITEM'),
+    '.data(',
+    Blockly.JavaScript.valueToCode(this, 'VALUE'),
+    ');\n'
+  ].join("");
+};
 })();

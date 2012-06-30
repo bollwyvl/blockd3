@@ -136,4 +136,19 @@ Blockly.Language.d3_lambda = {
   }
 };
 
+Blockly.Language.d3_data = {
+  // d3 Selection value.
+  category: 'd3',
+  helpUrl: doc.selections + 'data',
+  init: function() {
+    this.setColour(BLOCKD3_COLOR);
+    this.appendTitle('set data');
+    this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
+    this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
+    this.setTooltip('Set the data for a selection');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 })();
