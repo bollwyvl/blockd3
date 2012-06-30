@@ -4,12 +4,14 @@
   <title>Blockly Demo: Code</title>
   <script type="text/javascript" src="/blockly/demos/code/BlobBuilder.min.js"></script>
   <script type="text/javascript" src="/blockly/demos/code/FileSaver.min.js"></script>
+  <script type="text/javascript" src="/d3/d3.v2.min.js"></script>
+  
   <script>
 /**
  * List of tab names.
  * @private
  */
-var TABS_ = ['blocks', 'javascript', 'd3', 'xml'];
+var TABS_ = ['blocks', 'javascript', 'xml'];
 
 var selected = null;
 
@@ -72,9 +74,7 @@ function renderContent() {
     xmlTextarea.focus();
   } else if (content.id == 'content_javascript') {
     content.innerHTML = Blockly.Generator.workspaceToCode('JavaScript');
-  } else if (content.id == 'content_d3') {
-    //content.innerHTML = Blockly.Generator.workspaceToCode('JavaScript');
-  } 
+  }
 }
 
 /**
@@ -297,22 +297,23 @@ function discard() {
     button:hover {
       box-shadow: 2px 2px 5px #888;
     }
+    #content_d3{
+        height: 100%;
+    }
   </style>
 </head>
 <body>
   <table height="100%" width="100%">
     <tr>
-      <td>
-        <h1><a href="http://code.google.com/p/blockly/">Blockly</a> &gt; <a href="../index.html">Demos</a> &gt; Code</h1>
+      <td colspan="2">
+        <h1><a href="https://github.com/bollwyvl/blockd3">Blockd3</a> Demo</h1>
       </td>
     </tr>
     <tr>
-      <td>
+      <td colspan="2">
         <table>
           <tr id="tabRow" height="1em">
             <td id="tab_blocks" class="tabon" onclick="tabClick(this.id)">Blocks</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_d3" class="taboff" onclick="tabClick(this.id)">d3</td>
             <td class="tabmin">&nbsp;</td>
             <td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">JavaScript</td>
             <td class="tabmin">&nbsp;</td>
@@ -329,14 +330,16 @@ function discard() {
       </td>
     </tr>
     <tr>
-      <td height="99%">
+      <td height="99%" width="50%">
         <iframe id="content_blocks" src="frame.html"></iframe>
         <pre id="content_javascript"></pre>
-        <div id="content_d3">
-        
-        </div>
         <div id="content_xml">
           <textarea id="textarea_xml"></textarea>
+        </div>
+      </td>
+      <td>
+        <div id="content_d3">
+            <svg width="360" height="180"><circle class="little" cx="180" cy="45" r="12"></circle><circle class="little" cx="60" cy="90" r="12"></circle><circle class="little" cx="300" cy="135" r="12"></circle></svg>
         </div>
       </td>
     </tr>
