@@ -251,6 +251,7 @@ function discard() {
       margin: 0;
       padding: 0;
       border: none;
+      width: 100%;
     }
     td {
       padding: 0;
@@ -307,7 +308,13 @@ function discard() {
   <table height="100%" width="100%">
     <tr>
       <td colspan="2">
-        <h1><a href="https://github.com/bollwyvl/blockd3">Blockd3</a> Demo</h1>
+         <div style="float:right; margin-right: 150px;">
+            Built with <a href="http://d3js.org">d3</a> &amp; <a href="http://code.google.com/p/blockly">Blockly</a>
+        </div>
+        <h1>
+            <a href="https://github.com/bollwyvl/blockd3">Blockd3</a> Demo
+        </h1>
+
       </td>
     </tr>
     <tr>
@@ -319,7 +326,7 @@ function discard() {
             <td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">JavaScript</td>
             <td class="tabmin">&nbsp;</td>
             <td id="tab_xml" class="taboff" onclick="tabClick(this.id)">XML</td>
-            <td class="tabmax">
+            <td class="tabmax" style="padding-right:150px">
               <button onclick="discard()">Discard</button>
               <button onclick="save()">Save XML</button>
               <button id="fakeload">Load XML</button>
@@ -331,14 +338,14 @@ function discard() {
       </td>
     </tr>
     <tr>
-      <td height="99%" width="50%">
+      <td height="99%">
         <iframe id="content_blocks" src="frame.html"></iframe>
         <pre id="content_javascript"></pre>
         <div id="content_xml">
           <textarea id="textarea_xml"></textarea>
         </div>
       </td>
-      <td>
+      <td width="400">
         <div id="content_d3">
             <svg width="360" height="180"><circle class="little" cx="180" cy="45" r="12"></circle><circle class="little" cx="60" cy="90" r="12"></circle><circle class="little" cx="300" cy="135" r="12"></circle></svg>
         </div>
