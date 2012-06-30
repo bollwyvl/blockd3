@@ -1,0 +1,27 @@
+{
+  "author": "Nick Bollweg (https://github.com/bollwyvl)",
+  "name": "blockd3",
+  "description": "Expose d3 data-driven documents with blockly",
+  "version": "0.0.1",
+  "homepage": "http://bollwyvl.github.com/blockd3",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bollwyvl/blockd3.git"
+  },
+
+  "scripts": {
+    "build": "./build/build.js",
+    "test": "./node_modules/vows/bin/vows"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "glob":         "3.1.9",
+    "jslint":       "0.1.8",
+    "vows":         "0.6.2",
+    "prenup":       "0.0.0"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
