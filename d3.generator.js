@@ -75,12 +75,16 @@ Blockly.JavaScript.d3_attr = function() {
 };
 
 Blockly.JavaScript.d3_lambda = function() {
-  /* circle.attr("cx", function() {
+  /* circle.attr("cx", function(datum, index) {
       return Math.random() * w;
     });
   */
   return [
-    'function(){\n',
+    'function(',
+    this.getInputVariable('DATUM'),
+    ',',
+    this.getInputVariable('INDEX'),
+    '){\n',
     Blockly.JavaScript.valueToCode(this, 'DO'),
     '\nreturn ',
     Blockly.JavaScript.valueToCode(this, 'RETURN'),

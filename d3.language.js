@@ -136,6 +136,34 @@ Blockly.Language.d3_lambda = {
   }
 };
 
+Blockly.Language.d3_lambda = {
+  // d3 Selection value.
+  category: 'd3',
+  helpUrl: '',
+  init: function() {
+    this.setColour(BLOCKD3_COLOR);
+    this.setOutput(true, AnonFunction);
+    this.appendTitle('with function');
+    this.appendInput('datum', Blockly.LOCAL_VARIABLE, 'DATUM').setText('datum');
+    this.appendInput('index', Blockly.LOCAL_VARIABLE, 'INDEX').setText('index');
+    this.appendInput('do', Blockly.NEXT_STATEMENT, 'DO');
+    this.appendInput('return', Blockly.INPUT_VALUE, 'RETURN');
+    this.setTooltip('A locally-defined function');
+  },
+  getVars: function() {
+    return [this.getInputVariable('DATUM'), this.getInputVariable('INDEX')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getInputVariable('DATUM'))) {
+      this.setInputVariable('DATUM', newName);
+    }
+    if (Blockly.Names.equals(oldName, this.getInputVariable('INDEX'))) {
+      this.setInputVariable('INDEX', newName);
+    }
+  }
+};
+
+
 Blockly.Language.d3_data = {
   // d3 Selection value.
   category: 'd3',
