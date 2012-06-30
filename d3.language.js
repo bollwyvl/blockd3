@@ -31,15 +31,29 @@ if (!Blockly.Language) {
 
 (function(){
 
-Selection = "SELECTION";
-AnonFunction = "ANON_FUNCTION";
+/*  Style
+    TODO: break these up for different patterns
+*/
+var BLOCKD3_COLOR = 200;
 
-BLOCKD3_COLOR = 200;
+/*  Types
+*/
+var Selection = "SELECTION",
+    AnonFunction = "ANON_FUNCTION";
 
-Blockly.Language.d3_select = {
+
+/* Documentation
+*/
+var wiki = "https://github.com/mbostock/d3/wiki/",
+    doc = {
+        selections: wiki + "Selections#wiki-",
+    };
+
+
+Blockly.Language.d3_d3_select = {
   // d3 Selection value.
   category: 'd3',
-  helpUrl: '',
+  helpUrl: doc.selections + 'd3_select',
   init: function() {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('select');
@@ -49,10 +63,10 @@ Blockly.Language.d3_select = {
   }
 };
 
-Blockly.Language.d3_select_all = {
+Blockly.Language.d3_d3_selectAll = {
   // d3 Selection value.
   category: 'd3',
-  helpUrl: '',
+  helpUrl: doc.selections + 'd3_selectAll',
   init: function() {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('select all');
@@ -62,10 +76,10 @@ Blockly.Language.d3_select_all = {
   }
 };
 
-Blockly.Language.d3_selection_select_all = {
+Blockly.Language.d3_selectAll = {
   // d3 Selection value.
   category: 'd3',
-  helpUrl: '',
+  helpUrl: doc.selections + 'selectAll',
   init: function() {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('select all');
@@ -79,7 +93,7 @@ Blockly.Language.d3_selection_select_all = {
 Blockly.Language.d3_style = {
   // d3 Selection value.
   category: 'd3',
-  helpUrl: '',
+  helpUrl: doc.selections + 'style',
   init: function() {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('set d3.style');
@@ -95,7 +109,7 @@ Blockly.Language.d3_style = {
 Blockly.Language.d3_attr = {
   // d3 Selection value.
   category: 'd3',
-  helpUrl: '',
+  helpUrl: doc.selections + 'attr',
   init: function() {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('set d3.attribute');

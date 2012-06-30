@@ -33,15 +33,15 @@ if (!Blockly.Language) {
 
 Blockly.JavaScript = Blockly.Generator.get('JavaScript');
 
-Blockly.JavaScript.d3_select = function() {
+Blockly.JavaScript.d3_d3_select = function() {
   return 'd3.select("' + this.getTitleValue('TEXT') + '")';
 };
 
-Blockly.JavaScript.d3_select_all = function() {
+Blockly.JavaScript.d3_d3_selectAll = function() {
   return 'd3.selectAll("' + this.getTitleValue('TEXT') + '")';
 };
 
-Blockly.JavaScript.d3_selection_select_all = function() {
+Blockly.JavaScript.d3_selectAll = function() {
   return [
     Blockly.JavaScript.valueToCode(this, 'PARENT'),
     '.selectAll("',
