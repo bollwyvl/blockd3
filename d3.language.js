@@ -1,5 +1,5 @@
 /**
- * blockd3 Demo
+ * blockd3: d3 in blockly
  *
  * Copyright 2012 Google Inc.
  * https://github.com/bollwyvl/blockd3
@@ -22,13 +22,12 @@
  * @author nick.bollweg@gmail.com (Nick Bollweg)
  */
 
-// Extensions to Blockly's language and JavaScript generator.
+// Extensions to Blockly's language and JavaScript generator for d3.
 
 // Define Language and JavaScript, in case this file is loaded too early.
 if (!Blockly.Language) {
   Blockly.Language = {};
 }
-Blockly.JavaScript = Blockly.Generator.get('JavaScript');
 
 (function(){
 
@@ -50,10 +49,6 @@ Blockly.Language.d3_select = {
   }
 };
 
-Blockly.JavaScript.d3_select = function() {
-  return 'd3.select("' + this.getTitleValue('TEXT') + '")';
-};
-
 Blockly.Language.d3_select_all = {
   // d3 Selection value.
   category: 'd3',
@@ -65,10 +60,6 @@ Blockly.Language.d3_select_all = {
     this.setOutput(true, Selection);
     this.setTooltip('All elements that match the selection');
   }
-};
-
-Blockly.JavaScript.d3_select_all = function() {
-  return 'd3.selectAll("' + this.getTitleValue('TEXT') + '")';
 };
 
 Blockly.Language.d3_selection_select_all = {
@@ -83,15 +74,6 @@ Blockly.Language.d3_selection_select_all = {
     this.setOutput(true, Selection);
     this.setTooltip('All elements that match the selection');
   }
-};
-
-Blockly.JavaScript.d3_selection_select_all = function() {
-  return [
-    Blockly.JavaScript.valueToCode(this, 'PARENT'),
-    '.selectAll("',
-    this.getTitleValue('TEXT'),
-    '")'
-  ].join("");
 };
 
 Blockly.Language.d3_style = {
@@ -110,19 +92,6 @@ Blockly.Language.d3_style = {
   }
 };
 
-Blockly.JavaScript.d3_style = function() {
-  // circle.style("fill", "steelblue");
-  return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
-    '.style("',
-    this.getTitleValue('TEXT'),
-    '", ',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
-    ');\n'
-  ].join("");
-};
-
-
 Blockly.Language.d3_attr = {
   // d3 Selection value.
   category: 'd3',
@@ -139,19 +108,6 @@ Blockly.Language.d3_attr = {
   }
 };
 
-
-Blockly.JavaScript.d3_attr = function() {
-  // circle.attr("r", 9);
-  return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
-    '.attr("',
-    this.getTitleValue('TEXT'),
-    '", ',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
-    ');\n'
-  ].join("");
-};
-
 Blockly.Language.d3_lambda = {
   // d3 Selection value.
   category: 'd3',
@@ -164,21 +120,6 @@ Blockly.Language.d3_lambda = {
     this.appendInput('return', Blockly.INPUT_VALUE, 'RETURN');
     this.setTooltip('A locally-defined function');
   }
-};
-
-
-Blockly.JavaScript.d3_lambda = function() {
-  /* circle.attr("cx", function() {
-      return Math.random() * w;
-    });
-  */
-  return [
-    'function(){\n',
-    Blockly.JavaScript.valueToCode(this, 'DO'),
-    '\nreturn ',
-    Blockly.JavaScript.valueToCode(this, 'RETURN'),
-    ';\n}'
-  ].join("");
 };
 
 })();
