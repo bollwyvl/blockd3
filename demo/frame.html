@@ -1,0 +1,76 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blockly Demo: Code</title>
+  <script type="text/javascript" src="/blockly/demos/blockly_compressed.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/control.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/logic.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/math.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/text.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/lists.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/variables.js"></script>
+  <script type="text/javascript" src="/blockly/generators/dart/procedures.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/control.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/logic.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/math.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/text.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/lists.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/variables.js"></script>
+  <script type="text/javascript" src="/blockly/generators/javascript/procedures.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/control.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/logic.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/math.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/text.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/lists.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/variables.js"></script>
+  <script type="text/javascript" src="/blockly/generators/python/procedures.js"></script>
+  <script type="text/javascript" src="/blockly/language/en/_messages.js"></script>
+  <script type="text/javascript" src="/blockly/language/en/control.js"></script>
+  <script type="text/javascript" src="/blockly/language/common/logic.js"></script>
+  <script type="text/javascript" src="/blockly/language/en/math.js"></script>
+  <script type="text/javascript" src="/blockly/language/en/text.js"></script>
+  <script type="text/javascript" src="/blockly/language/en/lists.js"></script>
+  <script type="text/javascript" src="/blockly/language/common/variables.js"></script>
+  <script type="text/javascript" src="/blockly/language/common/procedures.js"></script>
+  <script type="text/javascript" src="/d3/d3.v2.min.js"></script>
+  <script type="text/javascript" src="/language.js"></script>
+  <style>
+    html, body {
+      background-color: #fff;
+      margin: 0;
+      padding:0;
+      overflow: hidden;
+    }
+    .blocklySvg {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <script>
+    function init() {
+      Blockly.inject(document.body, {path: '/blockly/'});
+
+      if (window.parent.init) {
+        // Let the top-level application know that Blockly is ready.
+        window.parent.init(Blockly);
+      } else {
+        // Attempt to diagnose the problem.
+        var msg = 'Error: Unable to communicate between frames.\n\n';
+        if (window.parent == window) {
+          msg += 'Try loading index.html instead of frame.html';
+        } else if (window.location.protocol == 'file:') {
+          msg += 'This may be due to a security restriction preventing\n' +
+              'access when using the file:// protocol.\n' +
+              'http://code.google.com/p/chromium/issues/detail?id=47416';
+        }
+        alert(msg);
+      }
+    }
+  </script>
+</head>
+<body onload="init()">
+</body>
+</html>
