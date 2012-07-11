@@ -1,10 +1,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>blcok3d: visual data-driven programming with d3 and blocky</title>
-  <script type="text/javascript" src="http://blockly-demo.appspot.com/blockly/demos/code/BlobBuilder.min.js"></script>
-  <script type="text/javascript" src="http://blockly-demo.appspot.com/blockly/demos/code/FileSaver.min.js"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+  <title>blockd3: visual data-driven programming with d3 and blocky</title>
+  <script type="text/javascript" src="./BlobBuilder.min.js"></script>
+  <script type="text/javascript" src="./FileSaver.min.js"></script>
+  <script type="text/javascript" src="./d3.v2.min.js"></script>
   
   <script>
 /**
@@ -13,7 +13,7 @@
  */
 var TABS_ = ['blocks', 'javascript', 'xml'];
 
-var selected = null;
+var selected = 'blocks';
 
 /**
  * Switch the visible pane when a tab is clicked.
@@ -103,6 +103,8 @@ function init(blockly) {
   // Restore/backup current works.
   restore_blocks();
   Blockly.bindEvent_(window, 'unload', null, backup_blocks);
+  tabClick('tab_' + selected);
+
 
   // Init load event.
   var loadInput = document.getElementById('load');
@@ -339,7 +341,7 @@ function discard() {
     </tr>
     <tr>
       <td height="99%">
-        <iframe id="content_blocks" src="frame.html"></iframe>
+        <iframe id="content_blocks" src="./frame.html"></iframe>
         <pre id="content_javascript"></pre>
         <div id="content_xml">
           <textarea id="textarea_xml"></textarea>
