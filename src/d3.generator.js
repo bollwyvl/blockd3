@@ -31,74 +31,80 @@ if (!Blockly.Language) {
 
 (function(){
 
-Blockly.JavaScript = Blockly.Generator.get('JavaScript');
+BJS = Blockly.Generator.get('JavaScript');
 
-Blockly.JavaScript.d3_d3_select = function() {
-  return 'd3.select("' + this.getTitleValue('TEXT') + '")';
+function join_none(args){
+    console.log(args)
+    return [args.join(""), BJS.ORDER_ATOMIC]
+}
+
+BJS.d3_d3_select = function() {
+    return join_none([
+        'd3.select("',
+        this.getTitleValue('TEXT'),
+        '")'
+    ]);
 };
 
-Blockly.JavaScript.d3_d3_selectAll = function() {
-  return 'd3.selectAll("' + this.getTitleValue('TEXT') + '")';
+BJS.d3_d3_selectAll = function() {
+    return join_none([
+        'd3.selectAll("',
+        this.getTitleValue('TEXT'),
+        '")'
+    ]);
 };
 
-Blockly.JavaScript.d3_selectAll = function() {
-  return [
-    Blockly.JavaScript.valueToCode(this, 'PARENT'),
-    '.selectAll("',
-    this.getTitleValue('TEXT'),
-    '")'
-  ].join("");
+BJS.d3_selectAll = function() {
+    return join_none([
+        BJS.valueToCode(this, 'PARENT', BJS.ORDER_NONE),
+        '.selectAll("',
+        this.getTitleValue('TEXT'),
+        '")'
+    ]);
 };
 
-Blockly.JavaScript.d3_style = function() {
-  // circle.style("fill", "steelblue");
-  return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
-    '.style("',
-    this.getTitleValue('TEXT'),
-    '", ',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
-    ');\n'
-  ].join("");
+BJS.d3_style = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.style("',
+        this.getTitleValue('TEXT'),
+        '", ',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
 };
 
-Blockly.JavaScript.d3_attr = function() {
-  // circle.attr("r", 9);
-  return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
-    '.attr("',
-    this.getTitleValue('TEXT'),
-    '", ',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
-    ');\n'
-  ].join("");
+BJS.d3_attr = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.attr("',
+        this.getTitleValue('TEXT'),
+        '", ',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+    ].join("");
 };
 
-Blockly.JavaScript.d3_lambda = function() {
-  /* circle.attr("cx", function(datum, index) {
-      return Math.random() * w;
-    });
-  */
-  return [
-    'function(',
-    this.getInputVariable('DATUM'),
-    ',',
-    this.getInputVariable('INDEX'),
-    '){\n',
-    Blockly.JavaScript.valueToCode(this, 'DO'),
-    '\nreturn ',
-    Blockly.JavaScript.valueToCode(this, 'RETURN'),
-    ';\n}'
-  ].join("");
+BJS.d3_lambda = function() {
+    return [
+        'function(',
+        this.getInputVariable('DATUM'),
+        ',',
+        this.getInputVariable('INDEX'),
+        '){\n',
+        BJS.valueToCode(this, 'DO', BJS.ORDER_NONE),
+        '\nreturn ',
+        BJS.valueToCode(this, 'RETURN', BJS.ORDER_NONE),
+        ';\n}'
+    ].join("");
 };
 
-Blockly.JavaScript.d3_data = function() {
-  // circle.data([1,2,3]);
-  return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
-    '.data(',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
-    ');\n'
-  ].join("");
+BJS.d3_data = function() {
+    return join_none([
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.data(',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+    ]);
 };
 })();
