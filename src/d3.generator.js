@@ -34,8 +34,7 @@ if (!Blockly.Language) {
 BJS = Blockly.Generator.get('JavaScript');
 
 function join_none(args){
-    console.log(args)
-    return [args.join(""), BJS.ORDER_ATOMIC]
+    return [args.join(""), BJS.ORDER_ATOMIC];
 }
 
 BJS.d3_d3_select = function() {
@@ -86,7 +85,7 @@ BJS.d3_attr = function() {
 };
 
 BJS.d3_lambda = function() {
-    return [
+    return join_none([
         'function(',
         this.getInputVariable('DATUM'),
         ',',
@@ -96,15 +95,15 @@ BJS.d3_lambda = function() {
         '\nreturn ',
         BJS.valueToCode(this, 'RETURN', BJS.ORDER_NONE),
         ';\n}'
-    ].join("");
+    ]);
 };
 
 BJS.d3_data = function() {
-    return join_none([
+    return [
         BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
         '.data(',
         BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
         ');\n'
-    ]);
+    ].join("");
 };
 })();
