@@ -29,49 +29,50 @@ if (!Blockly.Language) {
   Blockly.Language = {};
 }
 
-(function(){
-
 Blockly.JavaScript = Blockly.Generator.get('JavaScript');
 
 Blockly.JavaScript.d3_d3_select = function() {
-  return 'd3.select("' + this.getTitleValue('TEXT') + '")';
+  var code = 'd3.select("' + this.getTitleValue('TEXT') + '")';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript.d3_d3_selectAll = function() {
-  return 'd3.selectAll("' + this.getTitleValue('TEXT') + '")';
+  var code = 'd3.selectAll("' + this.getTitleValue('TEXT') + '")';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript.d3_selectAll = function() {
-  return [
-    Blockly.JavaScript.valueToCode(this, 'PARENT'),
+  var code = [
+    Blockly.JavaScript.valueToCode(this, 'PARENT') || 'null',
     '.selectAll("',
     this.getTitleValue('TEXT'),
     '")'
-  ].join("");
+  ].join('');
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript.d3_style = function() {
   // circle.style("fill", "steelblue");
   return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
+    Blockly.JavaScript.valueToCode(this, 'ITEM') || 'null',
     '.style("',
     this.getTitleValue('TEXT'),
     '", ',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
+    Blockly.JavaScript.valueToCode(this, 'VALUE') || 'null',
     ');\n'
-  ].join("");
+  ].join('');
 };
 
 Blockly.JavaScript.d3_attr = function() {
   // circle.attr("r", 9);
   return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
+    Blockly.JavaScript.valueToCode(this, 'ITEM') || 'null',
     '.attr("',
     this.getTitleValue('TEXT'),
     '", ',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
+    Blockly.JavaScript.valueToCode(this, 'VALUE') || 'null',
     ');\n'
-  ].join("");
+  ].join('');
 };
 
 Blockly.JavaScript.d3_lambda = function() {
@@ -79,26 +80,26 @@ Blockly.JavaScript.d3_lambda = function() {
       return Math.random() * w;
     });
   */
-  return [
+  var code = [
     'function(',
-    this.getInputVariable('DATUM'),
+    this.getTitleValue('DATUM'),
     ',',
-    this.getInputVariable('INDEX'),
-    '){\n',
+    this.getTitleValue('INDEX'),
+    '){\n  ',
     Blockly.JavaScript.valueToCode(this, 'DO'),
-    '\nreturn ',
-    Blockly.JavaScript.valueToCode(this, 'RETURN'),
+    '\n  return ',
+    Blockly.JavaScript.valueToCode(this, 'RETURN') || 'null',
     ';\n}'
-  ].join("");
+  ].join('');
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript.d3_data = function() {
   // circle.data([1,2,3]);
   return [
-    Blockly.JavaScript.valueToCode(this, 'ITEM'),
+    Blockly.JavaScript.valueToCode(this, 'ITEM') || 'null',
     '.data(',
-    Blockly.JavaScript.valueToCode(this, 'VALUE'),
+    Blockly.JavaScript.valueToCode(this, 'VALUE') || 'null',
     ');\n'
-  ].join("");
+  ].join('');
 };
-})();
