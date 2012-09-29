@@ -84,7 +84,7 @@ Blockly.Language.d3_selectAll = {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('select all');
     this.appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
-    this.appendInput('from', Blockly.INPUT_VALUE, 'PARENT', Selection);
+    this.appendInput(Blockly.INPUT_VALUE, 'PARENT', Selection).appendTitle('from');
     this.setOutput(true, Selection);
     this.setTooltip('All elements that match the selection');
   }
@@ -98,8 +98,8 @@ Blockly.Language.d3_style = {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('set d3.style');
     this.appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
-    this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
-    this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
+    this.appendInput(Blockly.INPUT_VALUE, 'ITEM', Selection).appendTitle('of');
+    this.appendInput(Blockly.INPUT_VALUE, 'VALUE').appendTitle('to');
     this.setTooltip('Set the CSS style');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -114,8 +114,8 @@ Blockly.Language.d3_attr = {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('set d3.attribute');
     this.appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
-    this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
-    this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
+    this.appendInput(Blockly.INPUT_VALUE, 'ITEM', Selection).appendTitle('of');
+    this.appendInput(Blockly.INPUT_VALUE, 'VALUE').appendTitle('to');
     this.setTooltip('Set the SVG attribute');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -130,8 +130,8 @@ Blockly.Language.d3_lambda = {
     this.setColour(BLOCKD3_COLOR);
     this.setOutput(true, AnonFunction);
     this.appendTitle('with function');
-    this.appendInput('do', Blockly.NEXT_STATEMENT, 'DO');
-    this.appendInput('return', Blockly.INPUT_VALUE, 'RETURN');
+    this.appendInput(Blockly.NEXT_STATEMENT, 'DO').appendTitle('do');
+    this.appendInput(Blockly.INPUT_VALUE, 'RETURN').appendTitle('return');
     this.setTooltip('A locally-defined function');
   }
 };
@@ -144,20 +144,24 @@ Blockly.Language.d3_lambda = {
     this.setColour(BLOCKD3_COLOR);
     this.setOutput(true, AnonFunction);
     this.appendTitle('with function');
-    this.appendInput('datum', Blockly.LOCAL_VARIABLE, 'DATUM').setText('datum');
-    this.appendInput('index', Blockly.LOCAL_VARIABLE, 'INDEX').setText('index');
-    this.appendInput('do', Blockly.NEXT_STATEMENT, 'DO');
-    this.appendInput('return', Blockly.INPUT_VALUE, 'RETURN');
+    var input = this.appendInput(Blockly.DUMMY_INPUT, '');
+    input.appendTitle('datum');
+    input.appendTitle(new Blockly.FieldVariable('datum'), 'DATUM');
+    input = this.appendInput(Blockly.DUMMY_INPUT, '');
+    input.appendTitle('index');
+    input.appendTitle(new Blockly.FieldVariable('index'), 'INDEX');
+    this.appendInput(Blockly.NEXT_STATEMENT, 'DO').appendTitle('do');
+    this.appendInput(Blockly.INPUT_VALUE, 'RETURN').appendTitle('return');
     this.setTooltip('A locally-defined function');
   },
   getVars: function() {
-    return [this.getInputVariable('DATUM'), this.getInputVariable('INDEX')];
+    return [this.getTitleValue('DATUM'), this.getTitleValue('INDEX')];
   },
   renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getInputVariable('DATUM'))) {
+    if (Blockly.Names.equals(oldName, this.getTitleValue('DATUM'))) {
       this.setInputVariable('DATUM', newName);
     }
-    if (Blockly.Names.equals(oldName, this.getInputVariable('INDEX'))) {
+    if (Blockly.Names.equals(oldName, this.getTitleValue('INDEX'))) {
       this.setInputVariable('INDEX', newName);
     }
   }
@@ -171,8 +175,8 @@ Blockly.Language.d3_data = {
   init: function() {
     this.setColour(BLOCKD3_COLOR);
     this.appendTitle('set data');
-    this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
-    this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
+    this.appendInput(Blockly.INPUT_VALUE, 'ITEM', Selection).appendTitle('of');
+    this.appendInput(Blockly.INPUT_VALUE, 'VALUE').appendTitle('to');
     this.setTooltip('Set the data for a selection');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
