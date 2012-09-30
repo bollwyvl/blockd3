@@ -18,7 +18,12 @@ DEMO_LIB = os.path.join(PROJECT_ROOT, "demo", "lib")
 
 demo_deps = {
     "blockly": {
-        "get": "svn export http://blockly.googlecode.com/svn/trunk/ %s"
+        "get": "svn export http://blockly.googlecode.com/svn/trunk/ %s",
+        "cleanup": "python %s/build.py"
+    },
+    "d3": {
+        "get": "git clone --depth 1 https://github.com/mbostock/d3.git %s",
+        "cleanup": "rm -rf %s/.git"
     }
 }
 
@@ -27,4 +32,22 @@ def update_demo_deps():
     grab and document the newest version of the demo libs (blockly, d3)
     """
     for dep, cmds in demo_deps.items():
-        local(cmds["get"] % os.path.join(DEMO_LIB, dep))
+        dep_path = os.path.join(DEMO_LIB, dep)
+        local("rm -rf %s" % dep_path)
+        local(cmds["get"] % dep_path)
+        if "cleanup" in cmds:
+            local(cmds["cleanup"] % dep_path)
+            
+        
+def serve():
+    import SimpleHTTPServer
+    import SocketServer
+
+    PORT = 8000
+
+    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+
+    httpd = SocketServer.TCPServer(("", PORT), Handler)
+
+    print "serving at port", PORT
+    httpd.serve_forever()
