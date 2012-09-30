@@ -39,26 +39,33 @@ function join_none(args){
 
 BJS.d3_d3_select = function() {
     return join_none([
-        'd3.select("',
+        "d3.select('",
         this.getTitleValue('TEXT'),
-        '")'
+        "')"
     ]);
 };
 
 BJS.d3_d3_selectAll = function() {
     return join_none([
-        'd3.selectAll("',
+        "d3.selectAll('",
         this.getTitleValue('TEXT'),
-        '")'
+        "')"
     ]);
 };
 
 BJS.d3_selectAll = function() {
     return join_none([
         BJS.valueToCode(this, 'PARENT', BJS.ORDER_NONE),
-        '.selectAll("',
+        ".selectAll('",
         this.getTitleValue('TEXT'),
-        '")'
+        "')"
+    ]);
+};
+
+BJS.d3_enter = function() {
+    return join_none([
+        BJS.valueToCode(this, 'PARENT', BJS.ORDER_NONE),
+        '.enter()\n'
     ]);
 };
 
@@ -84,6 +91,92 @@ BJS.d3_attr = function() {
     ].join("");
 };
 
+BJS.d3_data = function() {
+    return join_none([
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.data(',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+    ]);
+};
+
+BJS.d3_classed = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.classed("',
+        this.getTitleValue('CLS'),
+        '", ',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
+};
+
+BJS.d3_property = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.property("',
+        this.getTitleValue('PROP'),
+        '", ',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
+};
+
+
+BJS.d3_text = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.text(',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
+};
+
+BJS.d3_html = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.html(',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
+};
+
+function chainable(args, block){
+    if(block && block.parentBlock_ && block.parentBlock_.type === 'd3_chain'){
+        args.unshift("\t");
+        return join_none(args);
+    }else{
+        return args.join("") + ';\n';
+    }
+}
+
+BJS.d3_append = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.append(',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
+};
+
+BJS.d3_insert = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.insert(',
+        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
+        ');\n'
+      ].join("");
+};
+
+BJS.d3_remove = function() {
+    return [
+        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
+        '.remove();\n'
+      ].join("");
+};
+
+// Patterns
+
 BJS.d3_lambda = function() {
     return join_none([
         'function(',
@@ -98,12 +191,14 @@ BJS.d3_lambda = function() {
     ]);
 };
 
-BJS.d3_data = function() {
-    return [
-        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
-        '.data(',
-        BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
-        ');\n'
-    ].join("");
+// dev
+
+BJS.dev_debugger = function() {
+    return "debugger;\n";
 };
+
+BJS.dev_console_log = function() {
+    return "console.log("+BJS.valueToCode(this, 'LOG', BJS.ORDER_NONE)+");\n"
+};
+
 })();
