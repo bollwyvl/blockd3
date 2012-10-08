@@ -1,6 +1,7 @@
 body {
   background-color: #ddd;
   font-family: 'ABeeZee', sans-serif;
+  padding: 5px;
 }
 h1 {
   font-weight: normal;
@@ -23,19 +24,28 @@ a {
     color: #fff;
 }
 
-.tabon {
-  background-color: #fff;
-  padding: 5px 19px;
-  color: steelBlue;
+#tabRow td{
+    text-align: center;
 }
-.taboff {
+
+#tabRow td.tab, #tabRow .tabon, #tabRow .taboff{
+    padding: 5px;
+    border-top: solid 2px #eee;
+    border-bottom: solid 2px #fff;
+}
+#tabRow .tabon {
+  background-color: #fff;
+  color: steelBlue;
+  border-top: solid 2px steelBlue;
+}
+#tabRow .taboff {
   cursor: pointer;
-  padding: 5px 19px;
   background-color: #eee;
   color: #333;
+  border-bottom: solid 2px #ddd;
 }
-.taboff:hover {
-  background-color: #eee;
+#tabRow .taboff:hover {
+  background-color: #efefef;
 }
 
 table {
@@ -62,7 +72,7 @@ iframe {
   border-top-style: none;
 }
 button {
-  padding: 1px 1em;
+  padding: 4px 6px;
   font-size: 90%;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -70,8 +80,7 @@ button {
   color: black;
 }
 button.launch {
-  border: 1px solid #d43;
-  background-color: #d43;
+  background-color: steelBlue;
   color: white;
 }
 button:active {
