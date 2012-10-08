@@ -7,11 +7,35 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
             field: b4.fields.text("SELECTOR")
                 .init("CSS-style selector")
         },
-        PARENT:{
+        PARENT: {
             id: "D3 Parent Selection",
             field: b4.input("PARENT")
                 .title("of selection")
                 .inputValue(true)
+        },
+        ATTR_PROP: {
+            id: "D3 attribute",
+            field: b4.input("ATTR_PROP")
+                .inputValue(true)
+                .title("DOM attribute")
+        },
+        STYLE_PROP: {
+            id: "D3 CSS Style Property",
+            field: b4.input("STYLE_PROP")
+                .inputValue(true)
+                .title("CSS property")
+        },
+        VALUE: {
+            id: "D3 general calc value",
+            field: b4.input("VALUE")
+                .inputValue(true)
+                .title("to value")
+        },
+        KLASS: {
+            id: "D3 class",
+            field: b4.input("KLASS")
+                .inputValue(true)
+                .title("CSS class")
         }
     };
     
@@ -64,26 +88,12 @@ select_mold.clone("enter")
     .tooltip("returns placeholders for missing elements")
     .appendTitle("enter")
     .appendInput(D3_TYPES.PARENT.field)
-    .code([
-            "<%= $.code('PARENT') %>", 
-            ".enter()"
-        ])
+    .code(["<%= $.code('PARENT') %>", 
+            ".enter()"])
     .done();
 
-D3_TYPES.STYLE_PROP = {
-    id: "D3 CSS Style Property",
-    field: b4.input("STYLE_PROP")
-        .inputValue(true)
-        .title("CSS property")
-};
 
 
-D3_TYPES.VALUE = {
-    id: "D3 general calc value",
-    field: b4.input("VALUE")
-        .inputValue(true)
-        .title("to value")
-};
 var manip_mold = d3_mold.clone()
     .category("d3 manipulation");
     
@@ -92,18 +102,9 @@ manip_mold.clone("style")
     .appendInput([D3_TYPES.STYLE_PROP.field,
         D3_TYPES.PARENT.field,
         D3_TYPES.VALUE.field])
-    .code([
-        "<%= $.code('PARENT') %>", 
-        ".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"
-    ])
+    .code(["<%= $.code('PARENT') %>", 
+        ".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"])
     .done();
-
-D3_TYPES.ATTR_PROP = {
-    id: "D3 attribute",
-    field: b4.input("ATTR_PROP")
-        .inputValue(true)
-        .title("DOM attribute")
-};
 
 manip_mold.clone("attr")
     .tooltip("Set the SVG attribute")
@@ -111,10 +112,8 @@ manip_mold.clone("attr")
     .appendInput([D3_TYPES.ATTR_PROP.field,
         D3_TYPES.PARENT.field,
         D3_TYPES.VALUE.field])
-    .code([
-        "<%= $.code('PARENT') %>", 
-        ".attr(<%= $.code('ATTR_PROP') %>, <%= $.code('VALUE') %>)"
-    ])
+    .code(["<%= $.code('PARENT') %>", 
+        ".attr(<%= $.code('ATTR_PROP') %>, <%= $.code('VALUE') %>)"])
     .done();
     
 manip_mold.clone("data")
@@ -122,18 +121,9 @@ manip_mold.clone("data")
     .appendTitle("d3.data")
     .appendInput([D3_TYPES.PARENT.field,
         D3_TYPES.VALUE.field])
-    .code([
-        "<%= $.code('PARENT') %>", 
-        ".data(<%= $.code('VALUE') %>)"
-    ])
+    .code(["<%= $.code('PARENT') %>", 
+        ".data(<%= $.code('VALUE') %>)"])
     .done();
-    
-D3_TYPES.KLASS = {
-    id: "D3 class",
-    field: b4.input("KLASS")
-        .inputValue(true)
-        .title("CSS class")
-};
 
 manip_mold.clone("classed")
     .tooltip("Set the class of a selection")
@@ -141,9 +131,7 @@ manip_mold.clone("classed")
     .appendInput([D3_TYPES.KLASS.field,
         D3_TYPES.PARENT.field,
         D3_TYPES.VALUE.field])
-    .code([
-        "<%= $.code('PARENT') %>", 
-        ".classed(<%= $.code('KLASS') %>, <%= $.code('VALUE') %>)"
-    ])
+    .code(["<%= $.code('PARENT') %>", 
+        ".classed(<%= $.code('KLASS') %>, <%= $.code('VALUE') %>)"])
     .done();
 })(b4);
