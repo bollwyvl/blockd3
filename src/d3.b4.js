@@ -8,10 +8,6 @@
                     .init("CSS-style selector")
             }
         };
-
-
-        var 
-    
     
 
     // set up a base configuration
@@ -29,7 +25,7 @@
             
         select_mold.clone("")
             .appendTitle("select the first element that matches")
-            .appendTitle(D3_TYPES.SELECTION.field())
+            .appendTitle(D3_TYPES.SELECTION.field)
             .tooltip("The first element that matches the selector")
             .output(D3_TYPES.SELECTION)
             .code("d3.select('<%= block.getTitleValue('SELECTOR') %>')")
