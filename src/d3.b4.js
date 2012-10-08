@@ -36,28 +36,28 @@ var d3_mold = b4.block()
             
 select_mold.clone("")
     .tooltip("The first element that matches the selector")
-    .appendTitle("select the first element that matches")
-    .appendTitle(D3_TYPES.SELECTION.field)
+    .appendTitle(["select the first element that matches",
+        D3_TYPES.SELECTION.field])
     .code("d3.select('<%= $.title('SELECTOR') %>')")
     .done();
         
 select_mold.clone("All")
     .tooltip("All elements that match the selection")
-    .appendTitle("select all elements that match")
-    .appendTitle(D3_TYPES.SELECTION.field)
+    .appendTitle(["select all elements that match",
+        D3_TYPES.SELECTION.field])
     .code("d3.selectAll('<%= $.title('SELECTOR') %>')")
     .done();
     
         
 select_arg_mold.clone("selectAll")
     .tooltip("All elements that match the selection")
-    .appendTitle("select all elements that match")
-    .appendTitle(D3_TYPES.SELECTION.field)
+    .appendTitle(["select all elements that match",
+        D3_TYPES.SELECTION.field])
     .appendInput(D3_TYPES.PARENT.field)
     .code([
             "<%= $.code('PARENT') %>", 
             ".selectAll('<%= $.title('SELECTOR') %>')"
-        ].join("\n\t"))
+        ])
     .done();
     
 select_mold.clone("enter")
@@ -67,7 +67,7 @@ select_mold.clone("enter")
     .code([
             "<%= $.code('PARENT') %>", 
             ".enter()"
-        ].join("\n\t"))
+        ])
     .done();
 
 D3_TYPES.STYLE_PROP = {
@@ -89,13 +89,13 @@ var manip_mold = d3_mold.clone()
     
 manip_mold.clone("style") 
     .appendTitle("d3.style")
-    .appendInput(D3_TYPES.STYLE_PROP.field)
-    .appendInput(D3_TYPES.PARENT.field)
-    .appendInput(D3_TYPES.VALUE.field)
+    .appendInput([D3_TYPES.STYLE_PROP.field,
+        D3_TYPES.PARENT.field,
+        D3_TYPES.VALUE.field])
     .code([
         "<%= $.code('PARENT') %>", 
         ".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"
-    ].join("\n\t"))
+    ])
     .done();
 
 D3_TYPES.ATTR_PROP = {
@@ -108,24 +108,24 @@ D3_TYPES.ATTR_PROP = {
 manip_mold.clone("attr")
     .tooltip("Set the SVG attribute")
     .appendTitle("d3.attr")
-    .appendInput(D3_TYPES.ATTR_PROP.field)
-    .appendInput(D3_TYPES.PARENT.field)
-    .appendInput(D3_TYPES.VALUE.field)
+    .appendInput([D3_TYPES.ATTR_PROP.field,
+        D3_TYPES.PARENT.field,
+        D3_TYPES.VALUE.field])
     .code([
         "<%= $.code('PARENT') %>", 
         ".attr(<%= $.code('ATTR_PROP') %>, <%= $.code('VALUE') %>)"
-    ].join("\n\t"))
+    ])
     .done();
     
 manip_mold.clone("data")
     .tooltip("Set the data for a selection")
     .appendTitle("d3.data")
-    .appendInput(D3_TYPES.PARENT.field)
-    .appendInput(D3_TYPES.VALUE.field)
+    .appendInput([D3_TYPES.PARENT.field,
+        D3_TYPES.VALUE.field])
     .code([
         "<%= $.code('PARENT') %>", 
         ".data(<%= $.code('VALUE') %>)"
-    ].join("\n\t"))
+    ])
     .done();
     
 D3_TYPES.KLASS = {
@@ -138,12 +138,12 @@ D3_TYPES.KLASS = {
 manip_mold.clone("classed")
     .tooltip("Set the class of a selection")
     .appendTitle('set class')
-    .appendInput(D3_TYPES.KLASS.field)
-    .appendInput(D3_TYPES.PARENT.field)
-    .appendInput(D3_TYPES.VALUE.field)
+    .appendInput([D3_TYPES.KLASS.field,
+        D3_TYPES.PARENT.field,
+        D3_TYPES.VALUE.field])
     .code([
         "<%= $.code('PARENT') %>", 
         ".classed(<%= $.code('KLASS') %>, <%= $.code('VALUE') %>)"
-    ].join("\n\t"))
+    ])
     .done();
 })(b4);
