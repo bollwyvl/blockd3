@@ -8,6 +8,9 @@ It's a modification of the Blockly [code demo][codedemo], which has cool stuff
 like Python generation.
 
 ## Documentation
+Right now, most of the documentation is in the code. As we get closer to a 
+useful project, I'd like to have canned lessons for some of the excellent 
+community-built [tutorials][].
 
 ## Blocks Implemented
 __need to automate updating this__
@@ -59,3 +62,4 @@ Blockd3 is licensed under the [Apache Public License][apl].
 [bl.ocks]: http://bl.ocks.org/
 [apl]: http://www.apache.org/licenses/LICENSE-2.0.html
 [github-api]: https://github.com/fitzgen/github-api
+[tutorials]: http://alignedleft.com/tutorials/d3/
