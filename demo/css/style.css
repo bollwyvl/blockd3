@@ -1,13 +1,27 @@
 body {
-  background-color: white;
-  font-family: sans-serif;
+  background-color: #333;
+  font-family: 'ABeeZee', sans-serif;
 }
 h1 {
   font-weight: normal;
   font-size: 140%;
+  color: #ccc;
 }
 td {
   vertical-align: top;
+}
+a {
+    text-decoration: none;
+    color: steelBlue;
+}
+
+#content_d3{
+    background-color: #fff;
+}
+
+#powered_by{
+    float:right; margin-right: 150px;
+    color: #fff;
 }
 
 /* Tabs */
@@ -16,12 +30,15 @@ td {
 }
 td.tabon {
   border-bottom-color: #ddd !important;
-  background-color: #ddd;
+  background-color: fff;
   padding: 5px 19px;
+  color: steelBlue;
 }
 td.taboff {
   cursor: pointer;
   padding: 5px 19px;
+  background-color: steelBlue;
+  color: #fff;
 }
 td.taboff:hover {
   background-color: #eee;

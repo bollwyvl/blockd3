@@ -15,7 +15,7 @@
             .generator("JavaScript")
             .helpUrlTemplate(D3_WIKI)
             .namespace("")
-            .colour("blue"),
+            .colour("steelBlue"),
             
         // make a subconfiguration
         select_mold = d3_mold.clone()
