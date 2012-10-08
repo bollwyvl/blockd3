@@ -13,8 +13,7 @@ var selected = 'blocks';
 function tabClick(id) {
   // If the XML tab was open, save and render the content.
   if (document.getElementById('tab_xml').className == 'tabon') {
-    var xmlTextarea = document.getElementById('textarea_xml');
-    var xmlText = xmlTextarea.value;
+    var xmlText = editors.xml.getValue();
     var xmlDom = null;
     try {
       xmlDom = Blockly.Xml.textToDom(xmlText);
@@ -58,13 +57,11 @@ function renderContent() {
     // an incomplete rendering due to Blockly being invisible.  Rerender.
     Blockly.mainWorkspace.render();
   } else if (content.id == 'content_xml') {
-    var xmlTextarea = document.getElementById('textarea_xml');
     var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
     var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
-    xmlTextarea.value = xmlText;
-    xmlTextarea.focus();
+    editors.xml.setValue(xmlText);
   } else if (content.id == 'content_javascript') {
-    content.innerHTML = Blockly.Generator.workspaceToCode('JavaScript');
+    editors.javascript.setValue(Blockly.Generator.workspaceToCode('JavaScript'));
   }
 }
 

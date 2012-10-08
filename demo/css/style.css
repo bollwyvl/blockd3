@@ -1,11 +1,10 @@
 body {
-  background-color: #333;
+  background-color: #ddd;
   font-family: 'ABeeZee', sans-serif;
 }
 h1 {
   font-weight: normal;
   font-size: 140%;
-  color: #ccc;
 }
 td {
   vertical-align: top;
@@ -24,36 +23,19 @@ a {
     color: #fff;
 }
 
-/* Tabs */
-#tabRow>td {
-  border: 1px solid #ccc;
-}
-td.tabon {
-  border-bottom-color: #ddd !important;
-  background-color: fff;
+.tabon {
+  background-color: #fff;
   padding: 5px 19px;
   color: steelBlue;
 }
-td.taboff {
+.taboff {
   cursor: pointer;
   padding: 5px 19px;
-  background-color: steelBlue;
-  color: #fff;
-}
-td.taboff:hover {
   background-color: #eee;
+  color: #333;
 }
-td.tabmin {
-  border-top-style: none !important;
-  border-left-style: none !important;
-  border-right-style: none !important;
-}
-td.tabmax {
-  border-top-style: none !important;
-  border-left-style: none !important;
-  border-right-style: none !important;
-  width: 99%;
-  text-align: right;
+.taboff:hover {
+  background-color: #eee;
 }
 
 table {
@@ -66,18 +48,8 @@ table {
 td {
   padding: 0;
 }
-pre,
-#content_xml {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-top-style: none;
-  overflow: hidden;
-  display: none;
-}
-#textarea_xml {
+
+#content_xml, #content_javascript {
   width: 100%;
   height: 100%;
   border: none;
@@ -110,4 +82,8 @@ button:hover {
 }
 #content_d3{
     height: 100%;
+}
+
+.codemirror{
+    background-color: #fff;
 }

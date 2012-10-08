@@ -4,11 +4,21 @@
   <title>blockd3: visual data-driven programming with d3 and blockly</title>
   <link href="http://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="./css/style.css"/>
+  <script type="text/javascript" src="./lib/b4/lib/underscore-min.js"></script>
+  
+
+  <link rel="stylesheet" href="./lib/cm/lib/codemirror.css">
+  <link rel="stylesheet" href="./lib/cm/theme/elegant.css">
+  <script src="./lib/cm/lib/codemirror.js"></script>
+  <script src="./lib/cm/mode/javascript/javascript.js"></script>
+  <script src="./lib/cm/mode/xml/xml.js"></script>
+
   
   <script type="text/javascript" src="./js/BlobBuilder.min.js"></script>
   <script type="text/javascript" src="./js/FileSaver.min.js"></script>
   <script type="text/javascript" src="./lib/d3/d3.v2.min.js"></script>
   <script type="text/javascript" src="./js/editor.js"></script>
+  <script type="text/javascript" src="./js/new.editor.js"></script>
 </head>
 <body>
 <a href="https://github.com/bollwyvl/blockd3">
@@ -30,11 +40,11 @@
       <td colspan="2">
         <table>
           <tr id="tabRow" height="1em">
-            <td id="tab_blocks" class="tabon" onclick="tabClick(this.id)">Blocks</td>
+            <td id="tab_blocks" class="tabon" onclick="tabClick(this.id)">blocks</td>
             <td class="tabmin">&nbsp;</td>
-            <td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">JavaScript</td>
+            <td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">javascript</td>
             <td class="tabmin">&nbsp;</td>
-            <td id="tab_xml" class="taboff" onclick="tabClick(this.id)">XML</td>
+            <td id="tab_xml" class="taboff" onclick="tabClick(this.id)">xml</td>
             <td class="tabmax" style="padding-right:150px">
               <button onclick="discard()">Discard</button>
               <button onclick="save()">Save XML</button>
@@ -49,7 +59,9 @@
     <tr>
       <td height="99%">
         <iframe id="content_blocks" src="./frame.html"></iframe>
-        <pre id="content_javascript"></pre>
+        <div id="content_javascript">
+          <textarea id="textarea_javascript"></textarea>
+        </div>
         <div id="content_xml">
           <textarea id="textarea_xml"></textarea>
         </div>
@@ -65,5 +77,33 @@
       </td>
     </tr>
   </table>
+  <script>
+      var editors = {
+          javascript: undefined,
+          xml: undefined
+      };
+
+      function initialize_editors(){
+          _.map(editors, function(editor, language){
+              if(editor){
+                 return; 
+              }
+              editors[language] = CodeMirror.fromTextArea(
+                  document.getElementById("textarea_"+language),
+                  {
+                      lineNumbers: true,
+                      matchBrackets: true,
+                      mode: language,
+                      lineWrapping: true,
+                      readOnly: true,
+                      theme: "elegant",
+                  });
+                  editors[language].
+                      setSize("100%", "100%");
+          });
+      }
+      
+      initialize_editors();
+  </script>
 </body>
 </html>
