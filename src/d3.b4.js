@@ -1,10 +1,9 @@
 (function(b4){
     
-    var D3_WIKI = "https://github.com/mbostock/d3/wiki/";
-    
-    var D3_TYPES = {
-        SELECTION: "Selection"
-    };
+    var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
+        D3_TYPES = {
+            SELECTION: "Selection"
+        };
 
     // set up a base configuration
     var d3_mold = b4.block()
@@ -29,21 +28,5 @@
             .output(D3_TYPES.SELECTION)
             .code("d3.select('<%= block.getTitleValue('SELECTOR') %>')")
             .done();
-        /*
-        BJS.d3_d3_select = function() {
-            return join_none([
-                "d3.select('",
-                this.getTitleValue('TEXT'),
-                "')"
-            ]);
-        };
-    
-        BL.d3_d3_select = {
-          // d3.select - select an element from the current document.
-          init: function() {
-            this.appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
-          }
-        };
-        */
             
 })(b4);
