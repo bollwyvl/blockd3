@@ -10,7 +10,7 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
         PARENT:{
             id: "D3 Parent Selection",
             field: b4.input("PARENT")
-                .title("from")
+                .title("of selection")
                 .inputValue(true)
         }
     };
@@ -82,46 +82,68 @@ D3_TYPES.VALUE = {
     id: "D3 general calc value",
     field: b4.input("VALUE")
         .inputValue(true)
-        .title("value")
+        .title("to value")
 };
-
-d3_mold.clone("style") 
-    .appendTitle('style')
-    .category("d3 manipulation")
-    .appendInput(D3_TYPES.PARENT.field)
+var manip_mold = d3_mold.clone()
+    .category("d3 manipulation");
+    
+manip_mold.clone("style") 
+    .appendTitle("d3.style")
     .appendInput(D3_TYPES.STYLE_PROP.field)
+    .appendInput(D3_TYPES.PARENT.field)
     .appendInput(D3_TYPES.VALUE.field)
     .code([
         "<%= $.code('PARENT') %>", 
         ".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"
     ].join("\n\t"))
     .done();
-        /*
 
-        BL.d3_style = {
-          // selection.style - get or set style properties.
-          category: 'd3 Selection Transformation',
-          helpUrl: doc.selections + 'style',
-          init: function() {
-            this.setColour(BLOCKD3_COLOR);
-            this.appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
-            this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
-            this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
-            this.setTooltip('Set the CSS style');
-            this.setPreviousStatement(true);
-            this.setNextStatement(true);
-          }
-        };
+D3_TYPES.ATTR_PROP = {
+    id: "D3 attribute",
+    field: b4.input("ATTR_PROP")
+        .inputValue(true)
+        .title("DOM attribute")
+};
 
-        BJS.d3_style = function() {
-            return [
-                BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
-                '.style("',
-                this.getTitleValue('TEXT'),
-                '", ',
-                BJS.valueToCode(this, 'VALUE', BJS.ORDER_NONE),
-                ');\n'
-              ].join("");
-        };
-        */
+manip_mold.clone("attr")
+    .tooltip("Set the SVG attribute")
+    .appendTitle("d3.attr")
+    .appendInput(D3_TYPES.ATTR_PROP.field)
+    .appendInput(D3_TYPES.PARENT.field)
+    .appendInput(D3_TYPES.VALUE.field)
+    .code([
+        "<%= $.code('PARENT') %>", 
+        ".attr(<%= $.code('ATTR_PROP') %>, <%= $.code('VALUE') %>)"
+    ].join("\n\t"))
+    .done();
+    
+manip_mold.clone("data")
+    .tooltip("Set the data for a selection")
+    .appendTitle("d3.data")
+    .appendInput(D3_TYPES.PARENT.field)
+    .appendInput(D3_TYPES.VALUE.field)
+    .code([
+        "<%= $.code('PARENT') %>", 
+        ".data(<%= $.code('VALUE') %>)"
+    ].join("\n\t"))
+    .done();
+    
+D3_TYPES.KLASS = {
+    id: "D3 class",
+    field: b4.input("KLASS")
+        .inputValue(true)
+        .title("CSS class")
+};
+
+manip_mold.clone("classed")
+    .tooltip("Set the class of a selection")
+    .appendTitle('set class')
+    .appendInput(D3_TYPES.KLASS.field)
+    .appendInput(D3_TYPES.PARENT.field)
+    .appendInput(D3_TYPES.VALUE.field)
+    .code([
+        "<%= $.code('PARENT') %>", 
+        ".classed(<%= $.code('KLASS') %>, <%= $.code('VALUE') %>)"
+    ].join("\n\t"))
+    .done();
 })(b4);

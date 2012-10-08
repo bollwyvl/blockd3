@@ -79,7 +79,7 @@ BJS.d3_style = function() {
         ');\n'
       ].join("");
 };
-*/
+
 
 BJS.d3_attr = function() {
     return [
@@ -92,6 +92,7 @@ BJS.d3_attr = function() {
     ].join("");
 };
 
+
 BJS.d3_data = function() {
     return join_none([
         BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
@@ -100,7 +101,6 @@ BJS.d3_data = function() {
         ');\n'
     ]);
 };
-
 BJS.d3_classed = function() {
     return [
         BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
@@ -111,6 +111,10 @@ BJS.d3_classed = function() {
         ');\n'
       ].join("");
 };
+*/
+
+
+
 
 BJS.d3_property = function() {
     return [

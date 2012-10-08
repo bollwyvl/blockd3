@@ -125,8 +125,6 @@ BL.d3_style = {
     this.setNextStatement(true);
   }
 };
-*/
-
 
 BL.d3_attr = {
   // selection.attr - get or set attribute values.
@@ -159,8 +157,6 @@ BL.d3_data = {
     this.setTooltip('Set the data for a selection');
   }
 };
-
-
 BL.d3_classed = {
   // selection.classed - add or remove CSS classes.
   category: 'd3 Selection Transformation',
@@ -176,6 +172,13 @@ BL.d3_classed = {
     this.setNextStatement(true);
   }
 };
+*/
+
+
+
+
+
+
 
 
 BL.d3_property = {
