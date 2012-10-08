@@ -194,31 +194,4 @@ manip_mold.clone("remove")
         ".remove())"])
     .done();
     
-
-    /*
-
-    BL.d3_remove = {
-      // selection.remove - remove elements from the document.
-      category: 'd3 Selection Manipulation',
-      helpUrl: doc.selections + 'remove',
-      init: function() {
-        this.setColour(BLOCKD3_COLOR);
-        this.appendTitle('remove');
-        this.appendInput('selection', Blockly.INPUT_VALUE, 'ITEM', Selection);
-        this.setTooltip('Remove a selection');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      }
-    };
-    
-
-    BJS.d3_remove = function() {
-        return [
-            BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
-            '.remove();\n'
-          ].join("");
-    };
-    
-
-    */
 })(b4);
