@@ -1,0 +1,3 @@
+[submodule "b4"]
+      path = demo/lib/b4
+      url = ../../../b4
