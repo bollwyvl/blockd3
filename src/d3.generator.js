@@ -111,10 +111,6 @@ BJS.d3_classed = function() {
         ');\n'
       ].join("");
 };
-*/
-
-
-
 
 BJS.d3_property = function() {
     return [
@@ -126,6 +122,24 @@ BJS.d3_property = function() {
         ');\n'
       ].join("");
 };
+
+
+BL.d3_property = {
+  // selection.property - get or set raw properties.
+  category: 'd3 Selection Transformation',
+  helpUrl: doc.selections + 'property',
+  init: function() {
+    this.setColour(BLOCKD3_COLOR);
+    this.appendTitle('set property');
+    this.appendInput('named', Blockly.INPUT_VALUE, 'PROP');
+    this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
+    this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
+    this.setTooltip('Set the raw property of a selection');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 
 
 BJS.d3_text = function() {
@@ -146,14 +160,6 @@ BJS.d3_html = function() {
       ].join("");
 };
 
-function chainable(args, block){
-    if(block && block.parentBlock_ && block.parentBlock_.type === 'd3_chain'){
-        args.unshift("\t");
-        return join_none(args);
-    }else{
-        return args.join("") + ';\n';
-    }
-}
 
 BJS.d3_append = function() {
     return [
@@ -173,12 +179,9 @@ BJS.d3_insert = function() {
       ].join("");
 };
 
-BJS.d3_remove = function() {
-    return [
-        BJS.valueToCode(this, 'ITEM', BJS.ORDER_NONE),
-        '.remove();\n'
-      ].join("");
-};
+*/
+
+
 
 // Patterns
 
@@ -196,14 +199,6 @@ BJS.d3_lambda = function() {
     ]);
 };
 
-// dev
 
-BJS.dev_debugger = function() {
-    return "debugger;\n";
-};
-
-BJS.dev_console_log = function() {
-    return "console.log("+BJS.valueToCode(this, 'LOG', BJS.ORDER_NONE)+");\n"
-};
 
 })();

@@ -172,32 +172,6 @@ BL.d3_classed = {
     this.setNextStatement(true);
   }
 };
-*/
-
-
-
-
-
-
-
-
-BL.d3_property = {
-  // selection.property - get or set raw properties.
-  category: 'd3 Selection Transformation',
-  helpUrl: doc.selections + 'property',
-  init: function() {
-    this.setColour(BLOCKD3_COLOR);
-    this.appendTitle('set property');
-    this.appendInput('named', Blockly.INPUT_VALUE, 'PROP');
-    this.appendInput('of', Blockly.INPUT_VALUE, 'ITEM', Selection);
-    this.appendInput('to', Blockly.INPUT_VALUE, 'VALUE');
-    this.setTooltip('Set the raw property of a selection');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
-
 BL.d3_text = {
   // selection.text - get or set text content.
   category: 'd3 Selection Transformation',
@@ -212,6 +186,8 @@ BL.d3_text = {
     this.setNextStatement(true);
   }
 };
+
+
 
 
 BL.d3_html = {
@@ -229,6 +205,7 @@ BL.d3_html = {
   }
 };
 
+
 BL.d3_append = {
   // selection.append - create and append new elements.
   category: 'd3 Selection Manipulation',
@@ -243,7 +220,6 @@ BL.d3_append = {
     this.setNextStatement(true);
   }
 };
-
 
 BL.d3_insert = {
   // selection.insert - create and insert new elements before existing elements.
@@ -273,6 +249,10 @@ BL.d3_remove = {
     this.setNextStatement(true);
   }
 };
+
+*/
+
+
 
 
 
@@ -323,35 +303,6 @@ BL.d3_lambda = {
   }
 };
 
-// developer
-
-BL.dev_debugger = {
-  // debugger: starts the debugger
-  category: '1337',
-  helpUrl: doc.selections + 'remove',
-  init: function() {
-    this.setColour(0);
-    this.appendTitle('debugger');
-    this.setTooltip('launches the debugger');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
-
-BL.dev_console_log = {
-  // console.log: draws to the console
-  category: '1337',
-  helpUrl: doc.selections + 'remove',
-  init: function() {
-    this.setColour(0);
-    this.appendTitle('console');
-    this.appendInput('log', Blockly.INPUT_VALUE, 'LOG');
-    this.setTooltip('logs the value');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
 
 
 })();
