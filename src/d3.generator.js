@@ -36,7 +36,7 @@ BJS = Blockly.Generator.get('JavaScript');
 function join_none(args){
     return [args.join(""), BJS.ORDER_ATOMIC];
 }
-
+/*
 BJS.d3_d3_select = function() {
     return join_none([
         "d3.select('",
@@ -79,6 +79,7 @@ BJS.d3_style = function() {
         ');\n'
       ].join("");
 };
+*/
 
 BJS.d3_attr = function() {
     return [

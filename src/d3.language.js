@@ -51,7 +51,7 @@ var wiki = "https://github.com/mbostock/d3/wiki/",
         selections: wiki + "Selections#wiki-",
     };
 
-
+/*
 BL.d3_d3_select = {
   // d3.select - select an element from the current document.
   category: 'd3 Selection',
@@ -125,6 +125,7 @@ BL.d3_style = {
     this.setNextStatement(true);
   }
 };
+*/
 
 
 BL.d3_attr = {
