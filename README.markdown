@@ -7,20 +7,15 @@ Check it out at http://bollwyvl.github.com/blockd3
 It's a modification of the Blockly [code demo][codedemo], which has cool stuff
 like Python generation.
 
+## Documentation
+
 ## Blocks Implemented
-- `d3.select`
-- `d3.selectAll`
-- `selection.selectAll`
-- `selection.data`
-- `selection.attr`
-- `selection.style`
+__need to automate updating this__
 
 ## Language Goals
-Blockly aims to present a high-level interface in blocks, allowing the 95% of 
-end users to concentrate on what a program does, rather than how.
-
-For this to work with d3, the implemented blocks must make it very easy to see
-what a particular d3 call is doing.
+Blockly aims to present a high-level interface to the d3 library in blocks, 
+allowing the 99% of end users to concentrate on what a program does so they can 
+learn how.
 
 ## MVP
 To serve as a proof of concept, blockd3 should support the most common d3
@@ -42,7 +37,7 @@ Then just go to http://localhost:8000.
 Make suggestions via the [tickets][]!
 
 Once the blockd3 API has stabilized, [bl.ocks][] (or something like it) should 
-be fun for sharing examples!
+be fun for sharing examples! [github-api][] makes this look pretty easy.
 
 ## Roadmap
 - block coverage of the d3 API
@@ -50,6 +45,7 @@ be fun for sharing examples!
       source of the d3 API wiki, or at the very least be checked for coverage.
 - immediate visual update
 - support [d3-plugins][]
+- gist integration
 
 ## License
 Blockd3 is licensed under the [Apache Public License][apl].
@@ -62,3 +58,4 @@ Blockd3 is licensed under the [Apache Public License][apl].
 [tickets]: https://github.com/bollwyvl/blockd3/issues
 [bl.ocks]: http://bl.ocks.org/
 [apl]: http://www.apache.org/licenses/LICENSE-2.0.html
+[github-api]: https://github.com/fitzgen/github-api
