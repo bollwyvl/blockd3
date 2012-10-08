@@ -2,8 +2,17 @@
     
     var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
         D3_TYPES = {
-            SELECTION: "Selection"
+            SELECTION: {
+                id: "D3 Selection",
+                field: b4.field.text("SELECTOR")
+                    .init("CSS-style selector")
+            }
         };
+
+
+        var 
+    
+    
 
     // set up a base configuration
     var d3_mold = b4.block()
@@ -20,13 +29,12 @@
             
         select_mold.clone("")
             .appendTitle("select the first element that matches")
-            .appendTitle(
-                b4.field.text("SELECTOR")
-                    .init("#svg")
-            )
+            .appendTitle(D3_TYPES.SELECTION.field())
             .tooltip("The first element that matches the selector")
             .output(D3_TYPES.SELECTION)
             .code("d3.select('<%= block.getTitleValue('SELECTOR') %>')")
             .done();
-            
+        
+            //select_mold.clone("All")
+            //    .appendTitle("select all elements that match")
 })(b4);
