@@ -1,0 +1,10 @@
+html, body {
+  background-color: #fff;
+  margin: 0;
+  padding:0;
+  overflow: hidden;
+}
+.blocklySvg {
+  height: 100%;
+  width: 100%;
+}
