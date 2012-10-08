@@ -11,7 +11,7 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
             id: "D3 Parent Selection",
             field: b4.input("PARENT")
                 .title("from")
-                .nextStatement(true)
+                .inputValue(true)
         }
     };
     
@@ -38,14 +38,14 @@ var d3_mold = b4.block()
         .tooltip("The first element that matches the selector")
         .appendTitle("select the first element that matches")
         .appendTitle(D3_TYPES.SELECTION.field)
-        .code("d3.select('<%= block.getTitleValue('SELECTOR') %>')")
+        .code("d3.select('<%= $.title('SELECTOR') %>')")
         .done();
         
     select_mold.clone("All")
         .tooltip("All elements that match the selection")
         .appendTitle("select all elements that match")
         .appendTitle(D3_TYPES.SELECTION.field)
-        .code("d3.selectAll('<%= block.getTitleValue('SELECTOR') %>')")
+        .code("d3.selectAll('<%= $.title('SELECTOR') %>')")
         .done();
     
         
@@ -54,27 +54,10 @@ var d3_mold = b4.block()
         .appendTitle("select all elements that match")
         .appendTitle(D3_TYPES.SELECTION.field)
         .appendInput(D3_TYPES.PARENT.field)
+        .inputsInline(false)
         .code([
-                "<%= block.BG.valueToCode(block, 'PARENT', block.BG.ORDER_NONE) %>", 
-                ".selectAll('<%= block.getTitleValue('SELECTOR') %>')"
+                "<%= $.code('PARENT') %>", 
+                ".selectAll('<%= $.title('SELECTOR') %>')"
             ].join("\n\t"))
         .done();
-        /*
-        BL.d3_selectAll = {
-          // d3 Selection value.
-          init: function() {
-            this.appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
-            this.appendInput('from', Blockly.INPUT_VALUE, 'PARENT', Selection);
-          }
-        };
-        
-        BJS.d3_selectAll = function() {
-            return join_none([
-                BJS.valueToCode(this, 'PARENT', BJS.ORDER_NONE),
-                ".selectAll('",
-                this.getTitleValue('TEXT'),
-                "')"
-            ]);
-        };
-        */
 })(b4);
