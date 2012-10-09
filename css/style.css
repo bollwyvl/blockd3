@@ -1,7 +1,10 @@
 body{
-    background-color: #ddd;
+    background-color: #333;
     padding-top: 45px;
     overflow: hidden;
+}
+a{
+    color: steelblue;
 }
 
 #panes .pane{
@@ -12,7 +15,6 @@ body{
     background-color: #fff;
     margin: 0 5px;
     border-radius: 5px;
-    overflow:hidden;
 }
 iframe{
     width: 100%;
@@ -21,7 +23,8 @@ iframe{
 }
 footer{
     text-align: center;
-    background-color: #ddd;
+    color: #fff;
+    background-color: #333;
 }
 .container-fluid{
     padding: 5px;
@@ -33,4 +36,23 @@ footer{
 
 #file_form{
     display:none;
+}
+#alert{
+    position: fixed;
+    top: 140px;
+    width: 50%;
+    margin-left: 25%;
+    display: none;
+}
+#alert ul{
+    height: 200px;
+    overflow-y: auto;
+    padding: 5px;
+}
+#show_alerts{
+    display:none;
+}
+#run, #show_alerts{
+    height: 20px;
+    display: inline-block;
 }

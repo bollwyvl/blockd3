@@ -4,12 +4,28 @@ $('<iframe id="content_blocks" src="./frame.html"></iframe>').appendTo('#content
 
 var blockd3 = window.blockd3 = function(){};
 
+var alert_popup = $("#alert"),
+    alert_list = $("#alert ul"),
+    alert_time = d3.time.format("<i>%H:%M:%S</i> ");
+
 var Blockly;
 
 var editors = blockd3.editors = {
     javascript: undefined,
     xml: undefined
 };
+
+$("#alert button.close").click(function(){alert_popup.fadeOut()})
+
+$("#show_alerts").click(function(){
+    $("#alert").fadeToggle();
+})
+
+var lert = blockd3.lert = function(text){
+    alert_list.prepend("<li>"+alert_time(new Date)+text+"</li>");
+    alert_popup.fadeIn();
+    $("#show_alerts").fadeIn();
+}
 
 var init =  blockd3.init = function(blockly){
     window.Blockly = Blockly = blockly;
@@ -128,7 +144,7 @@ var run_js = blockd3.run_js = function() {
     try {
         eval(code);
     } catch (e) {
-        alert('Program error:\n' + e);
+        lert('Program error:\n' + e);
     }
 };
 
@@ -185,7 +201,7 @@ var load = blockd3.load = function(evt) {
             try {
                 xml = Blockly.Xml.textToDom(target.result);
             } catch (e) {
-                alert('Error parsing XML:\n' + e);
+                lert('Error parsing XML:\n' + e);
                 return;
             }
         

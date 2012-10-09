@@ -73,10 +73,14 @@
             <form id="file_form">
             <input type="file" id="load"/>
             </form>
-            <a id="run" class="btn btn-small" href="#run">
+            <a id="run" class="btn btn-small btn-success" href="#run">
                 <i class="icon-off"></i> 
                 Run Program
-            </a> 
+            </a>
+            <a id="show_alerts" class="btn btn-small btn-warning" href="#alerts">
+                <i class="icon-exclamation-sign"></i> 
+                Alerts
+            </a>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -106,7 +110,14 @@
           </div>
           
         </div>
-
+        <div id="alert" class="alert">
+          <button type="button" class="close">×</button>
+          <h3>Alert History</h3>
+          <ul>
+              
+          </ul>
+        </div>
+        
       <footer class="navbar-fixed-bottom">
         <p>
            Built with <a href="http://d3js.org">d3</a>, <a href="https://github.com/bollwyvl/blockd3">b4</a>, <a href="https://github.com/twitter/bootstrap">bootstrap</a>, <a href="https://github.com/marijnh/CodeMirror">CodeMirror</a> &amp; <a href="http://code.google.com/p/blockly">Blockly</a>. blockd3 is Free Software licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Public License 2.0</a>
