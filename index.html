@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>blockd3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="a visual editor for d3">
+    <meta name="author" content="nicholas bollweg">
+
+    <!-- Le styles -->
+    <link href="./lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="./lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./lib/bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./lib/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./lib/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./lib/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="./lib/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div id="navbar" class="navbar navbar-static navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">blockd3</a>
+          <div class="nav-collapse collapse">
+            <ul id="tabs" class="nav">
+              <li class="active"><a href="#blockly">
+                  <i class="icon-picture"></i>
+                  Blockly
+              </a></li>
+              <li><a href="#javascript">
+                <i class="icon-align-left"></i> 
+                JavaScript</a></li>
+              <li><a href="#xml">
+                <i class="icon-tags"></i> 
+                XML</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                <li>
+                    <a id="discard" href="#discard">
+                        <i class="icon-trash"></i>
+                        Discard
+                    </a>
+                </li>
+                <li>
+                    <a id="save_xml" href="#save_xml">
+                        <i class="icon-hdd"></i>
+                        Save XML</a></li>
+                <li>
+                    <a id="load_xml"href="#load_xml">
+                        <i class="icon-folder-open"></i>
+                        Load XML</a></li>
+            </ul>
+            <form id="file_form">
+            <input type="file" id="load"/>
+            </form>
+            <a id="run" class="btn btn-small" href="#run">
+                <i class="icon-off"></i> 
+                Run Program
+            </a> 
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div id="container" class="container-fluid" style="display:none;">
+
+      <!-- Example row of columns -->
+      <div id="panes" class="row-fluid">
+          <div id="content_blockly" class="span8 pane full_height">
+            <!--Sidebar content-->
+          </div>
+
+          <div id="content_javascript" class="span8 pane full_height">
+            <textarea id="textarea_javascript"></textarea>
+          </div>
+          <div id="content_xml" class="span8 pane full_height">
+            <textarea id="textarea_xml"></textarea>
+          </div>
+          
+          <div id="content_d3" class="span4 full_height omega">
+              <svg width="100%" class="full_height">
+                  <g><circle class="little" cx="180" cy="45" r="12"></circle></g>
+                  <g><circle class="little" cx="60" cy="90" r="12"></circle></g>
+                  <g><circle class="little" cx="300" cy="135" r="12"></circle></g>
+              </svg>
+          </div>
+          
+        </div>
+
+      <footer class="navbar-fixed-bottom">
+        <p>
+           Built with <a href="http://d3js.org">d3</a>, <a href="https://github.com/bollwyvl/blockd3">b4</a>, <a href="https://github.com/twitter/bootstrap">bootstrap</a>, <a href="https://github.com/marijnh/CodeMirror">CodeMirror</a> &amp; <a href="http://code.google.com/p/blockly">Blockly</a>. blockd3 is Free Software licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Public License 2.0</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./lib/jquery-1.8.2.min.js"></script>
+    <script src="./lib/b4/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="./lib/d3/d3.v2.min.js"></script>
+    
+    <!-- CM -->
+    <link rel="stylesheet" href="./lib/cm/lib/codemirror.css">
+    <link rel="stylesheet" href="./lib/cm/theme/elegant.css">
+    <script src="./lib/cm/lib/codemirror.js"></script>
+    <script src="./lib/cm/mode/javascript/javascript.js"></script>
+    <script src="./lib/cm/mode/xml/xml.js"></script>
+    
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="./js/BlobBuilder.min.js"></script>
+    <script type="text/javascript" src="./js/FileSaver.min.js"></script>
+    
+    <script type="text/javascript" src="./js/editor.js"></script>
+    
+    <link rel="stylesheet" href="./css/style.css">
+    
+  </body>
+</html>
