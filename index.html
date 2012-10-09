@@ -29,13 +29,8 @@
         
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <a class="brand" href="#">blockd3</a>
-          <div class="nav-collapse collapse">
+          <div class="">
             <ul id="tabs" class="nav">
               <li class="active"><a href="#blockly">
                   <i class="icon-picture"></i>
@@ -49,32 +44,30 @@
                 XML</a></li>
             </ul>
             <ul class="nav pull-right">
-                <li>
-                    <a id="discard" href="#discard">
-                        <i class="icon-trash"></i>
-                        Discard
-                    </a>
-                </li>
-                <li>
-                    <a id="save_xml" href="#save_xml">
-                        <i class="icon-hdd"></i>
-                        Save XML</a></li>
-                <li>
-                    <a id="load_xml"href="#load_xml">
-                        <i class="icon-folder-open"></i>
-                        Load XML</a></li>
+              <li><a href="http://github.com/bollwyvl/blockd3">
+                <i class="icon-github-sign"></i> 
+                About</a></li>
             </ul>
-            <form id="file_form">
-            <input type="file" id="load"/>
-            </form>
-            <a id="run" class="btn btn-small btn-success" href="#run">
-                <i class="icon-off"></i> 
-                Run Program
-            </a>
-            <a id="show_alerts" class="btn btn-small btn-warning" href="#alerts">
-                <i class="icon-exclamation-sign"></i> 
-                Alerts
-            </a>
+            <div id="actions" class="nav pull-right">
+                    <a id="run" class="btn btn-small btn-success" href="#run">
+                        <i class="icon-off"></i> 
+                        Run Program
+                    </a>
+                    <a id="save_xml" href="#save_xml" class="btn btn-small">
+                        <i class="icon-hdd"></i>
+                        Save XML</a>
+                    <a id="load_xml"href="#load_xml" class="btn btn-small">
+                        <i class="icon-folder-open"></i> Load XML
+                    </a>
+                    <a id="discard" href="#discard" class="btn btn-small btn-danger"><i class="icon-trash"></i> Discard</a>
+                    <form id="file_form">
+                    <input type="file" id="load"/>
+                    </form>
+                    <a id="show_alerts" class="btn btn-small btn-warning" href="#alerts">
+                        <i class="icon-exclamation-sign"></i> 
+                        Alerts
+                    </a>
+                </div>
           </div><!--/.nav-collapse -->
         </div>
       </div>

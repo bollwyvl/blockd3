@@ -52,7 +52,7 @@ footer{
 #show_alerts{
     display:none;
 }
-#run, #show_alerts{
+#navbar .btn{
     height: 20px;
     display: inline-block;
 }
@@ -62,4 +62,7 @@ footer{
     top:0;
     left:0;
     
+}
+#actions{
+    margin-right:50px;
 }
