@@ -1,11 +1,11 @@
-(function(Blockly){
+$(function(){
     Blockly.inject(document.body, {
         path: 'http://blockly-demo.appspot.com/blockly/'
     });
 
-    if (window.parent.init) {
+    if (window.parent.blockd3) {
         // Let the top-level application know that Blockly is ready.
-        window.parent.init(Blockly);
+        window.parent.blockd3.init(Blockly);
     } else {
         // Attempt to diagnose the problem.
         var msg = 'Error: Unable to communicate between frames.\n\n';
@@ -16,6 +16,6 @@
             'access when using the file:// protocol.\n' +
             'http://code.google.com/p/chromium/issues/detail?id=47416';
         }
-        alert(msg);s
+        console.error(msg);
     }
-})(Blockly);
+});

@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>blockd3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="a visual editor for d3">
+    <meta name="author" content="nicholas bollweg">
 
     <!-- Le styles -->
     <link href="./lib/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="navbar" class="navbar navbar-static navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -43,54 +43,74 @@
           <a class="brand" href="#">blockd3</a>
           <div class="nav-collapse collapse">
             <ul id="tabs" class="nav">
-              <li><a href="#blockly">Blockly</a></li>
-              <li><a href="#javascript">JavaScript</a></li>
-              <li><a href="#xml">XML</a></li>
+              <li class="active"><a href="#blockly">
+                  <i class="icon-picture"></i>
+                  Blockly
+              </a></li>
+              <li><a href="#javascript">
+                <i class="icon-align-left"></i> 
+                JavaScript</a></li>
+              <li><a href="#xml">
+                <i class="icon-tags"></i> 
+                XML</a></li>
             </ul>
             <ul class="nav pull-right">
-                <li><a href="#discard">Discard</a></li>
-                <li><a href="#save_xml">Save XML</a></li>
-                <li><a href="#load_xml">Load XML</a></li>
-                <a class="btn btn-small btn-success" href="#run">Run Program</a>
+                <li>
+                    <a id="discard" href="#discard">
+                        <i class="icon-trash"></i>
+                        Discard
+                    </a>
+                </li>
+                <li>
+                    <a id="save_xml" href="#save_xml">
+                        <i class="icon-hdd"></i>
+                        Save XML</a></li>
+                <li>
+                    <a id="load_xml"href="#load_xml">
+                        <i class="icon-folder-open"></i>
+                        Load XML</a></li>
             </ul>
+            <form id="file_form">
+            <input type="file" id="load"/>
+            </form>
+            <a id="run" class="btn btn-small" href="#run">
+                <i class="icon-off"></i> 
+                Run Program
+            </a> 
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div id="container" class="container-fluid" style="display:none;">
 
       <!-- Example row of columns -->
-      <div class="row-fluid">
-          <div class="span2">
+      <div id="panes" class="row-fluid">
+          <div id="content_blockly" class="span8 pane full_height">
             <!--Sidebar content-->
-
-            <iframe id="content_blocks" src="./frame.html"></iframe>
-            
           </div>
 
-          <div class="span3" id="content_javascript">
+          <div id="content_javascript" class="span8 pane full_height">
             <textarea id="textarea_javascript"></textarea>
           </div>
-          <div class="span3" id="content_xml">
+          <div id="content_xml" class="span8 pane full_height">
             <textarea id="textarea_xml"></textarea>
           </div>
           
-          <div class="span3">
-              <div id="content_d3">
-                  <svg width="360" height="180">
-                      <g><circle class="little" cx="180" cy="45" r="12"></circle></g>
-                      <g><circle class="little" cx="60" cy="90" r="12"></circle></g>
-                      <g><circle class="little" cx="300" cy="135" r="12"></circle></g>
-                  </svg>
-              </div>
+          <div id="content_d3" class="span4 full_height omega">
+              <svg width="100%" class="full_height">
+                  <g><circle class="little" cx="180" cy="45" r="12"></circle></g>
+                  <g><circle class="little" cx="60" cy="90" r="12"></circle></g>
+                  <g><circle class="little" cx="300" cy="135" r="12"></circle></g>
+              </svg>
           </div>
+          
         </div>
 
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2012</p>
+      <footer class="navbar-fixed-bottom">
+        <p>
+           Built with <a href="http://d3js.org">d3</a>, <a href="https://github.com/bollwyvl/blockd3">b4</a>, <a href="https://github.com/twitter/bootstrap">bootstrap</a>, <a href="https://github.com/marijnh/CodeMirror">CodeMirror</a> &amp; <a href="http://code.google.com/p/blockly">Blockly</a>. blockd3 is Free Software licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Public License 2.0</a>
+        </p>
       </footer>
 
     </div> <!-- /container -->
@@ -115,6 +135,8 @@
     <script type="text/javascript" src="./js/FileSaver.min.js"></script>
     
     <script type="text/javascript" src="./js/new.editor.js"></script>
+    
+    <link rel="stylesheet" href="./css/new.style.css">
     
   </body>
 </html>
