@@ -56,3 +56,10 @@ footer{
     height: 20px;
     display: inline-block;
 }
+
+#gh_ribbon{
+    position: fixed;
+    top:0;
+    left:0;
+    
+}

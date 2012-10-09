@@ -1,6 +1,6 @@
 $(function(){
     Blockly.inject(document.body, {
-        path: 'http://blockly-demo.appspot.com/blockly/'
+        path: '/lib/blockly/'
     });
 
     if (window.parent.blockd3) {
