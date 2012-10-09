@@ -1,3 +1,6 @@
 [submodule "b4"]
       path = demo/lib/b4
       url = ../../../b4
+[submodule "lib/awesome"]
+	path = lib/awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
