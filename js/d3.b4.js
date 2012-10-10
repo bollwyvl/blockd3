@@ -91,7 +91,7 @@ select_arg_mold.clone("selectAll")
         D3_TYPES.SELECTION.field])
     .appendInput(D3_TYPES.PARENT.field)
     .code([
-            "<%= $.code('PARENT') %>", 
+            "<%= $.code('PARENT', 'd3.select(document)') %>", 
             ".selectAll('<%= $.title('SELECTOR') %>')"
         ])
     .done();
