@@ -7,3 +7,6 @@
 [submodule "lib/cm"]
       path = lib/cm
       url = https://github.com/marijnh/CodeMirror
+[submodule "lib/blockly"]
+	path = lib/blockly
+	url = https://github.com/bollwyvl/Blockly.git
