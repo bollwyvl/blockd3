@@ -49,6 +49,7 @@ be fun for sharing examples! [github-api][] makes this look pretty easy.
 - immediate visual update
 - support [d3-plugins][]
 - gist integration
+- support [svgedit][]
 
 ## License
 Blockd3 is licensed under the [Apache Public License][apl].
@@ -63,3 +64,4 @@ Blockd3 is licensed under the [Apache Public License][apl].
 [apl]: http://www.apache.org/licenses/LICENSE-2.0.html
 [github-api]: https://github.com/fitzgen/github-api
 [tutorials]: http://alignedleft.com/tutorials/d3/
+[svgedit]: http://code.google.com/p/svg-edit/
