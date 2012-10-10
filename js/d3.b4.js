@@ -7,6 +7,21 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
             field: b4.fields.text("SELECTOR")
                 .init("CSS-style selector")
         },
+        SVG_ELEMENT: {
+            id: "D3 SVG entity",
+            field: b4.fields.choices("ELEMENT")
+                .title("SVG Element")
+                .init([
+                    ["rectangle", "rect"],
+                    ["circle", "circle"],
+                    ["ellipse", "ellipse"],
+                    ["line", "line"],
+                    ["polyline", "polyline"],
+                    ["polygon", "polygon"],
+                    ["text", "text"],
+                    ["path", "path"]
+                ])
+        },
         PARENT: {
             id: "D3 Parent Selection",
             field: b4.input("PARENT")
@@ -107,16 +122,28 @@ select_mold.clone("enter")
 
 
 var manip_mold = d3_mold.clone()
-    .category("d3 manipulation")
-    .namespace("d3_");
+        .category("d3 manipulation")
+        .namespace("d3_"),
+    get_mold = manip_mold.clone()
+        .category("d3 getters")
+        .output(D3_TYPES.VALUE);
     
 manip_mold.clone("style") 
-    .appendTitle("d3.style")
+    .appendTitle("set d3.style")
     .appendInput([D3_TYPES.STYLE_PROP.field,
         D3_TYPES.PARENT.field,
         D3_TYPES.VALUE.field])
-    .code(["<%= $.code('PARENT') %>", 
+    .code(["<%= $.code('PARENT', 'd3.select(\"circle\")') %>", 
         ".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"])
+    .done();
+    
+get_mold.clone("style_get") 
+    .appendTitle("get d3.style")
+    .output(D3_TYPES.SELECTION)
+    .appendInput([D3_TYPES.STYLE_PROP.field,
+        D3_TYPES.PARENT.field])
+    .code(["<%= $.code('PARENT', 'd3.select(\"circle\")') %>", 
+        ".style(<%= $.code('STYLE_PROP') %>)"])
     .done();
 
 manip_mold.clone("attr")
@@ -194,4 +221,19 @@ manip_mold.clone("remove")
         ".remove())"])
     .done();
     
+    
+var svg_mold = b4.block()
+    .category("d3 SVG")
+    .generator("JavaScript")
+    .helpUrlTemplate(D3_WIKI+"SVG-Shapes#wiki-")
+    .namespace("d3_svg_elements_")
+    .colour("orange")
+    .output(D3_TYPES.SVG_ELEMENT);
+
+svg_mold.clone("element")
+    .tooltip("an SVG element")
+    .appendTitle(["SVG", D3_TYPES.SVG_ELEMENT.field])
+    .code("<%= $.title('ELEMENT') %>")
+    .done();
+
 })(b4);
