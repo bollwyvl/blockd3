@@ -44,7 +44,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
                     - $("#navbar").height()
                     - $("footer").height();
             $('.full_height').css("height", fullh - 50);
-            $('.half_height').css("height", (fullh / 2) - 30);
+            $('.CodeMirror').css("height", fullh - 50);
                     
         });
     }
@@ -95,7 +95,7 @@ $(document).mouseup(function(){
     $("#tabs li").click();
 })
 
-var mode = blockd3.mode =function(){
+var mode = blockd3.mode = function(){
     return $("#tabs li.active a").attr("href").slice(1);
 };
     
