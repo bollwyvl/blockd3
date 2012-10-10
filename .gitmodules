@@ -10,3 +10,6 @@
 [submodule "lib/blockly"]
 	path = lib/blockly
 	url = https://github.com/bollwyvl/Blockly.git
+[submodule "dist"]
+	path = dist
+	url = https://github.com/bollwyvl/blockd3.git
