@@ -7,15 +7,21 @@ a{
     color: steelblue;
 }
 
-#panes .pane{
-    display: none;
-}
 
 #panes .pane, #content_d3{
-    background-color: #fff;
-    margin: 0 5px;
-    border-radius: 5px;
+    background-color: #eee;
+    border-radius: 2px;
+    margin:5px;
 }
+
+#content_xml{
+    display:none;
+}
+
+#content_javascript .CodeMirror pre{
+    font-size: 10px;
+}
+
 iframe{
     width: 100%;
     height: 100%;
@@ -65,4 +71,11 @@ footer{
 }
 #actions{
     margin-right:50px;
+}
+
+.resize{
+    .float:left;
+}
+.half_height{
+    margin-top: 10px
 }

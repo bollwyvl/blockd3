@@ -40,13 +40,11 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     // Make the 'Blocks' tab line up with the toolbox.
     if (Blockly.Toolbox) {
         $(window).on('resize', function() {
-            $('.full_height')
-                .css("height",
-                    $(window).height()
+            var fullh = $(window).height()
                     - $("#navbar").height()
-                    - $("footer").height()
-                    - 20
-                );
+                    - $("footer").height();
+            $('.full_height').css("height", fullh - 50);
+            $('.half_height').css("height", (fullh / 2) - 30);
                     
         });
     }
@@ -69,13 +67,13 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     $("#discard").click(discard);
 };
     
-var tabs = blockd3.tabs = $("#tabs li")
+var panes = $(".pane"),
+    tabs = blockd3.tabs = $("#tabs li")
     .on("click", function(evt){
         var prev = mode(),
             tab = $(this),
             href = tab.find("a").attr('href'),
-            pane = $("#content_" + href.slice(1)),
-            panes = $(".pane");
+            pane = $("#content_" + href.slice(1));
         
         switch(prev){
             case "javascript":
@@ -88,11 +86,15 @@ var tabs = blockd3.tabs = $("#tabs li")
                 
         tabs.removeClass("active");
         tab.addClass("active");
-        panes.hide();
-        pane.show();
+        panes.show();
         render_content();
     });
-        
+
+$(document).mouseup(function(){
+    render_content();
+    $("#tabs li").click();
+})
+
 var mode = blockd3.mode =function(){
     return $("#tabs li.active a").attr("href").slice(1);
 };
