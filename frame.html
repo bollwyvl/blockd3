@@ -3,16 +3,22 @@
 <head>
 <meta charset="utf-8">
 <title>Blockd3 Demo: Code</title>
-<link rel="stylesheet" href="./blockd3-min.css"><!--STYLES###-->
+<link rel="stylesheet" href="./css/blockd3-min.css"><!--STYLES###-->
+<style>
+#frame {
+    margin:0;
+    padding:0;
+}
+</style>
 </head>
 
-<body>
-<script type="text/javascript" src="./blockd3-min.js"></script><!--SCRIPTS###-->
+<body id="frame">
+<script type="text/javascript" src="./js/blockd3-min.js"></script><!--SCRIPTS###-->
 
 <script type="text/javascript">
     $(function(){
         Blockly.inject(document.body, {
-            path: '/lib/blockly/'
+            path: './lib/blockly/'
         });
 
         if (window.parent.blockd3) {
