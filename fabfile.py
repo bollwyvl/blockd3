@@ -15,6 +15,8 @@ from pprint import pprint
 from fabric.api import task
 from fabric.tasks import Task
 
+from bs4 import BeautifulSoup
+
 import sh
         
 PROJECT_ROOT = sh.git("rev-parse", **{"show-toplevel":True})
@@ -26,12 +28,59 @@ output = dist/blockd3-min.%(src)s
 
 """
 
+
 @task
 def build():
-    sources = dict(
-        js=sh.glob("js/*.js"),
-        css=sh.glob("css/*.css")
-    )
+    copy_patterns = {
+        "dist/lib/blockly": ["lib/blockly/blockly.css"],
+        "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
+        "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
+    }
+    
+    for dst, copy_files in copy_patterns.items():
+        sh.mkdir("-p", dst)
+        for c_file in copy_files:
+            print "...copied", c_file, dst
+            sh.cp(c_file, dst)
+    
+    html = ["index.html", "frame.html"]
+
+    sources = dict(js=[],css=[])
+    
+    for html_file in sh.glob("*.html"):
+        html = open(html_file).read()
+        soup = BeautifulSoup(html)
+        
+        for link in soup.find_all('link'):
+            sources["css"] += [link["href"]]
+            
+        for script in soup.find_all("script"):
+            if script.get("src", None):
+                sources["js"] += [script["src"]]
+                
+        new_file = open(os.path.join("dist", html_file), "w")
+        
+        def _html_replace(html, THING, new_thing):
+            tmpl = "<!--%s%s-->"
+            t_start = html.find(tmpl % ("###", THING))
+            t_end = html.find(tmpl % (THING, "###"))
+            return "%s%s%s" % (
+                html[0:t_start],
+                new_thing,
+                html[t_end:]
+            )
+        
+        replacements = dict(
+            STYLES='<link rel="stylesheet" href="./blockd3-min.css">',
+            SCRIPTS='<script type="text/javascript" src="./blockd3-min.js"></script>'
+        )
+        
+        for THING, new_thing in replacements.items():
+            html = _html_replace(html, THING, new_thing)
+        
+        new_file.write(html)
+        new_file.close()
+        
     
     cfg = open("setup.cfg", "w")
     

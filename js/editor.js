@@ -72,7 +72,7 @@ var panes = $(".pane"),
     .on("click", function(evt){
         var prev = mode(),
             tab = $(this),
-            href = tab.find("a").attr('href'),
+            href = tab.find("a").attr('href') || "",
             pane = $("#content_" + href.slice(1));
         
         switch(prev){
