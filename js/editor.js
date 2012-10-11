@@ -96,7 +96,7 @@ $(document).mouseup(function(){
 });
 
 var mode = blockd3.mode = function(){
-    return $("#tabs li.active a").attr("href").slice(1);
+    return ($("#tabs li.active a").attr("href") || "").slice(1) || "xml";
 };
     
 var exit_xml = blockd3.exit_xml = function(){
