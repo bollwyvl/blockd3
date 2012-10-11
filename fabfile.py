@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 
 import sh
         
-PROJECT_ROOT = sh.git("rev-parse", **{"show-toplevel":True})
+PROJECT_ROOT = sh.git("rev-parse", **{"show-toplevel": True})
 
 CFG_TEMPLATE = """# do not modify this file. generated automatically
 [minify_%(src)s]
@@ -40,7 +40,7 @@ def build():
     for dst, copy_files in copy_patterns.items():
         sh.mkdir("-p", dst)
         for c_file in copy_files:
-            print "...copied", c_file, dst
+            print "\tcopied", c_file, dst
             sh.cp(c_file, dst)
     
     html = ["index.html", "frame.html"]
