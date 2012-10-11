@@ -90,11 +90,6 @@ var panes = $(".pane"),
         render_content();
     });
 
-$(document).mouseup(function(){
-    render_content();
-    $("#tabs li").click();
-});
-
 var mode = blockd3.mode = function(){
     return ($("#tabs li.active a").attr("href") || "").slice(1) || "xml";
 };

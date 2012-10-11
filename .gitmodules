@@ -12,4 +12,4 @@
 	url = https://github.com/bollwyvl/Blockly.git
 [submodule "dist"]
 	path = dist
-	url = git@github.com:bollwyvl/blockd3.git
+	url = https://github.com/bollwyvl/blockd3.git

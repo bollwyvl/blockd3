@@ -24,7 +24,7 @@ PROJECT_ROOT = sh.git("rev-parse", **{"show-toplevel": True})
 CFG_TEMPLATE = """# do not modify this file. generated automatically
 [minify_%(src)s]
 sources = %(assets)s
-output = dist/blockd3-min.%(src)s
+output = dist/%(src)s/blockd3-min.%(src)s
 
 """
 
@@ -34,7 +34,10 @@ def build():
     copy_patterns = {
         "dist/lib/blockly": ["lib/blockly/blockly.css"],
         "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
-        "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or []
+        "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
+        "dist/css": [],
+        "dist/js": [],
+        
     }
     
     for dst, copy_files in copy_patterns.items():
@@ -71,8 +74,8 @@ def build():
             )
         
         replacements = dict(
-            STYLES='<link rel="stylesheet" href="./blockd3-min.css">',
-            SCRIPTS='<script type="text/javascript" src="./blockd3-min.js"></script>'
+            STYLES='<link rel="stylesheet" href="./css/blockd3-min.css">',
+            SCRIPTS='<script type="text/javascript" src="./js/blockd3-min.js"></script>'
         )
         
         for THING, new_thing in replacements.items():

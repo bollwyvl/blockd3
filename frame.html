@@ -6,9 +6,15 @@
 <!--###STYLES-->
 <link rel="stylesheet" href="./css/frame.css"/>
 <!--STYLES###-->
+<style>
+#frame {
+    margin:0;
+    padding:0;
+}
+</style>
 </head>
 
-<body>
+<body id="frame">
 <!--###SCRIPTS-->
 <script type="text/javascript" src="./lib/blockly/demos/blockly_compressed.js"></script>
 <script type="text/javascript" src="./lib/blockly/generators/javascript.js"></script>
@@ -43,7 +49,7 @@
 <script type="text/javascript">
     $(function(){
         Blockly.inject(document.body, {
-            path: '/lib/blockly/'
+            path: './lib/blockly/'
         });
 
         if (window.parent.blockd3) {
