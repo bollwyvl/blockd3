@@ -38,6 +38,7 @@ def build():
     }
     
     for dst, copy_files in copy_patterns.items():
+        os.path.exists(dst) or sh.mkdir("-p", dst)
         for c_file in copy_files:
             print "\tcopied", c_file, dst
             sh.cp("-r", c_file, dst)
