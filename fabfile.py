@@ -35,13 +35,14 @@ def build():
         "dist/lib/blockly": ["lib/blockly/blockly.css"],
         "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
         "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
+        "dist/src": sh.glob("*")
     }
     
     for dst, copy_files in copy_patterns.items():
-        sh.mkdir("-p", dst)
         for c_file in copy_files:
+            if c_file.startswith("dist"): continue
             print "\tcopied", c_file, dst
-            sh.cp(c_file, dst)
+            sh.cp("-r", c_file, dst)
     
     html = ["index.html", "frame.html"]
 
