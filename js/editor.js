@@ -6,7 +6,9 @@ var blockd3 = window.blockd3 = function(){};
 
 var alert_popup = $("#alert"),
     alert_list = $("#alert ul"),
-    alert_time = d3.time.format("<i>%H:%M:%S</i> ");
+    alert_time = d3.time.format("<i>%H:%M:%S</i> "),
+    navbar = $("#navbar"),
+    footer = $("footer");
 
 var Blockly;
 
@@ -15,19 +17,19 @@ var editors = blockd3.editors = {
     xml: undefined
 };
 
-$("#alert button.close").click(function(){alert_popup.fadeOut()})
+$("#alert button.close").click(function(){alert_popup.fadeOut();});
 
 $("#show_alerts").click(function(){
     $("#alert").fadeToggle();
-})
+});
 
 var lert = blockd3.lert = function(text){
-    alert_list.prepend("<li>"+alert_time(new Date)+text+"</li>");
+    alert_list.prepend("<li>"+alert_time(new Date())+text+"</li>");
     alert_popup.fadeIn();
     $("#show_alerts").fadeIn();
-}
+};
 
-var init =  blockd3.init = function(blockly){
+blockd3.init = function(blockly){
     window.Blockly = Blockly = blockly;
     init_blockly(blockly);
     init_editors();
@@ -40,9 +42,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     // Make the 'Blocks' tab line up with the toolbox.
     if (Blockly.Toolbox) {
         $(window).on('resize', function() {
-            var fullh = $(window).height()
-                    - $("#navbar").height()
-                    - $("footer").height();
+            var fullh = $(window).height() - navbar.height() - footer.height();
             $('.full_height').css("height", fullh - 50);
             $('.CodeMirror').css("height", fullh - 50);
                     
@@ -52,7 +52,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     // Restore/backup current works.
     restore_blocks();
 
-    $(window).unload(backup_blocks)
+    $(window).unload(backup_blocks);
 
     // Init load event.
     var loadInput = $('#load')
@@ -93,7 +93,7 @@ var panes = $(".pane"),
 $(document).mouseup(function(){
     render_content();
     $("#tabs li").click();
-})
+});
 
 var mode = blockd3.mode = function(){
     return $("#tabs li.active a").attr("href").slice(1);
