@@ -1,0 +1,15 @@
+[submodule "lib/b4"]
+      path = lib/b4
+      url = https://github.com/bollwyvl/b4.git
+[submodule "lib/awesome"]
+	path = lib/awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
+[submodule "lib/cm"]
+      path = lib/cm
+      url = https://github.com/marijnh/CodeMirror
+[submodule "lib/blockly"]
+	path = lib/blockly
+	url = https://github.com/bollwyvl/Blockly.git
+[submodule "dist"]
+	path = dist
+	url = https://github.com/bollwyvl/blockd3.git

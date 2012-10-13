@@ -1,0 +1,31 @@
+{
+  "name": "blockd3",
+  "version": "0.1",
+  "description": "Blockly blocks for building d3 visualizations",
+  "keywords": [
+    "blockly",
+    "d3"
+  ],
+  "homepage": "http://bollwyvl.github.com/bloclicious/",
+  "author": {
+    "name": "Nicholas Bollweg",
+    "url": "http://github.com/bollwyvl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/bollwyvl/bloclicious.git"
+  },
+  "dependencies": {
+    "underscore": "1.4.x",
+    "underscore.string": "2.3.x",
+    "color": "0.4.1"
+  },
+  "devDependencies": {
+    "uglify-js": "1.3.3",
+    "vows": "0.6.x",
+    "canvas": "0.13.0"
+  },
+  "scripts": {
+    "test": "./node_modules/vows/bin/vows"
+  }
+}
