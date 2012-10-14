@@ -33,7 +33,12 @@ class Blockd3GhostTest(GhostTestCase):
     def test_open(self):
         page, resources = self.ghost.open(base_url)
         self.assertEqual(page.url, base_url)
-        self.assertTrue("Test page" in self.ghost.content)
+        result, resources = self.ghost.evaluate("""
+            d3.select("svg")
+                .selectAll("rect")
+                .style("fill")
+        """)
+        self.assertEqual(result, "#ff0000")
 
 if __name__ == '__main__':
     unittest.main()
