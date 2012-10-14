@@ -40,13 +40,14 @@ class Blockd3GhostTest(GhostTestCase):
         
         self.ghost.click("#run")
         
-        self.ghost.wait_for_selector('svg rect')
+        self.ghost.wait_for_selector("svg rect")
         
         result, resources = self.ghost.evaluate("""
             d3.select("svg")
                 .selectAll("rect")
                 .style("fill")
         """)
+        print result
         self.assertEqual(result, "#ff0000")
 
 if __name__ == '__main__':
