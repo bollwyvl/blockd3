@@ -37,7 +37,7 @@ def build():
         "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
         "dist/css": [],
         "dist/js": [],
-        
+        "dist/svg": sh.glob("svg/*.svg") or [],
     }
     
     for dst, copy_files in copy_patterns.items():
