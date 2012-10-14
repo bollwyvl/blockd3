@@ -7,34 +7,12 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
    width="500"
    height="300"
-   id="svg5232"
-   version="1.1"
-   inkscape:version="0.48.0 r9654"
-   sodipodi:docname="New document 12">
+   id="svg5232">
   <defs
      id="defs5234" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.4639626"
-     inkscape:cx="271.09793"
-     inkscape:cy="153.05801"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="1049"
-     inkscape:window-height="739"
-     inkscape:window-x="85"
-     inkscape:window-y="27"
-     inkscape:window-maximized="0" />
   <metadata
      id="metadata5237">
     <rdf:RDF>
@@ -48,155 +26,185 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-752.36217)">
+     transform="translate(0,-752.36217)"
+     id="layer1">
     <text
-       xml:space="preserve"
-       style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
        x="95.038078"
        y="905.61676"
        id="text5256"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5258"
+       xml:space="preserve"
+       style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
          x="95.038078"
          y="905.61676"
+         id="tspan5258"
          style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Gill Sans;-inkscape-font-specification:Gill Sans">Problems</tspan></text>
     <text
-       sodipodi:linespacing="125%"
-       id="text5260"
-       y="1031.3031"
        x="261.57602"
-       style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
-       xml:space="preserve"><tspan
-         y="1031.3031"
+       y="1031.3031"
+       id="text5260"
+       xml:space="preserve"
+       style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
          x="261.57602"
-         id="tspan5262"
-         sodipodi:role="line">Money</tspan></text>
+         y="1031.3031"
+         id="tspan5262">Money</tspan></text>
     <rect
-       style="fill:#000000;fill-opacity:1;stroke:none"
-       id="rect5240"
        width="25.877802"
-       height="13.488134"
+       height="126.19566"
        x="183.03424"
-       y="977.68024" />
+       y="864.97241"
+       id="rect5240"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
-       y="963.48071"
-       x="215.99763"
-       height="27.687662"
        width="25.877802"
+       height="87.115364"
+       x="215.99763"
+       y="904.05298"
        id="rect5242"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
-       style="fill:#000000;fill-opacity:1;stroke:none"
-       id="rect5244"
        width="25.877802"
        height="55.856625"
        x="248.96101"
-       y="935.31177" />
+       y="935.31177"
+       id="rect5244"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
-       y="901.00751"
-       x="281.92444"
-       height="90.160919"
        width="25.877802"
+       height="86.745529"
+       x="281.92444"
+       y="904.42291"
        id="rect5246"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
-       style="fill:#ff0000;fill-opacity:1;stroke:none"
-       id="rect5248"
        width="25.877802"
        height="173.49635"
        x="314.88782"
-       y="817.67206" />
+       y="817.67206"
+       id="rect5248"
+       style="fill:#ff0000;fill-opacity:1;stroke:none" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 177.36524,816.84647 0,180.32191"
        id="path5252"
-       inkscape:connector-curvature="0" />
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 173.35819,991.15118 168.41651,0"
        id="path5254"
-       inkscape:connector-curvature="0" />
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <text
-       xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
        x="169.2917"
        y="994.3006"
        id="text5276"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5278"
-         x="169.2917"
-         y="994.3006">0</tspan></text>
-    <text
-       sodipodi:linespacing="125%"
-       id="text5280"
-       y="820.10211"
-       x="169.2917"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
-       xml:space="preserve"><tspan
-         y="820.10211"
-         x="169.2917"
-         id="tspan5282"
-         sodipodi:role="line">99</tspan></text>
-    <text
        xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+         x="169.2917"
+         y="994.3006"
+         id="tspan5278">0</tspan></text>
+    <text
+       x="169.2917"
+       y="820.10211"
+       id="text5280"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+         x="169.2917"
+         y="820.10211"
+         id="tspan5282">99</tspan></text>
+    <text
        x="169.2917"
        y="907.20135"
        id="text5284"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5286"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
          x="169.2917"
-         y="907.20135">50</tspan></text>
+         y="907.20135"
+         id="tspan5286">50</tspan></text>
     <text
-       sodipodi:linespacing="125%"
+       x="249.76422"
+       y="778.55273"
        id="text5288"
-       y="781.29663"
-       x="249.26562"
-       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
-       xml:space="preserve"><tspan
-         sodipodi:role="line"
-         id="tspan5296"
-         x="249.26562"
-         y="781.29663">Growth of Problems by Money†</tspan></text>
-    <text
        xml:space="preserve"
-       style="font-size:16.70781326px;font-style:italic;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans Light Italic"
-       x="458.43533"
-       y="1040.8661"
-       id="text5292"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5294"
-         x="458.43533"
-         y="1040.8661"
-         style="font-size:12px;font-style:italic;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Gill Sans;-inkscape-font-specification:Gill Sans Light Italic">† Source: life.</tspan></text>
+       style="font-size:20.11938095px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+         x="249.76422"
+         y="778.55273"
+         id="tspan5296">Growth of Problems by Money</tspan></text>
     <text
-       sodipodi:linespacing="125%"
-       id="text5326"
-       y="1010.6945"
        x="209.59328"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
-       xml:space="preserve"><tspan
-         y="1010.6945"
-         x="209.59328"
-         id="tspan5328"
-         sodipodi:role="line">none</tspan></text>
-    <text
+       y="1010.6945"
+       id="text5326"
        xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"
-       x="346.89188"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+         x="209.59328"
+         y="1010.6945"
+         id="tspan5328">none</tspan></text>
+    <text
+       x="278.58411"
        y="1010.6945"
        id="text5330"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5332"
-         x="346.89188"
-         y="1010.6945">enough</tspan></text>
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+         x="278.58411"
+         y="1010.6945"
+         id="tspan5332">enough</tspan></text>
+    <text
+       x="338.69495"
+       y="1010.6945"
+       id="text5495"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+         x="338.69495"
+         y="1010.6945"
+         id="tspan5497">mo'</tspan></text>
+    <text
+       x="249.9628"
+       y="794.98474"
+       id="text5499"
+       xml:space="preserve"
+       style="font-size:15.23821259px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans Italic"><tspan
+         x="249.9628"
+         y="794.98474"
+         id="tspan5501">Correlation or Causation?</tspan></text>
+    <g
+       id="g5517">
+      <rect
+         width="122.95396"
+         height="47.815434"
+         x="364.08032"
+         y="875.44507"
+         id="rect5503"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99999988" />
+      <rect
+         width="12"
+         height="12"
+         x="370.90018"
+         y="882.85443"
+         id="rect5505"
+         style="fill:#ff0000;fill-opacity:1;stroke:none" />
+      <text
+         x="387.94449"
+         y="892.66486"
+         id="text5507"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+           x="387.94449"
+           y="892.66486"
+           id="tspan5509"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Gill Sans;-inkscape-font-specification:Gill Sans">Smalls et al. (1997)</tspan></text>
+      <rect
+         width="12"
+         height="12"
+         x="370.90018"
+         y="901.98059"
+         id="rect5511"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <text
+         x="387.94449"
+         y="911.79102"
+         id="text5513"
+         xml:space="preserve"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gill Sans;-inkscape-font-specification:Gill Sans"><tspan
+           x="387.94449"
+           y="911.79102"
+           id="tspan5515"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Gill Sans;-inkscape-font-specification:Gill Sans">Extrapolation</tspan></text>
+    </g>
   </g>
 </svg>

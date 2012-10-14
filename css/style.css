@@ -21,13 +21,15 @@ a{
     border-radius: 2px;
 }
 
+
+
 #panes h2{
     position: absolute;
-    text-align: right;
-
-	/* Required for IE 5, 6, 7 */
-	/* ...or something to trigger hasLayout, like zoom: 1; */
-    width: 46%;
+    float: right;
+    height: 100px;
+    margin-top: 72%;
+    margin-left: 32%;
+    
 		
 	/* Theoretically for IE 8 & 9 (more valid) */	
 	/* ...but not required as filter works too */
@@ -36,18 +38,18 @@ a{
 	
 	/* This works in IE 8 & 9 too */
 	/* ... but also 5, 6, 7 */
-	filter: alpha(opacity=50);
+	filter: alpha(opacity=20);
 	
 	/* Older than Firefox 0.9 */
-	-moz-opacity:0.5;
+	-moz-opacity:0.2;
 	
 	/* Safari 1.x (pre WebKit!) */
-	-khtml-opacity: 0.5;
+	-khtml-opacity: 0.2;
     
 	/* Modern!
 	/* Firefox 0.9+, Safari 2?, Chrome any?
 	/* Opera 9+, IE 9+ */
-	opacity: 0.5;
+	opacity: 0.2;
     
     -webkit-user-select: none; /* Chrome/Safari */        
     -moz-user-select: none; /* Firefox */
@@ -56,6 +58,16 @@ a{
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     user-select: none;
+}
+
+#panes .half_height h2{
+    height: 100px;
+    margin-top:30%;
+    margin-left: 35%;
+}
+
+#panes #content_d3 h2{
+    margin-left: 42%;    
 }
 
 #content_xml{
