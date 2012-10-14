@@ -3,7 +3,10 @@ $(function(){
 $('<iframe id="content_blocks" src="./frame.html"></iframe>')
     .appendTo('#content_blockly');
 
-var blockd3 = window.blockd3 = function(){};
+var blockd3 = window.blockd3 = function(){},
+    DEBUG = blockd3.debug = false;
+
+
 
 var alert_popup = $("#alert"),
     alert_list = $("#alert ul"),
@@ -146,16 +149,19 @@ var running = blockd3.running = function(value){
     var result;
     
     if(_.isUndefined(value)){
+        DEBUG && console.log("asked for running: ", blockd3._running);
+        
         result = blockd3._running;
     }else{
+        DEBUG && console.log("set running to", value);
         blockd3._running = value;
     }
     
     if(blockd3._running){
-        $("#stop").fadeIn();
-        $("#run").fadeOut();
+        $("#stop").show();
+        $("#run").hide();
     } else{
-        $("#stop").fadeOut();
+        $("#stop").hide();
         $("#run").fadeIn();
     }
     return result;
@@ -167,17 +173,19 @@ var running = blockd3.running = function(value){
  */
 var run_js = blockd3.run_js = function() {
     var code = [
-            "var __blockly__wrapper = function(){",
+            "var __blockly__wrapper = function(start_cb, end_cb){",
+            "start_cb();",
             Blockly.Generator.workspaceToCode('JavaScript'),
+            "end_cb();",
             "}; __blockly__wrapper;"
         ].join("\n");
     
-        console.log(code);
-    
         try {
-            blockd3.running(true);
-            eval(code)();
-            blockd3.running(false);
+            ;
+            eval(code)(
+                function(){blockd3.running(true);},
+                function(){blockd3.running(false);}
+            );
         } catch (e) {
             lert('Program error:\n' + e);
             blockd3.running(false);
@@ -204,7 +212,7 @@ var restore_blocks = blockd3.restore_blocks = function() {
         if(!_.isUndefined(wls.blocks) && wls.blocks != "<xml></xml>") {
             xml2blocks(wls.blocks);
         }else{
-            $.get("blockml/simplest.xml", function(data, textStatus, jqXHR){
+            $.get(Blockly._blockd3_lib + "../../blockml/simplest.xml", function(data, textStatus, jqXHR){
                 xml2blocks(jqXHR.responseText);
             });
         }
