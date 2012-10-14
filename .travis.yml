@@ -3,7 +3,7 @@ python:
   - "2.7"
 install:
   - sudo apt-get install -qq python-pyside
-  - pip install --quiet -r tests/requirements.txt --use-mirrors
+  - pip install -r tests/requirements.txt --use-mirrors
   - cd tests
   - python ./run.py
 before_script:

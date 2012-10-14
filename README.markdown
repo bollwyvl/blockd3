@@ -42,6 +42,12 @@ Right now, most of the documentation is in the code. As we get closer to a
 useful project, I'd like to have canned lessons for some of the excellent 
 community-built [tutorials][].
 
+## Testing
+Testing uses [Ghost.py][].
+
+Provided by Travis-CI:
+[![Build Status](https://secure.travis-ci.org/bollwyvl/blockd3.png)](http://travis-ci.org/bollwyvl/blockd3)
+
 ## Blocks Implemented
 __need to automate updating this__
 
@@ -122,5 +128,6 @@ Blockd3 is licensed under the [Apache Public License][apl].
 [Hansontable]: http://handsontable.com/
 [fabric]: http://docs.fabfile.org/
 [virtualenv]: http://www.virtualenv.org/
+[Ghost.py]: http://jeanphix.me/Ghost.py/
 
 [coverage]: https://github.com/bollwyvl/blockd3/issues/4
