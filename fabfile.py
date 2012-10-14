@@ -28,6 +28,28 @@ output = dist/%(src)s/blockd3-min.%(src)s
 
 """
 
+@task
+def favicon():
+    print("generating favicons...")
+    sizes = [16, 32, 64, 128]
+    
+    tmp_file = lambda size: "/tmp/favicon-%s.png" % size
+    
+    for size in sizes:
+        print(".... %sx%s" % (size, size))
+        sh.convert("svg/logo.svg",
+            "-resize",
+                "%sx%s" % (size, size),
+            tmp_file(size))
+    print("... generating bundle")
+    sh.convert(
+        *[tmp_file(size) for size in sizes] + [
+            "-colors", 256,
+            "dist/favicon.ico"
+        ]
+    )
+    print("... cleaning up")
+    sh.rm(sh.glob("/tmp/favicon-*.png"))
 
 @task
 def build():
