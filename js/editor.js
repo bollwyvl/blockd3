@@ -166,12 +166,26 @@ var backup_blocks = blockd3.backup_blocks = function() {
 /**
  * Restore code blocks from localStorage.
  */
-var  restore_blocks = blockd3.restore_blocks = function() {
-  if ('localStorage' in window && window.localStorage.blocks) {
-    var xml = Blockly.Xml.textToDom(window.localStorage.blocks);
-    Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
-  }
+var restore_blocks = blockd3.restore_blocks = function() {
+    var wls = window.localStorage;
+     
+    if (!_.isUndefined(wls)){
+        if(!_.isUndefined(wls.blocks) && wls.blocks != "<xml></xml>") {
+            xml2blocks(wls.blocks);
+        }else{
+            $.get("blockml/simplest.xml", function(data, textStatus, jqXHR){
+                xml2blocks(jqXHR.responseText);
+            });
+        }
+    }
 };
+
+var xml2blocks = blockd3.xml2blocks = function(xml){
+    return Blockly.Xml.domToWorkspace(
+        Blockly.mainWorkspace,
+        Blockly.Xml.textToDom(xml)
+    );
+}
 
 /**
  * Save blocks to local file.
