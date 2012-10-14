@@ -45,6 +45,23 @@ def build():
     favicon()
     sh.cd("dist")
     print sh.git("status")
+    
+def deploy():
+    build()
+    proj()
+
+    root_sha = sh.git("rev-parse", "HEAD")
+
+    sh.cd("dist")
+    sh.git.add(sh.glob("*") or ".")
+
+    sh.git.commit("-m", "Automatic build from %s" % root_sha)
+    
+    sh.git.push("origin", "gh-pages")
+
+    proj()
+    sh.git.add("dist")
+    sh.git.status()
 
 @task
 def favicon():
