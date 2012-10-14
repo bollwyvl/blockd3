@@ -60,31 +60,39 @@
                 </a></li>
             </ul>
             <div id="actions" class="nav pull-right">
-                    <a id="run" class="btn btn-small btn-success" href="#run">
+                    <a id="run" class="btn btn-success" href="#run">
                         <i class="icon-bolt"></i> 
                         <span class="hidden-phone">Run</span>
                     </a>
-                    <a id="stop" class="btn btn-small btn-danger" href="#stop">
+                    <a id="stop" class="btn btn-danger" href="#stop">
                         <i class="icon-off"></i> 
                         <span class="hidden-phone">Stop</span>
                     </a>
-                    <a id="save_xml" href="#save_xml" class="btn btn-small">
+                    
+                    <div class="btn-group">
+                      <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
                         <i class="icon-hdd"></i>
                         <span class="hidden-phone">Save</span>
-                    </a>
-                    <a id="load_xml "href="#load_xml" class="btn btn-small">
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a id="save_xml" href="#">
+                            To XML File
+                        </a></li>
+                      </ul>
+                    </div>
+                    <a id="load_xml "href="#load_xml" class="btn btn-primary">
                         <i class="icon-folder-open"></i>
                         <span class="hidden-phone">Load</span>
-                    </a>
-                    <a id="discard" href="#discard" class="btn btn-small btn-danger"><i class="icon-trash"></i> 
-                        <span class="hidden-phone">Discard</span>
                     </a>
                     <form id="file_form">
                     <input type="file" id="load"/>
                     </form>
-                    <a id="show_alerts" class="btn btn-small btn-warning" href="#alerts">
+                    <a id="show_alerts" class="btn btn-warning" href="#alerts">
                         <i class="icon-exclamation-sign"></i> 
                         <span class="hidden-phone">Alerts</span>
+                    </a>
+                    <a id="discard" href="#discard" class="btn btn-danger"><i class="icon-trash"></i> 
+                        <span class="hidden-phone">Discard</span>
                     </a>
                 </div>
           </div><!--/.nav-collapse -->

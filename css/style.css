@@ -140,9 +140,9 @@ footer p{
 #show_alerts{
     display:none;
 }
-#navbar .btn{
-    height: 20px;
+#navbar .btn, #navbar .btn-group{
     display: inline-block;
+    vertical-align:middle;
 }
 
 #gh_ribbon{
