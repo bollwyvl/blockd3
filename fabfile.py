@@ -32,8 +32,15 @@ def proj():
     sh.cd(PROJECT_ROOT)
 
 @task
+def flake():
+    print(". running PyFlakes on test equipment")
+    proj()
+    sh.pyflakes("setup.py", "fabfile.py", "tests/")
+    
+@task
 def build():
     proj()
+    flake()
     minify()
     favicon()
     sh.cd("dist")
@@ -116,8 +123,8 @@ def minify():
             SCRIPTS='<script type="text/javascript" src="./js/blockd3-min.js"></script>'
         )
         
-        for THING, new_thing in replacements.items():
-            html = _html_replace(html, THING, new_thing)
+        for thing, new_thing in replacements.items():
+            html = _html_replace(html, thing, new_thing)
         
 
         print ".. writing out production dist/%s" % html_file
@@ -144,12 +151,13 @@ def custom_task(*myarg):
     class CustomTask(Task):
         def __init__(self, func, myarg, *args, **kwargs):
             super(CustomTask, self).__init__(*args, **kwargs)
-            self.func = funcs
+            self.func = func
             self.myarg = myarg
 
         def run(self, *args, **kwargs):
             return self.func(*args, **kwargs)
-        
+
+
 def serve():
     import SimpleHTTPServer
     import SocketServer
