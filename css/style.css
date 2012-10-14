@@ -1,10 +1,23 @@
 body{
     background-color: #333;
     padding-top: 45px;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 a{
     color: steelblue;
+}
+
+.brand{
+    height: 24px;
+    overflow: hidden;
+}
+
+.brand img{
+    margin-top: -11px;
+    margin-left: -60px;
+    position: absolute;
+    height: 48px;
+    width: 48px;
 }
 
 #content_d3{
@@ -29,27 +42,7 @@ a{
     height: 100px;
     margin-top: 72%;
     margin-left: 32%;
-    
-		
-	/* Theoretically for IE 8 & 9 (more valid) */	
-	/* ...but not required as filter works too */
-	/* should come BEFORE filter */
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-	
-	/* This works in IE 8 & 9 too */
-	/* ... but also 5, 6, 7 */
-	filter: alpha(opacity=20);
-	
-	/* Older than Firefox 0.9 */
-	-moz-opacity:0.2;
-	
-	/* Safari 1.x (pre WebKit!) */
-	-khtml-opacity: 0.2;
-    
-	/* Modern!
-	/* Firefox 0.9+, Safari 2?, Chrome any?
-	/* Opera 9+, IE 9+ */
-	opacity: 0.2;
+
     
     -webkit-user-select: none; /* Chrome/Safari */        
     -moz-user-select: none; /* Firefox */
@@ -58,6 +51,28 @@ a{
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     user-select: none;
+}
+
+#panes h2, #logo, .transparent{
+    /* Theoretically for IE 8 & 9 (more valid) */	
+    /* ...but not required as filter works too */
+    /* should come BEFORE filter */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	
+    /* This works in IE 8 & 9 too */
+    /* ... but also 5, 6, 7 */
+    filter: alpha(opacity=20);
+	
+    /* Older than Firefox 0.9 */
+    -moz-opacity:0.2;
+	
+    /* Safari 1.x (pre WebKit!) */
+    -khtml-opacity: 0.2;
+    
+    /* Modern!
+    /* Firefox 0.9+, Safari 2?, Chrome any?
+    /* Opera 9+, IE 9+ */
+    opacity: 0.2;
 }
 
 #panes .half_height h2{
@@ -93,6 +108,9 @@ footer{
     padding: 5px;
 }
 
+#navbar{
+    position: fixed;
+}
 #navbar .active{
     border-bottom: solid 2px steelblue;
 }

@@ -31,47 +31,56 @@
 
   <body>
 
-    <div id="navbar" class="navbar navbar-static navbar-fixed-top">
+    <div id="navbar" class="navbar navbar-fixed-top">
         
       <div class="navbar-inner">
+            <ul class="nav pull-right">
+              <li><a href="http://github.com/bollwyvl/blockd3">
+                <i class="icon-github-sign"></i> 
+                <span class="hidden-phone">About</span>
+            </a></li>
+            </ul>
         <div class="container">
-          <a class="brand" href="#">blockd3</a>
+          <a class="brand" href="#">
+              <img id="logo" src="./svg/logo.svg"/>
+              <span class="hidden-phone">blockd3</span></a>
           <div class="">
             <ul id="tabs" class="nav">
               <li class="active"><a href="#blockly">
                   <i class="icon-picture"></i>
-                  Blockly
+                  <span class="hidden-phone">Blockly</span>
               </a></li>
               <li><a href="#javascript">
                 <i class="icon-align-left"></i> 
-                JavaScript</a></li>
+                <span class="hidden-phone">JavaScript</span>
+                </a></li>
               <li><a href="#xml">
                 <i class="icon-tags"></i> 
-                XML</a></li>
-            </ul>
-            <ul class="nav pull-right">
-              <li><a href="http://github.com/bollwyvl/blockd3">
-                <i class="icon-github-sign"></i> 
-                About</a></li>
+                <span class="hidden-phone">XML</span>
+                </a></li>
             </ul>
             <div id="actions" class="nav pull-right">
                     <a id="run" class="btn btn-small btn-success" href="#run">
                         <i class="icon-off"></i> 
-                        Run
+                        <span class="hidden-phone">Run</span>
                     </a>
                     <a id="save_xml" href="#save_xml" class="btn btn-small">
                         <i class="icon-hdd"></i>
-                        Save</a>
-                    <a id="load_xml "href="#load_xml" class="btn btn-small">
-                        <i class="icon-folder-open"></i> Load
+                        <span class="hidden-phone">Save</span>
                     </a>
-                    <a id="discard" href="#discard" class="btn btn-small btn-danger"><i class="icon-trash"></i> Discard</a>
+                    <a id="load_xml "href="#load_xml" class="btn btn-small">
+                        <i class="icon-folder-open"></i>
+                        <span class="hidden-phone">Load</span>
+                    </a>
+                    <a id="discard" href="#discard" class="btn btn-small btn-danger"><i class="icon-trash"></i> 
+                        <span class="hidden-phone">Discard</span>
+                    </a>
                     <form id="file_form">
                     <input type="file" id="load"/>
                     </form>
                     <a id="show_alerts" class="btn btn-small btn-warning" href="#alerts">
                         <i class="icon-exclamation-sign"></i> 
-                        Alerts
+                        <span class="hidden-phone">Alerts</span>
                     </a>
                 </div>
           </div><!--/.nav-collapse -->
@@ -79,23 +88,27 @@
       </div>
     </div>
 
-    <div id="content_xml">
-      <textarea id="textarea_xml"></textarea>
-    </div>
     
     <div id="container" class="container-fluid" style="display:none;">
 
       <!-- Example row of columns -->
       <div id="panes" class="row-fluid">
           <div id="content_blockly" class="span6 pane full_height">
+              <a name="blockly"></a>
               <h2>Blockly</h2>
           </div>
           <div id="content_d3" class="span6 half_height">
+              <a name="d3"></a>
               <h2>SVG</h2>
           </div>
           <div id="content_javascript" class="span6 pane half_height">
               <h2>JavaScript</h2>
             <textarea id="textarea_javascript"></textarea>
+          </div>
+
+          <div id="content_xml">
+            <a name="xml"></a>
+            <textarea id="textarea_xml"></textarea>
           </div>
         </div>
         <div id="alert" class="alert">
