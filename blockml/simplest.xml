@@ -1,0 +1,31 @@
+<xml>
+  <block type="d3_style" inline="false" x="-566" y="245">
+    <value name="STYLE_PROP">
+      <block type="text">
+        <title name="TEXT">fill</title>
+      </block>
+    </value>
+    <value name="PARENT">
+      <block type="variables_get">
+        <title name="VAR">item</title>
+      </block>
+    </value>
+    <value name="VALUE">
+      <block type="text">
+        <title name="TEXT">red</title>
+      </block>
+    </value>
+  </block>
+  <block type="variables_set" inline="false" x="-573" y="129">
+    <title name="VAR">item</title>
+    <value name="VALUE">
+      <block type="d3_selectAll" inline="false">
+        <value name="SELECTOR">
+          <block type="text">
+            <title name="TEXT">rect</title>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+</xml>

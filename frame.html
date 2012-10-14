@@ -16,9 +16,12 @@
 <script type="text/javascript" src="./js/blockd3-min.js"></script><!--SCRIPTS###-->
 
 <script type="text/javascript">
+    var BLOCKLY_LIB;
+        
     $(function(){
+        Blockly._blockd3_lib = "./lib/blockly/";
         Blockly.inject(document.body, {
-            path: './lib/blockly/'
+            path: Blockly._blockd3_lib
         });
 
         if (window.parent.blockd3) {
@@ -26,13 +29,15 @@
             window.parent.blockd3.init(Blockly);
         } else {
             // Attempt to diagnose the problem.
-            var msg = 'Error: Unable to communicate between frames.\n\n';
+            var msg = "Error: Unable to communicate between frames.\n\n";
             if (window.parent == window) {
-                msg += 'Try loading index.html instead of frame.html';
+                msg += "Try loading index.html instead of frame.html";
             } else if (window.location.protocol == 'file:') {
-                msg += 'This may be due to a security restriction preventing\n' +
-                'access when using the file:// protocol.\n' +
-                'http://code.google.com/p/chromium/issues/detail?id=47416';
+                msg += [
+                    "This may be due to a security restriction preventing" +
+                    "access when using the file:// protocol.",
+                    "http://code.google.com/p/chromium/issues/detail?id=47416"
+                ].join("\n")
             }
             console.error(msg);
         }
