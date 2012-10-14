@@ -3,9 +3,12 @@ $(function(){
 $('<iframe id="content_blocks" src="./frame.html"></iframe>')
     .appendTo('#content_blockly');
 
+var VERSION = [0, 1, 0];
+
 var blockd3 = window.blockd3 = function(){},
     DEBUG = blockd3.debug = false;
 
+blockd3.VERSION = VERSION.join(".");
 
 
 var alert_popup = $("#alert"),
