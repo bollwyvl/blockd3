@@ -87,17 +87,21 @@ Then just go to http://localhost:8000.
 
 Make suggestions via the [tickets][]!
 
-Once the blockd3 API has stabilized, [bl.ocks][] (or something like it) should 
-be fun for sharing examples! [github-api][] makes this look pretty easy.
 
 ## Roadmap
 - [block coverage][coverage] of the d3 API
     - As soon as possible, blockd3 should be extracted automatically from the
       source of the d3 API wiki, or at the very least be checked for coverage.
 - immediate visual update
+    - Ongoing
 - support [d3-plugins][]
+    - Nice to have
 - gist integration
+    - Once the blockd3 API has stabilized, [bl.ocks][] (or something like it) 
+      should be fun for sharing examples! [github-api][] makes this look pretty 
+      easy.
 - support [svgedit][]
+    - in consideration
 
 ## License
 Blockd3 is licensed under the [Apache Public License][apl].
