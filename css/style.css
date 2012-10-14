@@ -2,6 +2,7 @@ body{
     background-color: #333;
     padding-top: 45px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 a{
     color: steelblue;
@@ -106,6 +107,10 @@ footer{
     color: #fff;
     background-color: #333;
 }
+footer p{
+    margin: 0 5px;
+}
+
 .container-fluid{
     padding: 5px;
 }
