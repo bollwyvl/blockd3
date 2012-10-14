@@ -2,6 +2,12 @@ $(function(){
 
 $('<iframe id="content_blocks" src="./frame.html"></iframe>').appendTo('#content_blockly');    
 
+d3.xml("./svg/money_problems.svg", "image/svg+xml", function(xml){
+    d3.select("#content_d3").node().appendChild(
+        document.importNode(xml.documentElement, true)
+    );
+})
+
 var blockd3 = window.blockd3 = function(){};
 
 var alert_popup = $("#alert"),
@@ -42,9 +48,9 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     // Make the 'Blocks' tab line up with the toolbox.
     if (Blockly.Toolbox) {
         $(window).on('resize', function() {
-            var fullh = $(window).height() - navbar.height() - footer.height();
-            $('.full_height').css("height", fullh - 50);
-            $('.CodeMirror').css("height", fullh - 50);
+            var fullh = $(window).height() - navbar.height() - footer.height() - 50;
+            $('.full_height').css("height", fullh);
+            $('.half_height, .CodeMirror').css("height", (fullh - 24)/2);
                     
         });
     }

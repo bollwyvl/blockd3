@@ -1,6 +1,6 @@
 ## Motivation
 Expose the visualization-building power of [d3][] to curious users with a visual
-programming metaphor provided by [blockly][]. From a d3 point of view, I am trying to get to an experience like this [great tutorial][d3-inkscape].v
+programming metaphor provided by [blockly][]. From a d3 point of view, I am trying to get to an experience like this [great tutorial][d3-inkscape].
 
 ## Demo
 Check it out at http://bollwyvl.github.com/blockd3
@@ -108,7 +108,7 @@ Blockd3 is licensed under the [Apache Public License][apl].
 
 
 [d3]: https://github.com/mbostock/d3
-[d3-inkscapte]: http://christopheviau.com/d3_tutorial/d3_inkscape/
+[d3-inkscape]: http://christopheviau.com/d3_tutorial/d3_inkscape/
 [blockly]: http://code.google.com/p/blockly
 [codedemo]: http://blockly-demo.appspot.com/blockly/demos/code
 [d3-plugins]: https://github.com/d3/d3-plugins

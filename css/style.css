@@ -7,14 +7,60 @@ a{
     color: steelblue;
 }
 
+#content_d3{
+    overflow: auto;
+    text-align: center;
+}
+
+#content_d3 svg{
+    display: inline;
+}
 
 #panes .pane, #content_d3{
     background-color: #eee;
     border-radius: 2px;
 }
 
+#panes h2{
+    position: absolute;
+    text-align: right;
+
+	/* Required for IE 5, 6, 7 */
+	/* ...or something to trigger hasLayout, like zoom: 1; */
+    width: 46%;
+		
+	/* Theoretically for IE 8 & 9 (more valid) */	
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	
+	/* This works in IE 8 & 9 too */
+	/* ... but also 5, 6, 7 */
+	filter: alpha(opacity=50);
+	
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.5;
+	
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.5;
+    
+	/* Modern!
+	/* Firefox 0.9+, Safari 2?, Chrome any?
+	/* Opera 9+, IE 9+ */
+	opacity: 0.5;
+    
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+
 #content_xml{
-    display:none;
+    display: none;
+    text-align: center;
 }
 
 #content_javascript .CodeMirror pre{
@@ -76,5 +122,5 @@ footer{
     .float:left;
 }
 .half_height{
-    margin-top: 10px
+    margin-bottom:10px;
 }
