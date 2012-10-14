@@ -9,7 +9,7 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
                 .title("CSS-style selector")
         },
         PARENT: {
-            id: "D3 Selection",
+            id: String,
             field: b4.input("PARENT")
                 .title("of selection")
                 .inputValue(true)
@@ -100,14 +100,16 @@ select_mold.clone("All")
     .code("d3.selectAll(<%= $.code('SELECTOR') %>)")
     .done();
     
-        
+
+// d3.select("svg").selectAll("rect").style("fill", "blue")
+
 select_arg_mold.clone("selectAll")
     .tooltip("All elements that match the selection")
     .appendTitle(["select all elements that match"])
     .appendInput([D3_TYPES.SELECTION,
         D3_TYPES.PARENT])
     .code([
-            "<%= $.code('PARENT', 'd3.select(document)') %>", 
+            "<%= $.code('PARENT', 'd3.select(\"svg\")') %>", 
             ".selectAll(<%= $.code('SELECTOR') %>)"
         ])
     .done();
@@ -134,7 +136,7 @@ manip_mold.clone("style")
     .appendInput([D3_TYPES.STYLE_PROP,
         D3_TYPES.PARENT,
         D3_TYPES.VALUE])
-    .code(["<%= $.code('PARENT', 'd3.select(\"circle\")') %>", 
+    .code(["<%= $.code('PARENT', 'd3.select(\"svg\")') %>", 
         ".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"])
     .done();
     
