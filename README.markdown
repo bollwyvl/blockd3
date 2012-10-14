@@ -7,6 +7,36 @@ Check it out at http://bollwyvl.github.com/blockd3
 It's a modification of the Blockly [code demo][codedemo], which has cool stuff
 like Python generation.
 
+## Running Locally
+At present, I have not duplicated the upstream's ability to work without a web 
+server. Working on it. In the meantime, if you have Python (included on most 
+Linux and OSX systems), you can run
+
+    python -m SimpleHttpServer
+
+And then visit http://localhost:8000.
+
+## Building Condierations
+Partially as a learning exercise, many of the more active dependencies 
+are built referenced as submodules. To get these set up, after checkout out the code, you should: _Note: still learning this, looking for guidance_
+
+    git submodule init
+    git submodule update
+
+The build system generates the optimized demo version of the site by combining 
+and minifying all of the JavaScript and CSS of Blockd3 and its dependencies.
+
+The build system uses [fabric][], which requires Python. The easiest way to get 
+it running it to use a [virtualenv][]. Once you have it installed it, you can 
+do the following: 
+
+    pip install -r requirements.txt
+
+After that, to replace the `dist` directory (itself a submodule to the gh-pages 
+branch of blockd3) withe the most recent code and assets run:
+
+    fab build
+
 ## Documentation
 Right now, most of the documentation is in the code. As we get closer to a 
 useful project, I'd like to have canned lessons for some of the excellent 
@@ -86,4 +116,7 @@ Blockd3 is licensed under the [Apache Public License][apl].
 [svgedit]: http://code.google.com/p/svg-edit/
 [SlickGrid]: https://github.com/mleibman/SlickGrid
 [Hansontable]: http://handsontable.com/
+[fabric]: http://docs.fabfile.org/
+[virtualenv]: http://www.virtualenv.org/
+
 [coverage]: https://github.com/bollwyvl/blockd3/issues/4
