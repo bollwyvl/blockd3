@@ -13,7 +13,7 @@ from flask import (
     abort,
     Response,
     flash,
-    make_response
+    make_response,
     )
 
 from werkzeug import Headers
