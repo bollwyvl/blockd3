@@ -69,8 +69,6 @@ blockd3.init = function(blockly){
     $(".brand").click(function(){
         blockd3.tour.start();
     });
-    
-    blockd3.tour.start();
 };
     
 var init_blockly = blockd3.init_blockly = function(Blockly) {

@@ -46,7 +46,7 @@ community-built [tutorials][].
 Testing uses [Ghost.py][].
 
 Provided by Travis-CI:
-[![Build Status](https://secure.travis-ci.org/bollwyvl/blockd3.png)](http://travis-ci.org/bollwyvl/blockd3)
+[![Build Status](//secure.travis-ci.org/bollwyvl/blockd3.png)](http://travis-ci.org/bollwyvl/blockd3)
 
 ## Blocks Implemented
 __need to automate updating this__
