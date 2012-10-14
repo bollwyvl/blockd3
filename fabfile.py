@@ -77,7 +77,7 @@ def deploy():
 @task
 def swatch():
     proj()
-    print(". rocking the bootswatch plunder %s" % theme["name"])
+    print(". rocking the bootswatch plunder")
     themes = json.loads(str(sh.curl("http://api.bootswatch.com")))["themes"]
     for theme in themes:
         print(".. getting %s" % theme["name"])
@@ -119,6 +119,7 @@ def minify():
         "dist/lib/blockly": ["lib/blockly/blockly.css"],
         "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
         "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
+        "dist/lib/swatch": sh.glob("lib/swatch/*.css"),
         "dist/css": [],
         "dist/js": [],
         "dist/blockml": sh.glob("blockml/*.xml") or [],
@@ -142,10 +143,11 @@ def minify():
         soup = BeautifulSoup(html)
         
         for link in soup.find_all('link'):
-            sources["css"] += [link["href"]]
+            if link.get("href", None) is not None:
+                sources["css"] += [link["href"]]
             
         for script in soup.find_all("script"):
-            if script.get("src", None):
+            if script.get("src", None) is not None:
                 sources["js"] += [script["src"]]
                 
         new_file = open(os.path.join("dist", html_file), "w")
