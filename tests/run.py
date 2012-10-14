@@ -10,7 +10,7 @@ from app import app
 
 PORT = 5000
 
-base_url = 'http://localhost:%s/' % PORT
+base_url = "http://localhost:%s/dist/" % PORT
 
 class Blockd3GhostTest(GhostTestCase):
     port = PORT
@@ -50,5 +50,5 @@ class Blockd3GhostTest(GhostTestCase):
         print result
         self.assertEqual(result, "#ff0000")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

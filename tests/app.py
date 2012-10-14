@@ -18,26 +18,24 @@ from flask import (
 
 from werkzeug import Headers
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../dist")
 app.config['CSRF_ENABLED'] = False
 app.config['SECRET_KEY'] = "totally-insecure"
 app.config['DEBUG'] = True
 
 
-@app.route("/")
+@app.route("/dist/")
 def home():
-    return make_response(fix_static("index.html"))
+    return fix_static("index.html")
 
 
-@app.route("/frame.html")
+@app.route("/dist/frame.html")
 def frame():
     return fix_static("frame.html")
 
 
 def fix_static(file_name):
-    new_source = open(os.path.join("templates", file_name)).read().replace(
-        '"./', '"./static/'
-    )
+    new_source =  open(os.path.join("../dist/", file_name)).read()
     return make_response(new_source)
 
 if __name__ == "__main__":

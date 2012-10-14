@@ -3,6 +3,8 @@ python:
   - "2.7"
 install:
   - "sudo apt-get install -qq python-pyside"
+  - "pip install -r requirements.txt --use-mirrors"
+  - "fab build"
   - "pip install -r tests/requirements.txt --use-mirrors"
   - "ln -s /usr/lib/python2.7/dist-packages/PySide /home/travis/virtualenv/python2.7/lib/python2.7/site-packages/PySide -v"
   - "cd tests"
