@@ -56,7 +56,7 @@ def deploy():
     sh.cd("dist")
     sh.git.add(sh.glob("*") or ".")
 
-    sh.git.commit("-m", "Automatic build from %s" % root_sha)
+    sh.git.commit("-m", "'Automatic build from %s'" % root_sha)
     
     sh.git.push("origin", "gh-pages")
 
