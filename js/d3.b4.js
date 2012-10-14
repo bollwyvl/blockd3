@@ -3,9 +3,10 @@
 var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
     D3_TYPES = {
         SELECTION: {
-            id: "D3 Selection",
-            field: b4.fields.text("SELECTOR")
-                .init("CSS-style selector")
+            id: String,
+            field: b4.input("SELECTOR")
+                .inputValue(true)
+                .title("CSS-style selector")
         },
         PARENT: {
             id: "D3 Selection",
@@ -87,27 +88,27 @@ var d3_mold = b4.block()
             
 select_mold.clone("")
     .tooltip("The first element that matches the selector")
-    .appendTitle(["select the first element that matches",
-        D3_TYPES.SELECTION])
-    .code("d3.select('<%= $.title('SELECTOR') %>')")
+    .appendTitle(["select the first element that matches"])
+    .appendInput([D3_TYPES.SELECTION])
+    .code("d3.select(<%= $.code('SELECTOR') %>)")
     .done();
         
 select_mold.clone("All")
     .tooltip("All elements that match the selection")
-    .appendTitle(["select all elements that match",
-        D3_TYPES.SELECTION])
-    .code("d3.selectAll('<%= $.title('SELECTOR') %>')")
+    .appendTitle(["select all elements that match"])
+    .appendInput(D3_TYPES.SELECTION)
+    .code("d3.selectAll(<%= $.code('SELECTOR') %>)")
     .done();
     
         
 select_arg_mold.clone("selectAll")
     .tooltip("All elements that match the selection")
-    .appendTitle(["select all elements that match",
-        D3_TYPES.SELECTION])
-    .appendInput(D3_TYPES.PARENT)
+    .appendTitle(["select all elements that match"])
+    .appendInput([D3_TYPES.SELECTION,
+        D3_TYPES.PARENT])
     .code([
             "<%= $.code('PARENT', 'd3.select(document)') %>", 
-            ".selectAll('<%= $.title('SELECTOR') %>')"
+            ".selectAll(<%= $.code('SELECTOR') %>)"
         ])
     .done();
     
