@@ -1,12 +1,7 @@
 $(function(){
 
-$('<iframe id="content_blocks" src="./frame.html"></iframe>').appendTo('#content_blockly');    
-
-d3.xml("./svg/money_problems.svg", "image/svg+xml", function(xml){
-    d3.select("#content_d3").node().appendChild(
-        document.importNode(xml.documentElement, true)
-    );
-})
+$('<iframe id="content_blocks" src="./frame.html"></iframe>')
+    .appendTo('#content_blockly');
 
 var blockd3 = window.blockd3 = function(){};
 
@@ -42,6 +37,13 @@ blockd3.init = function(blockly){
     $('a[href="#' + mode() + '"]').click();
     $(window).resize();
     $("#container").fadeIn();
+    
+
+    d3.xml(Blockly._blockd3_lib + "../../svg/money_problems.svg", "image/svg+xml", function(xml){
+        d3.select("#content_d3").node().appendChild(
+            document.importNode(xml.documentElement, true)
+        );
+    })
 };
     
 var init_blockly = blockd3.init_blockly = function(Blockly) {
