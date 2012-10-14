@@ -45,7 +45,8 @@ def build():
     favicon()
     sh.cd("dist")
     print sh.git("status")
-    
+
+@task
 def deploy():
     build()
     proj()
