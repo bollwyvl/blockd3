@@ -11,6 +11,7 @@ also, the dependency on node.js is more exotic to me than python. ymmv.
 
 import os
 from pprint import pprint
+import json
 
 from fabric.api import task
 
@@ -72,7 +73,20 @@ def deploy():
     proj()
     sh.git.add("dist")
     sh.git.status()
-
+    
+@task
+def swatch():
+    proj()
+    print(". rocking the bootswatch plunder %s" % theme["name"])
+    themes = json.loads(str(sh.curl("http://api.bootswatch.com")))["themes"]
+    for theme in themes:
+        print(".. getting %s" % theme["name"])
+        open(
+            "lib/swatch/bootswatch.%s.min.css" % theme["name"], "w"
+        ).write(
+            str(sh.curl(theme["css-min"]))
+        )
+        
 @task
 def favicon():
     proj()
