@@ -140,17 +140,48 @@ var render_content = blockd3.render_content = function(){
     }
 };
 
+blockd3._running = false;
+
+var running = blockd3.running = function(value){
+    var result;
+    
+    if(_.isUndefined(value)){
+        result = blockd3._running;
+    }else{
+        blockd3._running = value;
+    }
+    
+    if(blockd3._running){
+        $("#stop").fadeIn();
+        $("#run").fadeOut();
+    } else{
+        $("#stop").fadeOut();
+        $("#run").fadeIn();
+    }
+    return result;
+}
+
 /**
  * Execute the user's code.
  * Just a quick and dirty eval.  No checks for infinite loops, etc.
  */
 var run_js = blockd3.run_js = function() {
-    var code = Blockly.Generator.workspaceToCode('JavaScript');
-    try {
-        eval(code);
-    } catch (e) {
-        lert('Program error:\n' + e);
-    }
+    var code = [
+            "var __blockly__wrapper = function(){",
+            Blockly.Generator.workspaceToCode('JavaScript'),
+            "}; __blockly__wrapper;"
+        ].join("\n");
+    
+        console.log(code);
+    
+        try {
+            blockd3.running(true);
+            eval(code)();
+            blockd3.running(false);
+        } catch (e) {
+            lert('Program error:\n' + e);
+            blockd3.running(false);
+        }
 };
 
 /**
