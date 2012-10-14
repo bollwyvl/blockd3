@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 
 import sh
         
-PROJECT_ROOT = sh.git("rev-parse", **{"show-toplevel": True})
+PROJECT_ROOT = str(sh.git("rev-parse", **{"show-toplevel": True})).strip()
 
 CFG_TEMPLATE = """# do not modify this file. generated automatically
 [minify_%(src)s]
@@ -27,32 +27,45 @@ sources = %(assets)s
 output = dist/%(src)s/blockd3-min.%(src)s
 
 """
+@task
+def proj():
+    sh.cd(PROJECT_ROOT)
+
+@task
+def build():
+    proj()
+    minify()
+    favicon()
+    sh.cd("dist")
+    print sh.git("status")
 
 @task
 def favicon():
-    print("generating favicons...")
+    print(". generating favicons...")
     sizes = [16, 32, 64, 128]
     
     tmp_file = lambda size: "/tmp/favicon-%s.png" % size
     
     for size in sizes:
-        print(".... %sx%s" % (size, size))
+        print("... %sx%s" % (size, size))
         sh.convert("svg/logo.svg",
             "-resize",
                 "%sx%s" % (size, size),
             tmp_file(size))
-    print("... generating bundle")
+    print(".. generating bundle")
     sh.convert(
         *[tmp_file(size) for size in sizes] + [
             "-colors", 256,
             "dist/favicon.ico"
         ]
     )
-    print("... cleaning up")
+    print(".. cleaning up")
     sh.rm(sh.glob("/tmp/favicon-*.png"))
 
 @task
-def build():
+def minify():
+
+    print(". minifying ...")
     copy_patterns = {
         "dist/lib/blockly": ["lib/blockly/blockly.css"],
         "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
@@ -63,9 +76,10 @@ def build():
     }
     
     for dst, copy_files in copy_patterns.items():
+
         os.path.exists(dst) or sh.mkdir("-p", dst)
         for c_file in copy_files:
-            print "\tcopied", c_file, dst
+            print "... copying", c_file, dst
             sh.cp("-r", c_file, dst)
     
     html = ["index.html", "frame.html"]
@@ -73,6 +87,7 @@ def build():
     sources = dict(js=[],css=[])
     
     for html_file in sh.glob("*.html"):
+        print ".. analyzing %s" % html_file
         html = open(html_file).read()
         soup = BeautifulSoup(html)
         
@@ -103,6 +118,8 @@ def build():
         for THING, new_thing in replacements.items():
             html = _html_replace(html, THING, new_thing)
         
+
+        print ".. writing out production dist/%s" % html_file
         new_file.write(html)
         new_file.close()
         
@@ -114,45 +131,13 @@ def build():
         for src, assets in sources.items()
     ])
 
+    print ".. writing out production setup.cfg"
     cfg.close()
     
-    pprint([
-        sh.python("setup.py", "minify_" + src, verbose=True)
+    [
+        pprint(sh.python("setup.py", "minify_" + src, verbose=True))
         for src in sources
-    ])
-    
-    print sh.ls("-lathr", "dist")
-    """
-    Common commands: (see '--help-commands' for more)
-
-      setup.py build      will build the package underneath 'build/'
-      setup.py install    will install the package
-
-    Global options:
-      --verbose (-v)  run verbosely (default)
-      --quiet (-q)    run quietly (turns verbosity off)
-      --dry-run (-n)  don't actually do anything
-      --help (-h)     show detailed help message
-      --no-user-cfg   ignore pydistutils.cfg in your home directory
-
-    Options for 'minify_js' command:
-      --sources                sources files
-      --output                 minified output filename. If you provide a template
-                               output filename (e.g. "static/%s-min.ext"), the
-                               source files will be minified individually
-      --charset                Read the input file(s) using <charset>
-      --line-break             Insert a line break after the specified column
-                               number
-      --nomunge                Minify only, do not obfuscate
-      --preserve-semi          Preserve all semicolons
-      --disable-optimizations  Disable all micro optimizations
-
-    usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
-       or: setup.py --help [cmd1 cmd2 ...]
-       or: setup.py --help-commands
-       or: setup.py cmd --help
-    """
-
+    ]
 
 def custom_task(*myarg):
     class CustomTask(Task):
