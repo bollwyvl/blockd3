@@ -99,6 +99,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     });
     
     $("#run").click(run_js);
+    $("#change_theme a").click(change_theme);
     $("#save_xml").click(save);
     $("#discard").click(discard);
 };
@@ -366,5 +367,12 @@ var init_editors = blockd3.initialize_editors = function(){
     });
 };
 
+
+var change_theme = blockd3.change_theme = function(evt){
+    var new_theme = $(evt.target).data("blockd3-theme");
+    console.log(new_theme);
+    $("#theme_link").attr("href", 
+        "lib/swatch/bootswatch." + new_theme + ".min.css");
+};
 
 });

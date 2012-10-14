@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="./lib/awesome/css/font-awesome.css">
     <link rel="stylesheet" href="./lib/cm/lib/codemirror.css">
     <link rel="stylesheet" href="./lib/cm/theme/elegant.css">
+
     
     <link rel="stylesheet" href="./css/style.css">
     <!--STYLES###-->
+    
+    <link rel="stylesheet" id="theme_link" href="./css/style.css">
     
     <style type="text/css">
       body {
@@ -91,6 +94,30 @@
                         <i class="icon-exclamation-sign"></i> 
                         <span class="hidden-phone">Alerts</span>
                     </a>
+                    
+                    <div class="btn-group">
+                      <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#themes">
+                        <i class="icon-wrench"></i>
+                        <span class="hidden-phone">Options</span>
+                      </a>
+                      <ul class="dropdown-menu" id="change_theme">
+                        <li class="nav-header">Themes</li>
+                        <li>
+                            <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
+                            <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a>
+                            <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a>
+                            <a href="#theme" data-blockd3-theme="Journal">Journal</a>
+                            <a href="#theme" data-blockd3-theme="Readable">Readable</a>
+                            <a href="#theme" data-blockd3-theme="Slate">Slate</a>
+                            <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a>
+                            <a href="#theme" data-blockd3-theme="Spruce">Spruce</a>
+                            <a href="#theme" data-blockd3-theme="Superhero">Superhero</a>
+                            <a href="#theme" data-blockd3-theme="United">United</a>
+                            <a href="#theme" data-blockd3-theme="simplex">simplex</a>
+                        </li>
+                      </ul>
+                    </div>
+                    
                     <a id="discard" href="#discard" class="btn btn-danger"><i class="icon-trash"></i> 
                         <span class="hidden-phone">Discard</span>
                     </a>
