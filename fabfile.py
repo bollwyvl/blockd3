@@ -13,7 +13,6 @@ import os
 from pprint import pprint
 
 from fabric.api import task
-from fabric.tasks import Task
 
 from bs4 import BeautifulSoup
 
