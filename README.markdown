@@ -16,26 +16,42 @@ Linux and OSX systems), you can run
 
 And then visit http://localhost:8000.
 
-## Building Condierations
-Partially as a learning exercise, many of the more active dependencies 
-are built referenced as submodules. To get these set up, after checkout out the code, you should: _Note: still learning this, looking for guidance_
+## Building Considerations
+
+The build system uses [fabric][], which requires Python. The easiest way to get 
+it running it to use a [virtualenv][]. Once you have installed it and created 
+and activated a new virtualenv, you can do the following: 
+
+    pip install -r requirements.txt
+    
+Most other tasks will use the fabric command line tool, `fab`, which will be 
+available in your activated virtualenv.
+
+### `fab dev` 
+Partially as a learning exercise, many of the more active dependencies and 
+outputs of the project are referenced as git submodules. To get these set up, 
+after checkout out the code, you should:
+_Note: still learning this, looking for guidance_
+
+Running `fab dev` does this:
 
     git submodule init
     git submodule update
-
+    
+### `fab build`
 The build system generates the optimized demo version of the site by combining 
 and minifying all of the JavaScript and CSS of Blockd3 and its dependencies.
 
-The build system uses [fabric][], which requires Python. The easiest way to get 
-it running it to use a [virtualenv][]. Once you have it installed it, you can 
-do the following: 
-
-    pip install -r requirements.txt
-
-After that, to replace the `dist` directory (itself a submodule to the gh-pages 
-branch of blockd3) withe the most recent code and assets run:
+After that, it replaces the `dist` directory (itself a submodule to the 
+gh-pages branch of blockd3) with the the most recent code, style and assets 
+needed:
 
     fab build
+
+### other `fab` commands
+- `fab favicon`: makes the favicon from the SVG design asset
+- `fab minify`: used by `fab build`
+- `fab flake`: check python syntax for test harness for [Travis-CI][]
 
 ## Documentation
 Right now, most of the documentation is in the code. As we get closer to a 
@@ -45,7 +61,7 @@ community-built [tutorials][].
 ## Testing
 Testing uses [Ghost.py][].
 
-Provided by Travis-CI:
+Provided by [Travis-CI][]:
 [![Build Status](//secure.travis-ci.org/bollwyvl/blockd3.png)](http://travis-ci.org/bollwyvl/blockd3)
 
 ## Blocks Implemented
@@ -131,3 +147,4 @@ Blockd3 is licensed under the [Apache Public License][apl].
 [Ghost.py]: http://jeanphix.me/Ghost.py/
 
 [coverage]: https://github.com/bollwyvl/blockd3/issues/4
+[Travis-CI]: http://travis-ci.org

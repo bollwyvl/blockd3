@@ -41,10 +41,21 @@ def flake():
 def build():
     proj()
     flake()
+    clean()
     minify()
     favicon()
     sh.cd("dist")
     print sh.git("status")
+    
+@task
+def dev():
+    sh.git("submodule", "init")
+    sh.git("submodule", "update")
+    
+@task
+def clean():
+    proj()
+    sh.rm("-r", sh.glob("dist/*"))
 
 @task
 def deploy():
@@ -65,6 +76,7 @@ def deploy():
 
 @task
 def favicon():
+    proj()
     print(". generating favicons...")
     sizes = [16, 32, 64, 128]
     
@@ -88,7 +100,7 @@ def favicon():
 
 @task
 def minify():
-
+    proj()
     print(". minifying ...")
     copy_patterns = {
         "dist/lib/blockly": ["lib/blockly/blockly.css"],
@@ -163,17 +175,6 @@ def minify():
         pprint(sh.python("setup.py", "minify_" + src, verbose=True))
         for src in sources
     ]
-
-def custom_task(*myarg):
-    class CustomTask(Task):
-        def __init__(self, func, myarg, *args, **kwargs):
-            super(CustomTask, self).__init__(*args, **kwargs)
-            self.func = func
-            self.myarg = myarg
-
-        def run(self, *args, **kwargs):
-            return self.func(*args, **kwargs)
-
 
 def serve():
     import SimpleHTTPServer
