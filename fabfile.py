@@ -72,6 +72,7 @@ def minify():
         "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
         "dist/css": [],
         "dist/js": [],
+        "dist/blockml": sh.glob("blockml/*.xml") or [],
         "dist/svg": sh.glob("svg/*.svg") or [],
     }
     

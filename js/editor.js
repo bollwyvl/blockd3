@@ -46,7 +46,31 @@ blockd3.init = function(blockly){
         d3.select("#content_d3").node().appendChild(
             document.importNode(xml.documentElement, true)
         );
-    })
+    });
+    
+    blockd3.tour().step( 
+        "#logo",
+            "building data pictures with d3 in blockly",
+            "DON'T PANIC"
+        ).step(
+            "a[href='#javascript']",
+                "JavaScript",
+                "is kind of hard"
+        ).step(
+            "a[href='#xml']",
+                "XML",
+                "is not very prety"
+        ).step(
+            "a[href='#blockly']",
+                "blockly",
+                "makes progrmming easy"
+        );
+    
+    $(".brand").click(function(){
+        blockd3.tour.start();
+    });
+    
+    blockd3.tour.start();
 };
     
 var init_blockly = blockd3.init_blockly = function(Blockly) {
@@ -77,6 +101,35 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     $("#save_xml").click(save);
     $("#discard").click(discard);
 };
+
+var _tour;
+
+var tour = blockd3.tour = function(value){
+    if(_.isUndefined(value)){
+        if(_.isUndefined(_tour)){
+            _tour = new Tour();
+        }
+    }else{
+        _tour = value;
+    }
+    return blockd3.tour;
+};
+
+var step = blockd3.tour.step = function(element, title, content, placement){
+    _tour.addStep({
+      element: element, /* html element next to which the step popover should be shown */
+      title: title, /* title of the popover */
+      content: content, /* content of the popover */
+      placement: placement || "bottom", // string|function
+      animation: true // boolean
+    });
+    return blockd3.tour;
+};
+
+blockd3.tour.start = function(){
+    _tour.start(true);
+    return blockd3.tour;
+}
     
 var panes = $(".pane"),
     tabs = blockd3.tabs = $("#tabs li")
