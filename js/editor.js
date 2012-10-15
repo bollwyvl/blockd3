@@ -1,11 +1,14 @@
-$(function(){
+(function(CodeMirror, $, _, d3, Tour, BlobBuilder, FileReader, saveAs){
 "use strict";
+
+var window = this;
+
 $('<iframe id="content_blocks" src="./frame.html"></iframe>')
     .appendTo('#content_blockly');
 
 var VERSION = [0, 1, 0];
 
-var blockd3 = window.blockd3 = function(){},
+var blockd3 = this.blockd3 = function(){},
     DEBUG = blockd3.debug = false;
 
 blockd3.VERSION = VERSION.join(".");
@@ -16,8 +19,6 @@ var alert_popup = $("#alert"),
     alert_time = d3.time.format("<i>%H:%M:%S</i> "),
     navbar = $("#navbar"),
     footer = $("footer");
-
-var Blockly;
 
 var editors = blockd3.editors = {
     javascript: undefined,
@@ -37,7 +38,6 @@ var lert = blockd3.lert = function(text){
 };
 
 blockd3.init = function(blockly){
-    window.Blockly = Blockly = blockly;
     init_blockly(blockly);
     init_editors();
     $('a[href="#' + mode() + '"]').click();
@@ -45,7 +45,7 @@ blockd3.init = function(blockly){
     $("#container").fadeIn();
     
 
-    d3.xml(Blockly._blockd3_lib + "../../svg/money_problems.svg", "image/svg+xml", function(xml){
+    d3.xml(blockly._blockd3_lib + "../../svg/money_problems.svg", "image/svg+xml", function(xml){
         d3.select("#content_d3").node().appendChild(
             document.importNode(xml.documentElement, true)
         );
@@ -75,8 +75,10 @@ blockd3.init = function(blockly){
 };
     
 var init_blockly = blockd3.init_blockly = function(Blockly) {
+    blockd3.Blockly = Blockly;
+    
     // Make the 'Blocks' tab line up with the toolbox.
-    if (Blockly.Toolbox) {
+    if (blockd3.Blockly.Toolbox) {
         $(window).on('resize', function() {
             var fullh = $(window).height() - (
                 navbar.height() + footer.height());
@@ -132,7 +134,7 @@ var step = blockd3.tour.step = function(element, title, content, placement){
 blockd3.tour.start = function(){
     _tour.start(true);
     return blockd3.tour;
-}
+};
     
 var panes = $(".pane"),
     tabs = blockd3.tabs = $("#tabs li")
@@ -165,7 +167,7 @@ var exit_xml = blockd3.exit_xml = function(){
     var xmlText = editors.xml.getValue(),
         xmlDom = null;
     try {
-        xmlDom = Blockly.Xml.textToDom(xmlText);
+        xmlDom = blockd3.Blockly.Xml.textToDom(xmlText);
     } catch (e) {
         var conf = window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
         if (!conf) {
@@ -174,8 +176,8 @@ var exit_xml = blockd3.exit_xml = function(){
         }
     }
     if (xmlDom) {
-        Blockly.mainWorkspace.clear();
-        Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+        blockd3.Blockly.mainWorkspace.clear();
+        blockd3.Blockly.domToWorkspace(blockd3.Blockly.mainWorkspace, xmlDom);
     }
 };
     
@@ -187,14 +189,14 @@ var render_content = blockd3.render_content = function(){
     if (current_mode == 'blockly') {
         // If the workspace was changed by the XML tab, Firefox will have performed
         // an incomplete rendering due to Blockly being invisible.  Rerender.
-        Blockly.mainWorkspace.render();
+        blockd3.Blockly.mainWorkspace.render();
     } else if (current_mode == 'xml') {
-        var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace),
-            xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+        var xmlDom = blockd3.Blockly.Xml.workspaceToDom(blockd3.Blockly.mainWorkspace),
+            xmlText = blockd3.Blockly.Xml.domToPrettyText(xmlDom);
             editors.xml.setValue(xmlText);
     } else if (current_mode == 'javascript') {
         editors.javascript.setValue(
-            Blockly.Generator.workspaceToCode('JavaScript')
+            blockd3.Blockly.Generator.workspaceToCode('JavaScript')
         );
     }
 };
@@ -221,7 +223,7 @@ var running = blockd3.running = function(value){
         $("#run").fadeIn();
     }
     return result;
-}
+};
 
 /**
  * Execute the user's code.
@@ -231,13 +233,12 @@ var run_js = blockd3.run_js = function() {
     var code = [
             "var __blockly__wrapper = function(start_cb, end_cb){",
             "start_cb();",
-            Blockly.Generator.workspaceToCode('JavaScript'),
+            blockd3.Blockly.Generator.workspaceToCode('JavaScript'),
             "end_cb();",
             "}; __blockly__wrapper;"
         ].join("\n");
     
         try {
-            ;
             eval(code)(
                 function(){blockd3.running(true);},
                 function(){blockd3.running(false);}
@@ -253,8 +254,9 @@ var run_js = blockd3.run_js = function() {
  */
 var backup_blocks = blockd3.backup_blocks = function() {
     if ('localStorage' in window) {
-        var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-        window.localStorage.setItem('blocks', Blockly.Xml.domToText(xml));
+        var xml = blockd3.Blockly.Xml.workspaceToDom(
+            blockd3.Blockly.mainWorkspace);
+        window.localStorage.setItem('blocks', blockd3.Blockly.Xml.domToText(xml));
     }
 };
 
@@ -268,7 +270,7 @@ var restore_blocks = blockd3.restore_blocks = function() {
         if(!_.isUndefined(wls.blocks) && wls.blocks != "<xml></xml>") {
             xml2blocks(wls.blocks);
         }else{
-            $.get(Blockly._blockd3_lib + "../../blockml/simplest.xml", function(data, textStatus, jqXHR){
+            $.get(blockd3.Blockly._blockd3_lib + "../../blockml/simplest.xml", function(data, textStatus, jqXHR){
                 xml2blocks(jqXHR.responseText);
             });
         }
@@ -276,18 +278,18 @@ var restore_blocks = blockd3.restore_blocks = function() {
 };
 
 var xml2blocks = blockd3.xml2blocks = function(xml){
-    return Blockly.Xml.domToWorkspace(
-        Blockly.mainWorkspace,
-        Blockly.Xml.textToDom(xml)
+    return blockd3.Blockly.Xml.domToWorkspace(
+        blockd3.Blockly.mainWorkspace,
+        blockd3.Blockly.Xml.textToDom(xml)
     );
-}
+};
 
 /**
  * Save blocks to local file.
  */
 var save = blockd3.save = function() {
-    var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace),
-        data = Blockly.Xml.domToText(xml);
+    var xml = blockd3.Blockly.Xml.workspaceToDom(blockd3.Blockly.mainWorkspace),
+        data = blockd3.Blockly.Xml.domToText(xml);
 
     // Store data in blob.
     var builder = new BlobBuilder();
@@ -313,18 +315,18 @@ var load = blockd3.load = function(evt) {
         // 2 == FileReader.DONE
         if (target.readyState == 2) {
             try {
-                xml = Blockly.Xml.textToDom(target.result);
+                xml = blockd3.Blockly.Xml.textToDom(target.result);
             } catch (e) {
                 lert('Error parsing XML:\n' + e);
                 return;
             }
         
-            var count = Blockly.mainWorkspace.getAllBlocks().length;
+            var count = blockd3.Blockly.mainWorkspace.getAllBlocks().length;
             if (count && confirm(
                     'Replace existing blocks?\n"Cancel" will merge.')) {
-                        Blockly.mainWorkspace.clear();
+                        blockd3.Blockly.mainWorkspace.clear();
                     }
-                Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+                blockd3.Blockly.Xml.domToWorkspace(blockd3.Blockly.mainWorkspace, xml);
             }
             // Reset value of input after loading because Chrome will not fire
             // a 'change' event if the same file is loaded again.
@@ -339,10 +341,10 @@ var load = blockd3.load = function(evt) {
  * Discard all blocks from the workspace.
  */
 var discard = blockd3.discard = function() {
-  var count = Blockly.mainWorkspace.getAllBlocks().length;
+  var count = blockd3.Blockly.mainWorkspace.getAllBlocks().length;
   if (count < 2 || window.confirm(
       'Delete all ' + count + ' blocks?')) {
-          Blockly.mainWorkspace.clear();
+          blockd3.Blockly.mainWorkspace.clear();
           render_content();
       }
 };
@@ -386,4 +388,4 @@ var change_theme = blockd3.change_theme = function(evt){
     $("#theme_link").attr("href", new_theme);
 };
 
-});
+}).call(this, CodeMirror, $, _, d3, Tour, BlobBuilder, FileReader, saveAs);
