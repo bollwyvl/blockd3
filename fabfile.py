@@ -212,7 +212,7 @@ def serve():
     """
     Mostly deprecated, but useful for "full stack" debugging
     """
-    import SimpleHTTPServers
+    import SimpleHTTPServer
     import SocketServer
 
     PORT = 8000
