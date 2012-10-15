@@ -1,11 +1,7 @@
 body{
-    background-color: #333;
     padding-top: 45px;
     overflow-y: scroll;
     overflow-x: hidden;
-}
-a{
-    color: steelblue;
 }
 
 .brand{
@@ -21,6 +17,10 @@ a{
     width: 48px;
 }
 
+#container{
+    position: relative;
+}
+
 #content_d3{
     overflow: auto;
     text-align: center;
@@ -31,8 +31,9 @@ a{
 }
 
 #panes .pane, #content_d3{
-    background-color: #eee;
     border-radius: 2px;
+    margin:5px;
+    position: relative;
 }
 
 #navbar #stop{
@@ -41,11 +42,8 @@ a{
 
 #panes h2{
     position: absolute;
-    float: right;
-    height: 100px;
-    margin-top: 72%;
-    margin-left: 32%;
-
+    bottom: 10px;
+    right: 10px;
     
     -webkit-user-select: none; /* Chrome/Safari */        
     -moz-user-select: none; /* Firefox */
@@ -54,6 +52,9 @@ a{
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     user-select: none;
+}
+
+#panes .half_height h2{
 }
 
 #panes h2, #logo, .transparent{
@@ -78,16 +79,6 @@ a{
     opacity: 0.2;
 }
 
-#panes .half_height h2{
-    height: 100px;
-    margin-top:30%;
-    margin-left: 35%;
-}
-
-#panes #content_d3 h2{
-    margin-left: 42%;    
-}
-
 #content_xml{
     display: none;
     text-align: center;
@@ -102,10 +93,10 @@ iframe{
     height: 100%;
     border-style: none;
 }
-footer{
+footer.well{
     text-align: center;
-    color: #fff;
-    background-color: #333;
+    padding: 0;
+    margin:0;
 }
 footer p{
     margin: 0 5px;
@@ -117,9 +108,6 @@ footer p{
 
 #navbar{
     position: fixed;
-}
-#navbar .active{
-    border-bottom: solid 2px steelblue;
 }
 
 #file_form{
@@ -143,6 +131,14 @@ footer p{
 #navbar .btn, #navbar .btn-group{
     display: inline-block;
     vertical-align:middle;
+          padding: 5px;
+          display:inline-block;
+}
+
+
+#actions .btn, #actions .btn-grp{
+    padding: 5px;
+    display:inline-block;
 }
 
 #gh_ribbon{
@@ -151,10 +147,6 @@ footer p{
     left:0;
     
 }
-#actions{
-    margin-right:50px;
-}
-
 .resize{
     .float:left;
 }

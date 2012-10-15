@@ -78,8 +78,9 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     // Make the 'Blocks' tab line up with the toolbox.
     if (Blockly.Toolbox) {
         $(window).on('resize', function() {
-            var fullh = $(window).height() - navbar.height() - footer.height() - 50;
-            $('.full_height').css("height", fullh);
+            var fullh = $(window).height() - (
+                navbar.height() + footer.height());
+            $('.full_height').css("height", fullh - 12);
             $('.half_height, .CodeMirror').css("height", (fullh - 24)/2);
                     
         });
@@ -369,10 +370,20 @@ var init_editors = blockd3.initialize_editors = function(){
 
 
 var change_theme = blockd3.change_theme = function(evt){
-    var new_theme = $(evt.target).data("blockd3-theme");
-    console.log(new_theme);
-    $("#theme_link").attr("href", 
-        "lib/swatch/bootswatch." + new_theme + ".min.css");
+    var tgt = $(evt.target),
+        new_theme = tgt.data("blockd3-theme");
+    
+    if(_.isUndefined(new_theme)){
+        new_theme = "";
+    }else{
+        new_theme = "lib/swatch/bootswatch." + new_theme + ".min.css";
+    }
+    
+    $("#change_theme .active").removeClass("active");
+    
+    tgt.parent().addClass("active");
+    
+    $("#theme_link").attr("href", new_theme);
 };
 
 });
