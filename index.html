@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>blockd3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,163 +8,173 @@
     <meta name="author" content="nicholas bollweg">
 
     <link rel="stylesheet" href="./css/blockd3-min.css"><!--STYLES###-->
-    
+
     <link rel="stylesheet" id="theme_link">
-    
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    
+
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
-
-    <div id="navbar" class="navbar navbar-fixed-top">
-        
-      <div class="navbar-inner">
-            <ul class="nav pull-right">
-              <li><a href="http://github.com/bollwyvl/blockd3">
-                <i class="icon-github-sign"></i> 
-                <span class="hidden-phone">About</span>
-            </a></li>
-            </ul>
-        <div class="container">
-          <a class="brand" href="#">
-              <img id="logo" src="./svg/logo.svg"/>
-              <span class="hidden-phone">blockd3</span></a>
-          <div class="">
-            <ul id="tabs" class="nav">
-              <li class="active"><a href="#blockly">
-                  <i class="icon-picture"></i>
-                  <span class="hidden-phone">Blockly</span>
-              </a></li>
-              <li><a href="#javascript">
-                <i class="icon-align-left"></i> 
-                <span class="hidden-phone">JavaScript</span>
-                </a></li>
-              <li><a href="#xml">
-                <i class="icon-tags"></i> 
-                <span class="hidden-phone">XML</span>
-                </a></li>
-            </ul>
-            <div id="actions" class="nav pull-right">
+<body>
+<div id="navbar" class="navbar navbar-fixed-top">
+<div class="navbar-inner">
+    <ul class="nav pull-right">
+        <li><a href="http://github.com/bollwyvl/blockd3">
+            <i class="icon-github-sign"></i>
+            <span class="hidden-phone">About</span>
+        </a></li>
+    </ul>
+    <div class="container">
+        <a class="brand" href="#">
+            <img id="logo" src="./svg/logo.svg"/>
+            <span class="hidden-phone">blockd3</span></a>
+            <div class="">
+                <ul id="tabs" class="nav">
+                    <li class="active"><a href="#blockly">
+                        <i class="icon-picture"></i>
+                        <span class="hidden-phone">Blockly</span>
+                    </a></li>
+                    <li><a href="#javascript">
+                        <i class="icon-align-left"></i>
+                        <span class="hidden-phone">JavaScript</span>
+                    </a></li>
+                    <li><a href="#xml">
+                        <i class="icon-tags"></i>
+                        <span class="hidden-phone">XML</span>
+                    </a></li>
+                </ul>
+                <div id="actions" class="nav pull-right">
                     <a id="run" class="btn btn-success" href="#run">
-                        <i class="icon-bolt"></i> 
+                        <i class="icon-bolt"></i>
                         <span class="hidden-phone">Run</span>
                     </a>
                     <a id="stop" class="btn btn-danger" href="#stop">
-                        <i class="icon-off"></i> 
+                        <i class="icon-off"></i>
                         <span class="hidden-phone">Stop</span>
                     </a>
-                    
+
                     <div class="btn-group">
-                      <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-                        <i class="icon-hdd"></i>
-                        <span class="hidden-phone">Save</span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a id="save_xml" href="#">
-                            To XML File
-                        </a></li>
-                      </ul>
+                        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                            <i class="icon-hdd"></i>
+                            <span class="hidden-phone">Save</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="save_xml" href="#">To XML File</a></li>
+                        </ul>
                     </div>
                     <a id="load_xml "href="#load_xml" class="btn btn-primary">
                         <i class="icon-folder-open"></i>
                         <span class="hidden-phone">Load</span>
                     </a>
                     <form id="file_form">
-                    <input type="file" id="load"/>
+                        <input type="file" id="load"/>
                     </form>
                     <a id="show_alerts" class="btn btn-warning" href="#alerts">
-                        <i class="icon-exclamation-sign"></i> 
+                        <i class="icon-exclamation-sign"></i>
                         <span class="hidden-phone">Alerts</span>
                     </a>
-                    
+
                     <div class="btn-group">
-                      <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#themes">
-                        <i class="icon-wrench"></i>
-                        <span class="hidden-phone">Options</span>
-                      </a>
-                      <ul class="dropdown-menu" id="change_theme">
-                        <li class="nav-header">Themes</li>
-                        <li>
-                            <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
-                            <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a>
-                            <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a>
-                            <a href="#theme" data-blockd3-theme="Journal">Journal</a>
-                            <a href="#theme" data-blockd3-theme="Readable">Readable</a>
-                            <a href="#theme" data-blockd3-theme="Slate">Slate</a>
-                            <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a>
-                            <a href="#theme" data-blockd3-theme="Spruce">Spruce</a>
-                            <a href="#theme" data-blockd3-theme="Superhero">Superhero</a>
-                            <a href="#theme" data-blockd3-theme="United">United</a>
-                            <a href="#theme" data-blockd3-theme="simplex">simplex</a>
-                        </li>
-                      </ul>
+                        <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#themes">
+                            <i class="icon-wrench"></i>
+                            <span class="hidden-phone">Options</span>
+                        </a>
+                        
+                        <ul class="dropdown-menu" id="change_theme">
+                            <li class="nav-header">Themes</li>
+                            <li class="active">
+                                <a href="#theme" data-blockd3-theme="">
+                                    <i>Default</i></a>
+                            </li>
+
+                            <li>
+                                <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
+                            </li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Journal">Journal</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Readable">Readable</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Slate">Slate</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Spruce">Spruce</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="Superhero">Superhero</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="United">United</a></li>
+                            <li>
+                            <a href="#theme" data-blockd3-theme="simplex">simplex</a></li>
+                        </ul>
                     </div>
-                    
-                    <a id="discard" href="#discard" class="btn btn-danger"><i class="icon-trash"></i> 
+
+                    <a id="discard" href="#discard" class="btn btn-danger">
+                        <i class="icon-trash"></i>
                         <span class="hidden-phone">Discard</span>
                     </a>
                 </div>
-          </div><!--/.nav-collapse -->
+            </div><!--/.nav-collapse -->
         </div>
-      </div>
+    </div>
+</div>
+
+
+<footer class="navbar-fixed-bottom navbar-inverse hidden-phone">
+<div class="navbar-inner">
+    <p>
+    Built with <a href="http://d3js.org">d3</a>, <a href="https://github.com/bollwyvl/blockd3">b4</a>, <a href="https://github.com/twitter/bootstrap">bootstrap</a>, <a href="https://github.com/marijnh/CodeMirror">CodeMirror</a> &amp; <a href="http://code.google.com/p/blockly">Blockly</a>. blockd3 is Free Software licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Public License 2.0</a>
+    <a class="nav pull-right" target="_blank" href="http://travis-ci.org/bollwyvl/blockd3">
+    <img src="//secure.travis-ci.org/bollwyvl/blockd3.png"/>
+    </a>
+    </p>
+</div>
+</footer>
+
+
+<div id="container" class="container-fluid" style="display:none;">
+<!-- Example row of columns -->
+<div id="panes" class="row-fluid">
+    <div id="content_blockly" class="span6 pane full_height">
+        <a name="blockly"></a>
+        <h2>Blockly</h2>
+    </div>
+    <div id="content_d3" class="span6 half_height well">
+        <a name="d3"></a>
+        <h2>SVG</h2>
+    </div>
+    <div id="content_javascript" class="span6 pane half_height well">
+        <h2>JavaScript</h2>
+        <textarea id="textarea_javascript"></textarea>
     </div>
 
-    
-    <div id="container" class="container-fluid" style="display:none;">
+    <div id="content_xml">
+        <a name="xml"></a>
+        <textarea id="textarea_xml"></textarea>
+    </div>
+</div>
 
-      <!-- Example row of columns -->
-      <div id="panes" class="row-fluid">
-          <div id="content_blockly" class="span6 pane full_height">
-              <a name="blockly"></a>
-              <h2>Blockly</h2>
-          </div>
-          <div id="content_d3" class="span6 half_height">
-              <a name="d3"></a>
-              <h2>SVG</h2>
-          </div>
-          <div id="content_javascript" class="span6 pane half_height">
-              <h2>JavaScript</h2>
-            <textarea id="textarea_javascript"></textarea>
-          </div>
+<div id="alert" class="alert">
+    <button type="button" class="close">×</button>
+    <h3>Alert History</h3>
+    <ul></ul>
+</div>
+</div> <!-- /container -->
 
-          <div id="content_xml">
-            <a name="xml"></a>
-            <textarea id="textarea_xml"></textarea>
-          </div>
-        </div>
-        <div id="alert" class="alert">
-          <button type="button" class="close">×</button>
-          <h3>Alert History</h3>
-          <ul>
-              
-          </ul>
-        </div>
-        
-      <footer class="navbar-fixed-bottom">
-        <p>
-           Built with <a href="http://d3js.org">d3</a>, <a href="https://github.com/bollwyvl/blockd3">b4</a>, <a href="https://github.com/twitter/bootstrap">bootstrap</a>, <a href="https://github.com/marijnh/CodeMirror">CodeMirror</a> &amp; <a href="http://code.google.com/p/blockly">Blockly</a>. blockd3 is Free Software licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Public License 2.0</a>
-           <a class="nav pull-right" target="_blank" href="http://travis-ci.org/bollwyvl/blockd3">
-               <img src="//secure.travis-ci.org/bollwyvl/blockd3.png"/>
-           </a>
-        </p>
-      </footer>
-    </div> <!-- /container -->
-    
-    
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="./js/blockd3-min.js"></script><!--SCRIPTS###-->
-    
-  </body>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript"
+            src="./js/blockd3-min.js"></script><!--SCRIPTS###-->
+
+</body>
 </html>
