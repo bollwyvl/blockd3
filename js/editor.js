@@ -1,5 +1,5 @@
 $(function(){
-
+"use strict";
 $('<iframe id="content_blocks" src="./frame.html"></iframe>')
     .appendTo('#content_blockly');
 

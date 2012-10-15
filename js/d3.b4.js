@@ -1,5 +1,5 @@
 (function(b4){
-    
+"use strict";
 var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
     D3_TYPES = {
         SELECTION: {
