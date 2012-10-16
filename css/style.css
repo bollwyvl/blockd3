@@ -23,6 +23,7 @@ body{
 #content_d3{
     overflow: auto;
     text-align: center;
+    background-color: #fff;
 }
 
 #content_d3 svg{

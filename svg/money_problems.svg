@@ -53,18 +53,18 @@
      transform="translate(0,-752.36217)"
      id="layer1">
     <text
-       x="67.557159"
+       x="112.21365"
        y="905.61676"
        id="y_axis_label"
        xml:space="preserve"
-       style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:Gill Sans"
+       style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        y_axis_label="text5256"
        sodipodi:linespacing="125%"
        class="y_axis_label"><tspan
-         x="67.557159"
+         x="112.21365"
          y="905.61676"
          id="tspan5258"
-         style="font-size:16.70781326000000178px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;-inkscape-font-specification:Gill Sans">Problems</tspan></text>
+         style="font-size:16.70781326px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Sans;-inkscape-font-specification:Sans">Problems</tspan></text>
     <text
        x="234.09511"
        y="1031.3031"
