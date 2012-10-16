@@ -177,7 +177,7 @@ var exit_xml = blockd3.exit_xml = function(){
     }
     if (xmlDom) {
         blockd3.Blockly.mainWorkspace.clear();
-        blockd3.Blockly.domToWorkspace(blockd3.Blockly.mainWorkspace, xmlDom);
+        blockd3.Blockly.Xml.domToWorkspace(blockd3.Blockly.mainWorkspace, xmlDom);
     }
 };
     
