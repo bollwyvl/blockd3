@@ -30,22 +30,9 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
     },
 
     /*
-    linear - the identity function, t.
     poly(k) - raises t to the specified power k (e.g., 3).
-    quad - equivalent to poly(2).
-    cubic - equivalent to poly(3).
-    sin - applies the trigonometric function sin.
-    exp - raises 2 to a power based on t.
-    circle - the quarter circle.
     elastic(a, p) - simulates an elastic band; may extend slightly beyond 0 and 1.
     back(s) - simulates backing into a parking space.
-    bounce - simulates a bouncy collision.
-    These built-in types may be extended using a variety of modes:
-
-    in - the identity function.
-    out - reverses the easing direction to [1,0].
-    in-out - copies and mirrors the easing function from [0,.5] and [.5,1].
-    out-in - copies and mirrors the easing function from [1,.5] and [.5,0].
     */
     EASE = {
         id: "EASE",
@@ -54,7 +41,11 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
             .init([
                 ["the identity function, t", "linear"],
                 ["the trigonometric function sin.", "sin"],
-                ["raising 2 to a power based on t.", "exp"]
+                ["raising 2 to a power based on t.", "exp"],
+                ["simulating a bouncy collision", "bounce"],
+                ["raising to the second power", "quad"],
+                ["raising to the third power", "cubic"],
+                ["the quarter circle", "circle"]
             ])
     },
     EASE_EXTRA = {
