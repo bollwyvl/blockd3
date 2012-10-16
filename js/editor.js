@@ -375,7 +375,7 @@ var change_theme = blockd3.change_theme = function(evt){
     var tgt = $(evt.target),
         new_theme = tgt.data("blockd3-theme");
     
-    if(_.isUndefined(new_theme)){
+    if(_.isUndefined(new_theme) || !new_theme){
         new_theme = "";
     }else{
         new_theme = "lib/swatch/bootswatch." + new_theme + ".min.css";
