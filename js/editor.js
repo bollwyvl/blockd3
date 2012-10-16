@@ -8,7 +8,7 @@ $('<iframe id="content_blocks" src="./frame.html"></iframe>')
 
 var VERSION = [0, 1, 0];
 
-var blockd3 = this.blockd3 = function(){},
+var blockd3 = window.blockd3 = function(){},
     DEBUG = blockd3.debug = false;
 
 blockd3.VERSION = VERSION.join(".");

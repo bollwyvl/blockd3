@@ -66,9 +66,11 @@ def dev():
 @task
 def clean():
     proj()
-    sh.rm("-r", sh.glob("dist/*"))
-
-
+    print ". cleaning up build and dist"
+    try:
+        sh.rm("-r", sh.glob("dist/*"), sh.glob("build/*"))
+    except:
+        print ".. already clean"
 @task
 def deploy():
     build()
