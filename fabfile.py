@@ -164,16 +164,15 @@ def minify():
 
     for html_file in sh.glob("*.html"):
         print ".. analyzing %s" % html_file
+        anything = re.compile(".+")
         html = open(html_file).read()
         soup = BeautifulSoup(html)
 
-        for link in soup.find_all('link'):
-            if link.get("href", None) is not None:
-                sources["css"] += [link["href"]]
+        for link in soup.find_all("link", rel="stylesheet", href=anything):
+            sources["css"] += [link["href"]]
 
-        for script in soup.find_all("script"):
-            if script.get("src", None) is not None:
-                sources["js"] += [script["src"]]
+        for script in soup.find_all("script", src=anything):
+            sources["js"] += [script["src"]]
 
         new_file = open(os.path.join("dist", html_file), "w")
 

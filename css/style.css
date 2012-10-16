@@ -56,7 +56,7 @@ body{
 #panes .half_height h2{
 }
 
-#panes h2, #logo, .transparent{
+#panes h2, .transparent{
     /* Theoretically for IE 8 & 9 (more valid) */	
     /* ...but not required as filter works too */
     /* should come BEFORE filter */
