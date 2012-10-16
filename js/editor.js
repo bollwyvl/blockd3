@@ -84,7 +84,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
                 navbar.height() + footer.height());
             $('.full_height').css("height", fullh - 12);
             $('.half_height, .CodeMirror').css("height", (fullh - 24)/2);
-                    
+            $("#container").css("margin-top", navbar.height());
         });
     }
 
@@ -386,6 +386,8 @@ var change_theme = blockd3.change_theme = function(evt){
     tgt.parent().addClass("active");
     
     $("#theme_link").attr("href", new_theme);
+
+    $(window).resize();
 };
 
 }).call(this, CodeMirror, $, _, d3, Tour, BlobBuilder, FileReader, saveAs);

@@ -12,6 +12,7 @@ also, the dependency on node.js is more exotic to me than python. ymmv.
 import os
 from pprint import pprint
 import json
+import re
 
 from fabric.api import task
 
@@ -92,14 +93,19 @@ def deploy():
 @task
 def swatch():
     proj()
+
     print(". rocking the bootswatch plunder")
+    
     themes = json.loads(str(sh.curl("http://api.bootswatch.com")))["themes"]
     for theme in themes:
         print(".. getting %s" % theme["name"])
         open(
             "lib/swatch/bootswatch.%s.min.css" % theme["name"], "w"
         ).write(
-            str(sh.curl(theme["css-min"]))
+            re.sub(
+                r'background.*glyphicons[^;]*;',
+                "",
+                str(sh.curl(theme["css-min"])))
         )
 
 
