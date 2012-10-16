@@ -1,4 +1,4 @@
-(function(b4){
+(function(b4, $, _){
 "use strict";
 var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
     SELECTION = {
@@ -60,6 +60,20 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
                 ["copying and mirroring from [1,.5] and [.5,0].", "-out-in"]
             ])
     },
+    ID = {
+        id: "ID",
+        field: b4.fields.choices("ID")
+            .title("modified by")
+            .init(function(){
+                return _($("svg *"))
+                    .chain()
+                    .pluck("id")
+                    .compact()
+                    .map(function(id){ return [id, id]; })
+                    .value() || [["none", "none"]];
+                }
+            )
+    },
     ATTR_PROP = {
         id: String,
         field: b4.input("ATTR_PROP")
@@ -102,7 +116,7 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
             .nextStatement(true)
             .title("")
     };
-    
+
 
 // set up a base configuration
 var d3_mold = b4.block()
@@ -283,6 +297,12 @@ svg_mold.clone("element")
     .appendTitle(["SVG element", ELEMENT])
     .code("'<%= $.title('ELEMENT') %>'")
     .done();
+  
+svg_mold.clone("id")
+    .tooltip("an element with an id")
+    .appendTitle(["element with id", ID])
+    .code("'#<%= $.title('ID') %>'")
+    .done();
 
 
-})(b4);
+})(b4, $, _);
