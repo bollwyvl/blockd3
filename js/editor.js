@@ -81,9 +81,10 @@ var init_blockly = blockd3.init_blockly = function(Blockly) {
     if (blockd3.Blockly.Toolbox) {
         $(window).on('resize', function() {
             var fullh = $(window).height() - (
-                navbar.height() + footer.height());
-            $('.full_height').css("height", fullh - 12);
-            $('.half_height, .CodeMirror').css("height", (fullh - 24)/2);
+                navbar.height() + footer.height()
+            );
+            $('.full_height').css("height", fullh - 20);
+            $('.half_height, .CodeMirror').css("height", (fullh - 380));
             $("#container").css("margin-top", navbar.height());
         });
     }

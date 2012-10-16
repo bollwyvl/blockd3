@@ -21,7 +21,7 @@ body{
 }
 
 #content_d3{
-    overflow: auto;
+    overflow: hidden;
     text-align: center;
     background-color: #fff;
 }
@@ -82,6 +82,9 @@ body{
 #content_xml{
     display: none;
     text-align: center;
+}
+#content_javascript {
+    padding:0;
 }
 
 #content_javascript .CodeMirror pre{
