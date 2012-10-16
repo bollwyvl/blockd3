@@ -28,6 +28,47 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
                 ["path", "path"]
             ])
     },
+
+    /*
+    linear - the identity function, t.
+    poly(k) - raises t to the specified power k (e.g., 3).
+    quad - equivalent to poly(2).
+    cubic - equivalent to poly(3).
+    sin - applies the trigonometric function sin.
+    exp - raises 2 to a power based on t.
+    circle - the quarter circle.
+    elastic(a, p) - simulates an elastic band; may extend slightly beyond 0 and 1.
+    back(s) - simulates backing into a parking space.
+    bounce - simulates a bouncy collision.
+    These built-in types may be extended using a variety of modes:
+
+    in - the identity function.
+    out - reverses the easing direction to [1,0].
+    in-out - copies and mirrors the easing function from [0,.5] and [.5,1].
+    out-in - copies and mirrors the easing function from [1,.5] and [.5,0].
+    */
+    EASE = {
+        id: "EASE",
+        field: b4.fields.choices("EASE")
+            .title("ease by")
+            .init([
+                ["the identity function, t", "linear"],
+                ["the trigonometric function sin.", "sin"],
+                ["raising 2 to a power based on t.", "exp"]
+            ])
+    },
+    EASE_EXTRA = {
+        id: "EASE_EXTRA",
+        field: b4.fields.choices("EASE_EXTRA")
+            .title("modified by")
+            .init([
+                ["nothing", ""],
+                ["the identity function", "-in"],
+                ["reversing the easing direction to [1,0].", "-out"],
+                ["copying and mirroring from [0,.5] and [.5,1].", "-in-out"],
+                ["copying and mirroring from [1,.5] and [.5,0].", "-out-in"]
+            ])
+    },
     ATTR_PROP = {
         id: String,
         field: b4.input("ATTR_PROP")
@@ -68,7 +109,7 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
         id: true,
         field: b4.input("CHAIN")
             .nextStatement(true)
-            .title("and then")
+            .title("")
     };
     
 
@@ -131,7 +172,35 @@ select_mold.clone("enter")
             ".enter()"])
     .done();
 
+var trans_mold = d3_mold.clone()
+    .namespace("d3_")
+    .category("d3 animation")
+    .previousStatement(true)
+    .helpUrlTemplate(D3_WIKI +"Transitions#wiki-<%= block.id() %>");
+    
+trans_mold.clone("transition")
+    .tooltip("Animate")
+    .appendTitle("animate the change of")
+    .appendInput(CHAIN)
+    .code("\n.transition()<%= $.code('CHAIN') %>")
+    .done();
+    
+trans_mold.clone("delay")
+    .tooltip("length of the animation")
+    .appendTitle("over")
+    .appendInput(VALUE)
+    .nextStatement(true)
+    .code("\n\t.delay(<%= $.code('VALUE') %>)")
+    .done();
 
+
+trans_mold.clone("ease")
+    .tooltip("ease the animation")
+    .appendTitle(["ease", EASE, EASE_EXTRA])
+    .nextStatement(true)
+    .code("\n\t.ease('<%= $.title('EASE') %><%= $.title('EASE_EXTRA') %>')")
+    .done();
+    
 
 var manip_mold = d3_mold.clone()
         .category("d3 manipulation")
@@ -144,7 +213,7 @@ manip_mold.clone("style")
     .appendTitle("set d3.style")
     .appendInput([STYLE_PROP,
         VALUE])
-    .code([".style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"])
+    .code(["\n\t.style(<%= $.code('STYLE_PROP') %>, <%= $.code('VALUE') %>)"])
     .done();
     
 
@@ -153,14 +222,14 @@ manip_mold.clone("attr")
     .appendTitle("d3.attr")
     .appendInput([ATTR_PROP,
         VALUE])
-    .code(".attr(<%= $.code('ATTR_PROP') %>, <%= $.code('VALUE') %>)")
+    .code("\n\t.attr(<%= $.code('ATTR_PROP') %>, <%= $.code('VALUE') %>)")
     .done();
     
 manip_mold.clone("data")
     .tooltip("Set the data for a selection")
     .appendTitle("d3.data")
     .appendInput(VALUE)
-    .code([".data(<%= $.code('VALUE') %>)"])
+    .code(["\n\t.data(<%= $.code('VALUE') %>)"])
     .done();
 
 manip_mold.clone("classed")
@@ -168,7 +237,7 @@ manip_mold.clone("classed")
     .appendTitle("d3.class")
     .appendInput([KLASS,
         VALUE])
-    .code(".classed(<%= $.code('KLASS') %>, <%= $.code('VALUE') %>)")
+    .code("\n\t.classed(<%= $.code('KLASS') %>, <%= $.code('VALUE') %>)")
     .done();
     
 manip_mold.clone("property")
@@ -176,21 +245,21 @@ manip_mold.clone("property")
     .appendTitle("d3.property")
     .appendInput([PROP,
         VALUE])
-    .code(".property(<%= $.code('PROP') %>, <%= $.code('VALUE') %>)")
+    .code("\n\t.property(<%= $.code('PROP') %>, <%= $.code('VALUE') %>)")
     .done();
 
 manip_mold.clone("text")
     .tooltip("get or set text")
     .appendTitle("d3.text")
     .appendInput([VALUE])
-    .code(".text(<%= $.code('VALUE') %>)")
+    .code("\n\t.text(<%= $.code('VALUE') %>)")
     .done();
     
 manip_mold.clone("append")
     .tooltip("get or set html")
     .appendTitle("d3.append")
     .appendInput([ENTITY])
-    .code(".append(<%= $.code('ENTITY') %>)")
+    .code("\n\t.append(<%= $.code('ENTITY') %>)")
     .done();
 
 manip_mold.clone("insert")
@@ -206,7 +275,7 @@ manip_mold.clone("remove")
     .appendTitle("d3.remove")
     .appendInput([PARENT,
         ENTITY])
-    .code(".remove()")
+    .code("\n\t.remove()")
     .done();
     
     
@@ -223,5 +292,6 @@ svg_mold.clone("element")
     .appendTitle(["SVG element", ELEMENT])
     .code("'<%= $.title('ELEMENT') %>'")
     .done();
+
 
 })(b4);
