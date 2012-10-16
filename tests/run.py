@@ -32,22 +32,11 @@ class Blockd3GhostTest(GhostTestCase):
     def test_open(self):
         """
         Test that the page loads
-        And that once rectangles show up, they are red.
         """
         page, resources = self.ghost.open(base_url)
         self.assertEqual(page.url, base_url)
         
         self.ghost.click("#run")
-        
-        self.ghost.wait_for_selector("svg rect")
-        
-        result, resources = self.ghost.evaluate("""
-            d3.select("svg")
-                .selectAll("rect")
-                .style("fill")
-        """)
-        print result
-        self.assertEqual(result, "#ff0000")
 
 if __name__ == "__main__":
     unittest.main()
