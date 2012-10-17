@@ -65,10 +65,12 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
         field: b4.fields.choices("ID")
             .title("modified by")
             .init(function(){
-                var result;
-                
+                var result, svg;
                 if (b4.plugins && b4.plugins.d3.get_svg){
-                    result = _($(b4.plugins.d3.get_svg()).find("*"))
+                    svg = b4.plugins.d3.get_svg();
+                }
+                if(svg){
+                    result = _($(svg).find("*"))
                         .chain()
                         .pluck("id")
                         .compact()
@@ -76,7 +78,9 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
                         .value();
                 }
                 
-                return result || [["",""]];
+                result = result ? result : [["id","id"]];
+                
+                return result;
             })
     },
     ATTR_PROP = {
