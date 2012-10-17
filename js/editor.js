@@ -86,7 +86,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     
     b4.plugins.d3 = {
         get_svg: function(){
-            return $("svg").get(0)
+            return $("svg").get(0);
         }
     };
     
@@ -117,6 +117,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     
     $("#run").click(run_js);
     $("#change_theme a").click(change_theme);
+    $("a[href='#example']").click(load_example);
     $("#save_xml").click(save);
     $("#discard").click(discard);
 };
@@ -384,6 +385,15 @@ var init_editors = blockd3.initialize_editors = function(){
     });
 };
 
+var load_example = blockd3.load_example = function(evt){
+
+    var tgt = $(evt.target),
+        new_example = "blockml/" + tgt.data("blockd3-example") + ".xml";
+        
+    $.get(new_example, function(data, textStatus, jqXHR){
+        xml2blocks(jqXHR.responseText);
+    });
+};
 
 var change_theme = blockd3.change_theme = function(evt){
     var tgt = $(evt.target),
