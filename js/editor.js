@@ -26,6 +26,13 @@ var editors = blockd3.editors = {
 };
 
 $("#alert button.close").click(function(){alert_popup.fadeOut();});
+$("#show_about").click(function(){
+    $("#travis_placeholder")
+        .fadeOut()
+        .attr("src", "//secure.travis-ci.org/bollwyvl/blockd3.png")
+        .fadeIn();
+});
+
 
 $("#show_alerts").click(function(){
     $("#alert").fadeToggle();
