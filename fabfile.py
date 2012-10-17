@@ -180,6 +180,10 @@ def minify():
             tmpl = "<!--%s%s-->"
             t_start = html.find(tmpl % ("###", THING))
             t_end = html.find(tmpl % (THING, "###"))
+            
+            if -1 in (t_start, t_end):
+                return html
+            
             return "%s%s%s" % (
                 html[0:t_start],
                 new_thing,
@@ -217,8 +221,10 @@ def minify():
     ]
 
 def asset_links(asset_type):
-    template = """<li><a href="#%(thing)s" data-blockd3-%(thing)s="%(file)s">
-                %(text)s</a></li>"""
+    template = """
+                <li><a href="#%(thing)s" data-blockd3-%(thing)s="%(file)s">
+                    %(text)s
+                </a></li>"""
     cfg = dict(
         THEMES=dict(
             path="lib/swatch/*.css",
@@ -233,7 +239,6 @@ def asset_links(asset_type):
             sub_text=lambda x: " ".join(x.split("_")).title()
         )
     )[asset_type]
-    
     return "\n".join([
         template % {
             "file": cfg["sub_data"](path),
