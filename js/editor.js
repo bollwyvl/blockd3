@@ -37,8 +37,8 @@ var lert = blockd3.lert = function(text){
     $("#show_alerts").fadeIn();
 };
 
-blockd3.init = function(blockly){
-    init_blockly(blockly);
+blockd3.init = function(blockly, b4){
+    init_blockly(blockly, b4);
     init_editors();
     $('a[href="#' + mode() + '"]').click();
     $(window).resize();
@@ -47,7 +47,7 @@ blockd3.init = function(blockly){
 
     d3.xml(blockly._blockd3_lib + "../../svg/money_problems.svg", "image/svg+xml", function(xml){
         d3.select("#content_d3").node().appendChild(
-            document.importNode(xml.documentElement, true)
+            window.document.importNode(xml.documentElement, true)
         );
     });
     
@@ -74,8 +74,14 @@ blockd3.init = function(blockly){
     });
 };
     
-var init_blockly = blockd3.init_blockly = function(Blockly) {
+var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     blockd3.Blockly = Blockly;
+    
+    b4.plugins.d3 = {
+        get_svg: function(){
+            return $("svg").get(0)
+        }
+    };
     
     // Make the 'Blocks' tab line up with the toolbox.
     if (blockd3.Blockly.Toolbox) {

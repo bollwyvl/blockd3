@@ -65,14 +65,20 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
         field: b4.fields.choices("ID")
             .title("modified by")
             .init(function(){
-                return _($("svg *"))
-                    .chain()
-                    .pluck("id")
-                    .compact()
-                    .map(function(id){ return [id, id]; })
-                    .value() || [["none", "none"]];
+                var result;
+                
+                if (b4.plugins && b4.plugins.d3.get_svg){
+                    result = _($(b4.plugins.d3.get_svg()).find("*"))
+                        .chain()
+                        .pluck("id")
+                        .compact()
+                        .map(function(id){ return [id, id]; })
+                        .value();
                 }
-            )
+                console.log(result);
+
+                return result || [["",""]];
+            })
     },
     ATTR_PROP = {
         id: String,
