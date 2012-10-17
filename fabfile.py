@@ -189,7 +189,9 @@ def minify():
         replacements = dict(
             STYLES="""<link rel="stylesheet" href="./css/blockd3-min.css">""",
             SCRIPTS="""<script type="text/javascript"
-            src="./js/blockd3-min.js"></script>"""
+            src="./js/blockd3-min.js"></script>""",
+            THEMES=asset_links("THEMES"),
+            EXAMPLES=asset_links("EXAMPLES"),
         )
 
         for thing, new_thing in replacements.items():
@@ -214,7 +216,34 @@ def minify():
         for src in sources
     ]
 
-
+def asset_links(asset_type):
+    template = """<li><a href="#%(thing)s" data-blockd3-%(thing)s="%(file)s">
+                %(text)s</a></li>"""
+    cfg = dict(
+        THEMES=dict(
+            path="lib/swatch/*.css",
+            thing="theme",
+            sub_data=lambda x: x.split(".")[1],
+            sub_text=lambda x: x
+        ),
+        EXAMPLES=dict(
+            path="blockml/*.xml",
+            thing="example",
+            sub_data=lambda x: os.path.basename(x)[0:-4],
+            sub_text=lambda x: " ".join(x.split("_")).title()
+        )
+    )[asset_type]
+    
+    return "\n".join([
+        template % {
+            "file": cfg["sub_data"](path),
+            "thing": cfg["thing"],
+            "text": cfg["sub_text"](cfg["sub_data"](path))
+        }
+        for path in sh.glob(cfg["path"])
+    ])
+    
+@task
 def serve():
     """
     Mostly deprecated, but useful for "full stack" debugging
