@@ -84,8 +84,8 @@ blockd3.init = function(blockly, b4){
 var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     blockd3.Blockly = Blockly;
     
-    b4.plugins.d3 = {
-        get_svg: function(){
+    b4.plugins.blockd3 = {
+        get_selection: function(){
             return $("svg").get(0);
         }
     };

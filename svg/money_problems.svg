@@ -53,35 +53,35 @@
        height="126.19566"
        x="155.55333"
        y="864.97241"
-       
+       class="bar"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
        width="25.877802"
        height="87.115364"
        x="188.51672"
        y="904.05298"
-       
+       class="bar"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
        width="25.877802"
        height="55.856625"
        x="221.4801"
        y="935.31177"
-       
+       class="bar"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
        width="25.877802"
        height="86.745529"
        x="254.44353"
        y="904.42291"
-       
+       class="bar"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <rect
        width="25.877802"
        height="173.49635"
        x="287.40689"
        y="817.67206"
-       
+       class="bar"
        style="fill:#ff0000;fill-opacity:1;stroke:none" />
     <path
        d="m 149.88432,816.84647 0,180.32191"
