@@ -75,8 +75,7 @@ var D3_WIKI = "https://github.com/mbostock/d3/wiki/",
                         .map(function(id){ return [id, id]; })
                         .value();
                 }
-                console.log(result);
-
+                
                 return result || [["",""]];
             })
     },
