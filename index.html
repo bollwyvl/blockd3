@@ -22,12 +22,6 @@
 <body>
 <div id="navbar" class="navbar navbar-fixed-top">
 <div class="navbar-inner">
-    <ul class="nav pull-right">
-        <li><a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
-            <i class="icon-github-sign"></i>
-            <span class="hidden-phone">About</span>
-        </a></li>
-    </ul>
     <div class="container">
         <a class="brand" href="#">
             <img id="logo" src="./svg/logo.svg"/>
@@ -121,6 +115,10 @@
                         <i class="icon-trash"></i>
                         <span class="hidden-phone">Discard</span>
                     </a>
+                    <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
+                        <i class="icon-heart"></i>
+                        <span class="hidden-phone">About</span>
+                    </a>
                 </div>
             </div><!--/.nav-collapse -->
         </div>
@@ -130,49 +128,54 @@
 
 
 <div id="about" class="modal hide fade">
-    <div class="modal-header">
+    <div class="modal-header inverse">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>About blockd3</h3>
     </div>
     <div class="modal-body">
         <dl>
-          <dt>Contributors</dt>
+          <dt><i class="icon-beaker"></i> Contributors</dt>
           <dd>
             <ul>
-                <li><a href="https://github.com/bollwyvl" target="_blank" >bollwyvl</a></li>
-                <li><a href="https://github.com/qneutron" target="_blank" >qneutron</a></li>
+                <li><a href="//github.com/bollwyvl" target="_blank" >bollwyvl</a></li>
+                <li><a href="//github.com/qneutron" target="_blank" >qneutron</a></li>
             </ul>
           </dd>
-        </dl>
-        <dl>
-          <dt>Automated Testing</dt>
-          <dd><a href="http://travis-ci.org">Travis-CI</a> <a class="nav" target="_blank" href="http://travis-ci.org/bollwyvl/blockd3">
+          <dt><i class="icon-cogs"></i> Automated Testing</dt>
+          <dd><a href="//travis-ci.org">Travis-CI</a> <a class="nav" target="_blank" href="//travis-ci.org/bollwyvl/blockd3">
         <img id="travis_placeholder" src=""/>
         </a></dd>
-        </dl>
-        <dl>
-          <dt>Repository &amp; Hosting</dt>
-          <dd><a class="nav" target="_blank" href="http://github.com/bollwyvl/blockd3">
+          <dt><i class="icon-github-sign"></i> Repository &amp; Hosting</dt>
+          <dd>
+              <a class="nav" target="_blank" href="//github.com/bollwyvl/blockd3">
         GitHub
-        </a></dd>
-        </dl>
-
+        </a>
+        </dd>
+        <dt><i class="icon-bullhorn"></i> Built With</dt> 
+        <dd>
+            <ul>
+                <li><a href="//code.google.com/p/blockly">Blockly</a></li>
+                <li><a href="http://d3js.org">d3</a></li>
+                <li><a href="//github.com/bollwyvl/blockd3">b4</a></li>
+                <li><a href="//github.com/twitter/bootstrap">bootstrap</a></li>
+                <li>
+                    <a href="//github.com/marijnh/CodeMirror">CodeMirror</a>
+                </li>
+                <li>
+                    <a class="nav" href="//bootswatch.com/">Bootswatch</a>
+                </li>
+        </dd>
+        <dt><i class=" icon-legal"></i> LEGAL</dt>
+        <dd>blockd3 is Free Software licensed under the 
+            <a href="//www.apache.org/licenses/LICENSE-2.0.html">
+                Apache Public License 2.0
+            </a>
+        </dd>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn">Close</a>
+        <a href="#" class="btn" data-dismiss="modal">Back to blockd3</a>
     </div>
 </div>
-
-
-
-<footer class="navbar-fixed-bottom navbar-inverse hidden-phone">
-<div class="navbar-inner">
-    <p>
-    <i class="icon-bullhorn"> </i>Built with <a href="http://d3js.org">d3</a>, <a href="//github.com/bollwyvl/blockd3">b4</a>, <a href="//github.com/twitter/bootstrap">bootstrap</a>, <a href="//github.com/marijnh/CodeMirror">CodeMirror</a> &amp; <a href="//code.google.com/p/blockly">Blockly</a>. <i class=" icon-legal"></i> blockd3 is Free Software licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Public License 2.0</a>
-    </p>
-</div>
-</footer>
-
 
 <div id="container" class="container-fluid" style="display:none;">
 <!-- Example row of columns -->
