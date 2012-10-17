@@ -30,12 +30,6 @@
 <body>
 <div id="navbar" class="navbar navbar-fixed-top">
 <div class="navbar-inner">
-    <ul class="nav pull-right">
-        <li><a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
-            <i class="icon-github-sign"></i>
-            <span class="hidden-phone">About</span>
-        </a></li>
-    </ul>
     <div class="container">
         <a class="brand" href="#">
             <img id="logo" src="./svg/logo.svg"/>
@@ -129,6 +123,10 @@
                         <i class="icon-trash"></i>
                         <span class="hidden-phone">Discard</span>
                     </a>
+                    <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
+                        <i class="icon-github-sign"></i>
+                        <span class="hidden-phone">About</span>
+                    </a>
                 </div>
             </div><!--/.nav-collapse -->
         </div>
@@ -167,7 +165,7 @@
 
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn">Close</a>
+        <a href="#" class="btn" data-dismiss="modal">Back to blockd3</a>
     </div>
 </div>
 
