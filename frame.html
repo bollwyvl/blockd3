@@ -27,7 +27,7 @@
 
         if (window.parent.blockd3) {
             // Let the top-level application know that Blockly is ready.
-            window.parent.blockd3.init(Blockly);
+            window.parent.blockd3.init(Blockly, b4);
         } else {
             // Attempt to diagnose the problem.
             var msg = "Error: Unable to communicate between frames.\n\n";
