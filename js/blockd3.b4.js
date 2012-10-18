@@ -20,6 +20,11 @@ var root = this,
                 return enum_selected("*", "class");
             })
     },
+    COL_NAME = {
+        id: "COL_NAME",
+        field: b4.fields.text("COL_NAME")
+            .init("problems")
+    },
     CHAIN = {
         id: true,
         field: b4.input("CHAIN")
@@ -86,5 +91,11 @@ blockd3_mold.clone("google_spreadsheet")
         .appendInput([GOOGLE_KEY, CHAIN])
         .code("d3.csv('https://docs.google.com/spreadsheet/pub?key=<%= $.code('GOOGLE_KEY').slice(2,-2) %>&single=true&gid=0&output=csv', function(<%= $.title('ROWS_VAR') %>){\n<%= $.code('CHAIN') %>\n})")
         .done();
+
+blockd3_mold.clone("column")
+    .tooltip("a column value")
+    .appendTitle(["of row's", COL_NAME])
+    .code("function(datum, idx){ return datum['<%= $.title('COL_NAME') %>']; }")
+    .done();
 
 }).call(this, d3, b4);
