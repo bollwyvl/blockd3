@@ -4,7 +4,7 @@ var root = this,
         id: String,
         field: b4.input("GOOGLE_KEY")
             .inputValue(true)
-            .title("a google spreadsheet key")
+            .title("a Google spreadsheet with key")
     },
     ID_CHOICE = {
         id: "ID_CHOICE",
@@ -25,6 +25,11 @@ var root = this,
         field: b4.input("CHAIN")
             .nextStatement(true)
             .title("")
+    },
+    ROWS_VAR = {
+        id: "ROWS_VAR",
+        field: b4.fields.variable("ROWS_VAR")
+            .init("rows")
     };
 
 var enum_selected = function(selector, attr_name){
@@ -77,10 +82,9 @@ blockd3_mold.clone("class")
 blockd3_mold.clone("google_spreadsheet")
     .tooltip("fetch a Google Spreadheet")
     .output(false)
-    .inputsInline(true)
-    .appendTitle(["fetch a google spreadhseet with id"])
+    .appendTitle(["fetch into", ROWS_VAR])
         .appendInput([GOOGLE_KEY, CHAIN])
-        .code("d3.csv('https://docs.google.com/spreadsheet/pub?key=' + <%= $.code('GOOGLE_KEY') %> + '&single=true&gid=0&output=csv', function(data){\n<%= $.code('CHAIN') %>\n})")
+        .code("d3.csv('https://docs.google.com/spreadsheet/pub?key=<%= $.code('GOOGLE_KEY').slice(2,-2) %>&single=true&gid=0&output=csv', function(<%= $.title('ROWS_VAR') %>){\n<%= $.code('CHAIN') %>\n})")
         .done();
 
 }).call(this, d3, b4);

@@ -1,0 +1,62 @@
+<xml>
+  <block type="blockd3_google_spreadsheet" inline="false" x="-984" y="24">
+    <title name="ROWS_VAR">rows</title>
+    <value name="GOOGLE_KEY">
+      <block type="text" collapsed="true">
+        <title name="TEXT">0Ard519FxJIqPdENfVFpscTF1VmVJNzNFeV9JVi1BRGc</title>
+      </block>
+    </value>
+    <statement name="CHAIN">
+      <block type="d3_selectAll" inline="false">
+        <value name="SELECTOR">
+          <block type="blockd3_class">
+            <title name="KLASS_CHOICE">bar</title>
+          </block>
+        </value>
+        <statement name="CHAIN">
+          <block type="d3_data" inline="true">
+            <value name="VALUE">
+              <block type="variables_get">
+                <title name="VAR">rows</title>
+              </block>
+            </value>
+            <next>
+              <block type="d3_attr" inline="true">
+                <value name="ATTR_PROP">
+                  <block type="text">
+                    <title name="TEXT">height</title>
+                  </block>
+                </value>
+                <value name="VALUE">
+                  <block type="procedures_callreturn" inline="false">
+                    <mutation name="blarg">
+                      <arg name="datum"></arg>
+                      <arg name="idx"></arg>
+                    </mutation>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" inline="false" x="-984" y="283">
+    <mutation>
+      <arg name="datum"></arg>
+      <arg name="idx"></arg>
+    </mutation>
+    <title name="NAME">blarg</title>
+    <statement name="STACK">
+      <block type="variables_set" inline="false">
+        <title name="VAR">result</title>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get">
+        <title name="VAR">result</title>
+      </block>
+    </value>
+  </block>
+</xml>
