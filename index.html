@@ -19,7 +19,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body id="editor">
 <div id="navbar" class="navbar navbar-fixed-top">
 <div class="navbar-inner">
     <div class="container">
@@ -46,6 +46,7 @@
                         <i class="icon-bolt"></i>
                         <span class="hidden-phone">Run</span>
                     </a>
+                    
                     <a id="stop" class="btn btn-danger" href="#stop">
                         <i class="icon-off"></i>
                         <span class="hidden-phone">Stop</span>
@@ -60,13 +61,33 @@
                             <li><a id="save_xml" href="#">To XML File</a></li>
                         </ul>
                     </div>
-                    <a id="load_xml "href="#load_xml" class="btn btn-primary">
-                        <i class="icon-folder-open"></i>
-                        <span class="hidden-phone">Load</span>
-                    </a>
-                    <form id="file_form">
-                        <input type="file" id="load"/>
-                    </form>
+
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                            <i class="icon-folder-open"></i>
+                            <span class="hidden-phone">Load</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="load_xml" href="#">From XML File</a></li>
+                            <li class="nav-header">Examples</li>
+                            
+                <li><a href="#example" data-blockd3-example="kitchen_sink">
+                    Kitchen Sink
+                </a></li>
+
+                <li><a href="#example" data-blockd3-example="simplest">
+                    Simplest
+                </a></li>
+
+                <li><a href="#example" data-blockd3-example="spreadsheet">
+                    Spreadsheet
+                </a></li><!--EXAMPLES###-->
+                        </ul>
+                        <form id="file_form">
+                            <input type="file" id="load"/>
+                        </form>
+                    </div>
+                    
                     <a id="show_alerts" class="btn btn-warning" href="#alerts">
                         <i class="icon-exclamation-sign"></i>
                         <span class="hidden-phone">Alerts</span>
@@ -82,32 +103,53 @@
                             <li class="nav-header">Themes</li>
                             <li class="active">
                                 <a href="#theme" data-blockd3-theme="">
-                                    <i>Default</i></a>
+                                    <i>Default</i>
+                                </a>
                             </li>
 
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
-                            </li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Journal">Journal</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Readable">Readable</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Slate">Slate</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Spruce">Spruce</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Superhero">Superhero</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="United">United</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="simplex">simplex</a></li>
+                <li><a href="#theme" data-blockd3-theme="Amelia">
+                    Amelia
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Cerulean">
+                    Cerulean
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Cyborg">
+                    Cyborg
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Journal">
+                    Journal
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Readable">
+                    Readable
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="simplex">
+                    simplex
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Slate">
+                    Slate
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Spacelab">
+                    Spacelab
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Spruce">
+                    Spruce
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="Superhero">
+                    Superhero
+                </a></li>
+
+                <li><a href="#theme" data-blockd3-theme="United">
+                    United
+                </a></li><!--THEMES###-->
                         </ul>
                     </div>
 
@@ -115,6 +157,7 @@
                         <i class="icon-trash"></i>
                         <span class="hidden-phone">Discard</span>
                     </a>
+                    
                     <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
                         <i class="icon-heart"></i>
                         <span class="hidden-phone">About</span>

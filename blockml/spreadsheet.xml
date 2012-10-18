@@ -1,0 +1,42 @@
+<xml>
+  <block type="blockd3_google_spreadsheet" inline="false" x="-1069" y="-22">
+    <title name="ROWS_VAR">rows</title>
+    <value name="GOOGLE_KEY">
+      <block type="text" collapsed="true">
+        <title name="TEXT">0Ard519FxJIqPdENfVFpscTF1VmVJNzNFeV9JVi1BRGc</title>
+      </block>
+    </value>
+    <statement name="CHAIN">
+      <block type="d3_selectAll" inline="false">
+        <value name="SELECTOR">
+          <block type="blockd3_class">
+            <title name="KLASS_CHOICE">bar</title>
+          </block>
+        </value>
+        <statement name="CHAIN">
+          <block type="d3_data" inline="true">
+            <value name="VALUE">
+              <block type="variables_get">
+                <title name="VAR">rows</title>
+              </block>
+            </value>
+            <next>
+              <block type="d3_attr" inline="true">
+                <value name="ATTR_PROP">
+                  <block type="text">
+                    <title name="TEXT">height</title>
+                  </block>
+                </value>
+                <value name="VALUE">
+                  <block type="blockd3_column">
+                    <title name="COL_NAME">problems</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
