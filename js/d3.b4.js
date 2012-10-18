@@ -118,7 +118,6 @@ var d3_mold = b4.block()
     select_mold = d3_mold.clone()
         .namespace("d3_select")
         .category("d3 selection")
-        .output(SELECTION)
         .helpUrlTemplate(D3_WIKI +"Selections#wiki-<%= block.id() %>"),
     
     select_arg_mold = select_mold.clone()
@@ -132,6 +131,8 @@ select_mold.clone("")
     .tooltip("The first element that matches the selector")
     .appendTitle(["select the first element that matches"])
     .appendInput([SELECTION, CHAIN])
+    .nextStatement(true)
+    .previousStatement(true)
     .code("d3.select(<%= $.code('SELECTOR') %>)<%= $.code('CHAIN') %>")
     .done();
         
@@ -139,6 +140,8 @@ select_mold.clone("All")
     .tooltip("All elements that match the selection")
     .appendTitle(["select all elements that match"])
     .appendInput([SELECTION, CHAIN])
+    .nextStatement(true)
+    .previousStatement(true)
     .code("d3.selectAll(<%= $.code('SELECTOR') %>)<%= $.code('CHAIN') %>")
     .done();
     
