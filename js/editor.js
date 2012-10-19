@@ -134,6 +134,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
         blockd3.BMW.clear();
         render_content();
     });
+    init_scroll();
 
     blockd3.Blockly.bindEvent_(
         blockd3.BMW.getCanvas(),
@@ -412,5 +413,37 @@ var change_theme = blockd3.change_theme = function(evt){
 
     $(window).resize();
 };
+
+var init_scroll = function(){
+    var is_meta = false;
+
+    function ctrl_check(e) {
+        if (e.which === 17 || e.which === 16 || e.which === 91) {
+            is_meta = e.type === 'keydown' ? true : false;
+        }
+    }
+
+    function wheel_check(e, delta) {
+        // `delta` will be the distance that the page would have scrolled;
+        // might be useful for increasing the SVG size, might not
+        e.preventDefault();
+        
+        delta = delta * 10;
+        
+        var metrics = blockd3.BMW.scrollbar.getMetrics_(),
+            x = -blockd3.BMW.scrollX - metrics.contentLeft ,
+            y = -blockd3.BMW.scrollY - metrics.contentTop;
+            
+            
+        blockd3.BMW.scrollbar.set(
+            x - (is_meta ? delta : 0),
+            y - (is_meta ? 0 : delta));
+    }
+
+    $(document)
+        .keydown(ctrl_check)
+        .keyup(ctrl_check)
+        .mousewheel(wheel_check);
+}
 
 }).call(this, CodeMirror, $, _, d3, Tour, BlobBuilder, FileReader, saveAs);

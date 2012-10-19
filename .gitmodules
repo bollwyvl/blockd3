@@ -16,3 +16,6 @@
 [submodule "lib/tour"]
 	path = lib/tour
 	url = https://github.com/sorich87/bootstrap-tour.git
+[submodule "lib/wheel"]
+	path = lib/wheel
+	url = https://github.com/brandonaaron/jquery-mousewheel.git
