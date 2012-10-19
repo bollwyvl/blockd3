@@ -117,7 +117,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     
     $("#run").click(run_js);
     $("#change_theme a").click(change_theme);
-    $("a[href='#example']").click(load_example);
+    $("a[href='#example']").click(function(evt){ load_example(evt.target); });
     $("#save_xml").click(save);
     $("#discard").click(discard);
     
@@ -266,10 +266,6 @@ var restore_blocks = blockd3.restore_blocks = function() {
     if (!_.isUndefined(wls)){
         if(!_.isUndefined(wls.blocks) && wls.blocks != "<xml></xml>") {
             xml2blocks(wls.blocks);
-        }else{
-            $.get(blockd3.Blockly._blockd3_lib + "../../blockml/simplest.xml", function(data, textStatus, jqXHR){
-                xml2blocks(jqXHR.responseText);
-            });
         }
     }
 };
@@ -367,9 +363,9 @@ var init_editors = blockd3.initialize_editors = function(){
     });
 };
 
-var load_example = blockd3.load_example = function(evt){
+var load_example = blockd3.load_example = function(target){
 
-    var tgt = $(evt.target),
+    var tgt = $(target),
         new_example = "blockml/" + tgt.data("blockd3-example") + ".xml";
         
     $.get(new_example, function(data, textStatus, jqXHR){
