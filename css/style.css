@@ -154,3 +154,6 @@ footer p{
 .half_height{
     margin-bottom:10px;
 }
+.popover{
+    z-index: 9001;
+}

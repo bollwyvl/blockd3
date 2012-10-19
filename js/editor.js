@@ -58,22 +58,31 @@ blockd3.init = function(blockly, b4){
         );
     });
     
-    blockd3.tour().step( 
-        "#logo",
-            "building data pictures with d3 in blockly",
-            "DON'T PANIC"
-        ).step(
-            "a[href='#javascript']",
-                "JavaScript",
-                "is kind of hard"
-        ).step(
-            "a[href='#xml']",
-                "XML",
-                "is not very prety"
-        ).step(
-            "a[href='#blockly']",
-                "blockly",
-                "makes progrmming easy"
+    blockd3.tour().step("#logo",
+            "Build Data Pictures Visually",
+            "With d3 and Blockly."
+        ).step("#content_d3",
+            "Building Beautiful Visualizations",
+            "... doesn't need to be hard",
+            "left"
+        ).step("#content_javascript",
+            "Learning JavaScript",
+            "... can be kind of hard",
+            "top"
+        ).step("#content_blockly",
+            "Blockly Makes Programming Easy",
+            "... by helping you know what to say next",
+            "right"
+        ).step("#load_menu",
+            "Try Out Some Examples",
+            "... to se what blockd3 can do",
+            "bottom",
+            true
+        ).step("a[href='#example']:last",
+            "Here, take this data",
+            "... take a look at loading up some spreadsheet data",
+            "right",
+            true
         );
     
     $(".brand").click(function(){
@@ -144,19 +153,22 @@ var tour = blockd3.tour = function(value){
     return blockd3.tour;
 };
 
-var step = blockd3.tour.step = function(element, title, content, placement){
+var step = blockd3.tour.step = function(element, title, content, placement,
+         reflex, on_hide){
     _tour.addStep({
       element: element, /* html element next to which the step popover should be shown */
       title: title, /* title of the popover */
       content: content, /* content of the popover */
       placement: placement || "bottom", // string|function
-      animation: true // boolean
+      animation: true, // boolean
+      reflex: reflex || false, //clicky clicky
+      onHide: on_hide || function(){}
     });
     return blockd3.tour;
 };
 
 blockd3.tour.start = function(){
-    _tour.start(true);
+    _tour.restart();
     return blockd3.tour;
 };
     
@@ -266,15 +278,18 @@ var restore_blocks = blockd3.restore_blocks = function() {
     if (!_.isUndefined(wls)){
         if(!_.isUndefined(wls.blocks) && wls.blocks != "<xml></xml>") {
             xml2blocks(wls.blocks);
+        }else{
+            setTimeout(blockd3.tour.start, 1000);
         }
     }
 };
 
 var xml2blocks = blockd3.xml2blocks = function(xml){
-    return blockd3.Blockly.Xml.domToWorkspace(
+    blockd3.Blockly.Xml.domToWorkspace(
         blockd3.Blockly.mainWorkspace,
         blockd3.Blockly.Xml.textToDom(xml)
     );
+    blockd3.Blockly.mainWorkspace.scrollbar.resize();
 };
 
 /**
