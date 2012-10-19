@@ -120,6 +120,15 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     $("a[href='#example']").click(load_example);
     $("#save_xml").click(save);
     $("#discard").click(discard);
+    
+
+    blockd3.Blockly.bindEvent_(
+        blockd3.Blockly.mainWorkspace.getCanvas(),
+        'blocklyWorkspaceChange', null, function(){
+            editors.javascript.setValue(
+                blockd3.Blockly.Generator.workspaceToCode('JavaScript')
+            );
+        });
 };
 
 var _tour;
@@ -159,15 +168,6 @@ var panes = $(".pane"),
             href = tab.find("a").attr('href') || "",
             pane = $("#content_" + href.slice(1));
         
-        switch(prev){
-            case "javascript":
-                break;
-            case "blockly":
-                break;
-            case "xml":
-                exit_xml(); break;
-        }
-                
         tabs.removeClass("active");
         tab.addClass("active");
         panes.show();
@@ -176,24 +176,6 @@ var panes = $(".pane"),
 
 var mode = blockd3.mode = function(){
     return ($("#tabs li.active a").attr("href") || "").slice(1) || "xml";
-};
-    
-var exit_xml = blockd3.exit_xml = function(){
-    var xmlText = editors.xml.getValue(),
-        xmlDom = null;
-    try {
-        xmlDom = blockd3.Blockly.Xml.textToDom(xmlText);
-    } catch (e) {
-        var conf = window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
-        if (!conf) {
-            // Leave the user on the XML tab.
-            return;
-        }
-    }
-    if (xmlDom) {
-        blockd3.Blockly.mainWorkspace.clear();
-        blockd3.Blockly.Xml.domToWorkspace(blockd3.Blockly.mainWorkspace, xmlDom);
-    }
 };
     
 var render_content = blockd3.render_content = function(){

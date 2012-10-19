@@ -134,16 +134,14 @@ footer p{
 #navbar .btn, #navbar .btn-group{
     display: inline-block;
     vertical-align:middle;
-          padding: 5px;
-          display:inline-block;
-}
-
-
-#actions .btn, #actions .btn-grp{
-    padding: 5px;
     display:inline-block;
+    padding: 5px 10px;
+    margin: 5px 0 0 0;
 }
-
+#navbar .btn-group{
+    padding: 0;
+    margin: 0;
+}
 #gh_ribbon{
     position: fixed;
     top:0;
