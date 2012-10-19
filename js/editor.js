@@ -92,6 +92,8 @@ blockd3.init = function(blockly, b4){
     
 var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     blockd3.Blockly = Blockly;
+    blockd3.BMW = Blockly.mainWorkspace;
+    blockd3.BMX = Blockly.Xml;
     
     b4.plugins.blockd3 = {
         get_selection: function(){
@@ -99,7 +101,6 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
         }
     };
     
-    // Make the 'Blocks' tab line up with the toolbox.
     if (blockd3.Blockly.Toolbox) {
         $(window).on('resize', function() {
             var fullh = $(window).height() - (
@@ -129,10 +130,13 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     $("a[href='#example']").click(function(evt){ load_example(evt.target); });
     $("#save_xml").click(save);
     $("#discard").click(discard);
-    
+    $("#discard_confirm .btn-danger").click(function(){
+        blockd3.BMW.clear();
+        render_content();
+    });
 
     blockd3.Blockly.bindEvent_(
-        blockd3.Blockly.mainWorkspace.getCanvas(),
+        blockd3.BMW.getCanvas(),
         'blocklyWorkspaceChange', null, function(){
             editors.javascript.setValue(
                 blockd3.Blockly.Generator.workspaceToCode('JavaScript')
@@ -198,10 +202,10 @@ var render_content = blockd3.render_content = function(){
     if (current_mode == 'blockly') {
         // If the workspace was changed by the XML tab, Firefox will have performed
         // an incomplete rendering due to Blockly being invisible.  Rerender.
-        blockd3.Blockly.mainWorkspace.render();
+        blockd3.BMW.render();
     } else if (current_mode == 'xml') {
-        var xmlDom = blockd3.Blockly.Xml.workspaceToDom(blockd3.Blockly.mainWorkspace),
-            xmlText = blockd3.Blockly.Xml.domToPrettyText(xmlDom);
+        var xmlDom = blockd3.BMX.workspaceToDom(blockd3.BMW),
+            xmlText = blockd3.BMX.domToPrettyText(xmlDom);
             editors.xml.setValue(xmlText);
     } else if (current_mode == 'javascript') {
         editors.javascript.setValue(
@@ -263,9 +267,9 @@ var run_js = blockd3.run_js = function() {
  */
 var backup_blocks = blockd3.backup_blocks = function() {
     if ('localStorage' in window) {
-        var xml = blockd3.Blockly.Xml.workspaceToDom(
-            blockd3.Blockly.mainWorkspace);
-        window.localStorage.setItem('blocks', blockd3.Blockly.Xml.domToText(xml));
+        var xml = blockd3.BMX.workspaceToDom(
+            blockd3.BMW);
+        window.localStorage.setItem('blocks', blockd3.BMX.domToText(xml));
     }
 };
 
@@ -285,19 +289,19 @@ var restore_blocks = blockd3.restore_blocks = function() {
 };
 
 var xml2blocks = blockd3.xml2blocks = function(xml){
-    blockd3.Blockly.Xml.domToWorkspace(
-        blockd3.Blockly.mainWorkspace,
-        blockd3.Blockly.Xml.textToDom(xml)
+    blockd3.BMX.domToWorkspace(
+        blockd3.BMW,
+        blockd3.BMX.textToDom(xml)
     );
-    blockd3.Blockly.mainWorkspace.scrollbar.resize();
+    blockd3.BMW.scrollbar.resize();
 };
 
 /**
  * Save blocks to local file.
  */
 var save = blockd3.save = function() {
-    var xml = blockd3.Blockly.Xml.workspaceToDom(blockd3.Blockly.mainWorkspace),
-        data = blockd3.Blockly.Xml.domToText(xml);
+    var xml = blockd3.BMX.workspaceToDom(blockd3.BMW),
+        data = blockd3.BMX.domToText(xml);
 
     // Store data in blob.
     var builder = new BlobBuilder();
@@ -323,18 +327,18 @@ var load = blockd3.load = function(evt) {
         // 2 == FileReader.DONE
         if (target.readyState == 2) {
             try {
-                xml = blockd3.Blockly.Xml.textToDom(target.result);
+                xml = blockd3.BMX.textToDom(target.result);
             } catch (e) {
                 lert('Error parsing XML:\n' + e);
                 return;
             }
         
-            var count = blockd3.Blockly.mainWorkspace.getAllBlocks().length;
+            var count = blockd3.BMW.getAllBlocks().length;
             if (count && confirm(
                     'Replace existing blocks?\n"Cancel" will merge.')) {
-                        blockd3.Blockly.mainWorkspace.clear();
+                        blockd3.BMW.clear();
                     }
-                blockd3.Blockly.Xml.domToWorkspace(blockd3.Blockly.mainWorkspace, xml);
+                blockd3.BMX.domToWorkspace(blockd3.BMW, xml);
             }
             // Reset value of input after loading because Chrome will not fire
             // a 'change' event if the same file is loaded again.
@@ -349,12 +353,14 @@ var load = blockd3.load = function(evt) {
  * Discard all blocks from the workspace.
  */
 var discard = blockd3.discard = function() {
-  var count = blockd3.Blockly.mainWorkspace.getAllBlocks().length;
+  var count = blockd3.BMW.getAllBlocks().length;
+  $(".block_count").text(count + " block" + (count == 1 ? "" : "s"));
+  $("#discard_confirm").modal().show();
+  /*
   if (count < 2 || window.confirm(
       'Delete all ' + count + ' blocks?')) {
-          blockd3.Blockly.mainWorkspace.clear();
-          render_content();
       }
+      */
 };
 
 
