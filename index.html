@@ -25,35 +25,20 @@
     <div class="container">
         <a class="brand" href="#">
             <img id="logo" src="./svg/logo.svg"/>
-            <span class="hidden-phone">blockd3</span></a>
-            <div class="">
-                <ul id="tabs" class="nav">
-                    <li class="active"><a href="#blockly">
-                        <i class="icon-picture"></i>
-                        <span class="hidden-phone">Blockly</span>
-                    </a></li>
-                    <li><a href="#javascript">
-                        <i class="icon-align-left"></i>
-                        <span class="hidden-phone">JavaScript</span>
-                    </a></li>
-                    <li><a href="#xml">
-                        <i class="icon-tags"></i>
-                        <span class="hidden-phone">XML</span>
-                    </a></li>
-                </ul>
-                <div id="actions" class="nav pull-right">
+            <span class="hidden-phone">blockd3</span>
+        </a>
+            <div>
+                <div id="actions" class="nav">
                     <a id="run" class="btn btn-success" href="#run">
                         <i class="icon-bolt"></i>
                         <span class="hidden-phone">Run</span>
                     </a>
-                    
                     <a id="stop" class="btn btn-danger" href="#stop">
                         <i class="icon-off"></i>
                         <span class="hidden-phone">Stop</span>
                     </a>
-
                     <div class="btn-group">
-                        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                        <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
                             <i class="icon-hdd"></i>
                             <span class="hidden-phone">Save</span>
                         </a>
@@ -61,9 +46,8 @@
                             <li><a id="save_xml" href="#">To XML File</a></li>
                         </ul>
                     </div>
-
                     <div class="btn-group">
-                        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#" id="load_menu">
                             <i class="icon-folder-open"></i>
                             <span class="hidden-phone">Load</span>
                         </a>
@@ -87,12 +71,19 @@
                             <input type="file" id="load"/>
                         </form>
                     </div>
+
                     
                     <a id="show_alerts" class="btn btn-warning" href="#alerts">
                         <i class="icon-exclamation-sign"></i>
                         <span class="hidden-phone">Alerts</span>
                     </a>
 
+                    <a id="discard" href="#discard" class="btn btn-danger">
+                        <i class="icon-trash"></i>
+                        <span class="hidden-phone">Discard</span>
+                    </a>
+                </div>
+                <div class="nav pull-right">
                     <div class="btn-group">
                         <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#themes">
                             <i class="icon-wrench"></i>
@@ -152,12 +143,6 @@
                 </a></li><!--THEMES###-->
                         </ul>
                     </div>
-
-                    <a id="discard" href="#discard" class="btn btn-danger">
-                        <i class="icon-trash"></i>
-                        <span class="hidden-phone">Discard</span>
-                    </a>
-                    
                     <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
                         <i class="icon-heart"></i>
                         <span class="hidden-phone">About</span>
@@ -247,6 +232,23 @@
     <h3>Alert History</h3>
     <ul></ul>
 </div>
+
+
+<div id="discard_confirm" class="modal hide fade">
+    <div class="modal-header">
+      <a href="#" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+      <h3>Confirm Discard</h3>
+    </div>
+    <div class="modal-body">
+      <p>You are about to delete <span class="block_count">one block</span>.</p>
+      <p>Do you want to proceed?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" data-dismiss="modal" class="btn btn-danger">Yes</a>
+      <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">No</a>
+    </div>
+</div>
+
 </div> <!-- /container -->
 
 
