@@ -2,25 +2,20 @@
 
 <head>
 <meta charset="utf-8">
-<title>Blockd3 Demo: Code</title>
-<link rel="stylesheet" href="./css/blockd3-min.css"><!--STYLES###-->
-<style>
-#frame {
-    margin:0;
-    padding:0;
-}
-</style>
+<title>Blockd3 Blockly Frame</title>
+<link rel="stylesheet" href="../css/blockd3-min.css"/>
 </head>
 
 <body id="frame">
-<script type="text/javascript"
-            src="./js/blockd3-min.js"></script><!--SCRIPTS###-->
+
+    <script type="text/javascript" src="../js/blockd3-min.js"></script>
+
 
 <script type="text/javascript">
     var BLOCKLY_LIB;
         
     $(function(){
-        Blockly._blockd3_lib = "./lib/blockly/";
+        Blockly._blockd3_lib = "../lib/blockly/";
         Blockly.inject(document.body, {
             path: Blockly._blockd3_lib
         });
