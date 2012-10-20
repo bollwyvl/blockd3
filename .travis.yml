@@ -5,12 +5,12 @@ install:
   - "sudo apt-get install -qq python-pyside"
   - "pip install -r requirements.txt --use-mirrors --quiet"
   - "fab build"
-  - "pip install -r tests/requirements.txt --use-mirrors --quiet"
+  - "pip install -r blockd3_tests/requirements.txt --use-mirrors --quiet"
   - "ln -s /usr/lib/python2.7/dist-packages/PySide /home/travis/virtualenv/python2.7/lib/python2.7/site-packages/PySide -v"
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-script: tests/run.py -v
+script: blockd3_tests/run.py -v
 # blacklist
 branches:
   except:
