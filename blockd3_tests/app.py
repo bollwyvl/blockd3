@@ -90,13 +90,16 @@ def runtime_assets():
         rt_cfg = dict(
             themes=dict(
                 path="lib/swatch/*.css",
-                thing="theme",
                 sub_data=lambda x: x.split(".")[1],
                 sub_text=lambda x: x
             ),
+            code_themes=dict(
+                path="lib/cm/theme/*.css",
+                sub_data=lambda x: os.path.basename(x)[0:-4],
+                sub_text=lambda x: " ".join(x.split("-")).title()
+            ),
             examples=dict(
                 path="blockml/*.xml",
-                thing="example",
                 sub_data=lambda x: os.path.basename(x)[0:-4],
                 sub_text=lambda x: " ".join(x.split("_")).title()
             )

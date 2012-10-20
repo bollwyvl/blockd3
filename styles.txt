@@ -2,7 +2,6 @@
 lib/bootstrap/css/bootstrap.min.css
 lib/awesome/css/font-awesome.css
 lib/cm/lib/codemirror.css
-lib/cm/theme/elegant.css
 
 # blockd3
 css/style.css

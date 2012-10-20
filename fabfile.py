@@ -145,6 +145,7 @@ def copy_assets():
         "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
         "dist/font": sh.glob("lib/awesome/font/fontawesome-webfont.*") or [],
         "dist/lib/swatch": sh.glob("lib/swatch/*.css"),
+        "dist/lib/cm/theme": sh.glob("lib/cm/theme/*.css"),
         "dist/css": [],
         "dist/js": [],
         "dist/blockml": sh.glob("blockml/*.xml") or [],

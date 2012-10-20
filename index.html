@@ -17,6 +17,7 @@
     {% endif %}
 
     <link rel="stylesheet" id="theme_link">
+    <link rel="stylesheet" id="code_theme_link">
 
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -82,30 +83,50 @@
                         <i class="icon-trash"></i>
                         <span class="hidden-phone">Discard</span>
                     </a>
-                </div>
-                <div class="nav pull-right">
+
                     <div class="btn-group">
                         <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#themes">
                             <i class="icon-wrench"></i>
                             <span class="hidden-phone">Options</span>
                         </a>
                         
-                        <ul class="dropdown-menu" id="change_theme">
-                            <li class="nav-header">Themes</li>
-                            <li class="active">
-                                <a href="#theme" data-blockd3-theme="">
-                                    <i>Default</i>
-                                </a>
-                            </li>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu" id="change_theme">
+                                <a tabindex="-1" href="#">UI Themes</a>
+                                <ul class="dropdown-menu">
+                                    <li class="active">
+                                        <a href="#theme" data-blockd3-theme="">
+                                            <i>Default</i>
+                                        </a>
+                                    </li>
 
-                            {% for theme_name, theme in themes %}
-                            <li>
-                                <a href="#theme" data-blockd3-theme="{{ theme_name }}">{{ theme_name }}</a>
+                                    {% for theme_name, theme in themes %}
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="{{ theme }}">{{ theme_name }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
                             </li>
-                            {% endfor %}
+                            <li class="dropdown-submenu" id="change_code_theme">
+                                <a tabindex="-1" href="#">Code Themes</a>
+                                <ul class="dropdown-menu">
+                                    <li class="active">
+                                        <a href="#code_theme" data-blockd3-theme="defult">
+                                            <i>Default</i>
+                                        </a>
+                                    </li>
 
+                                    {% for theme_name, theme in code_themes %}
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="{{ theme }}">{{ theme_name }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
                         </ul>
                     </div>
+                </div>
+                <div class="nav pull-right">
                     <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
                         <i class="icon-heart"></i>
                         <span class="hidden-phone">About</span>

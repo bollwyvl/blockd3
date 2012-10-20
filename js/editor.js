@@ -127,6 +127,7 @@ var init_blockly = blockd3.init_blockly = function(Blockly, b4) {
     
     $("#run").click(run_js);
     $("#change_theme a").click(change_theme);
+    $("#change_code_theme a").click(change_code_theme);
     $("a[href='#example']").click(function(evt){ load_example(evt.target); });
     $("#save_xml").click(save);
     $("#discard").click(discard);
@@ -377,8 +378,7 @@ var init_editors = blockd3.initialize_editors = function(){
                 matchBrackets: true,
                 mode: language,
                 lineWrapping: true,
-                readOnly: true,
-                theme: "elegant"
+                readOnly: true
             });
                 
         editor.setSize("100%", "100%");
@@ -410,6 +410,32 @@ var change_theme = blockd3.change_theme = function(evt){
     tgt.parent().addClass("active");
     
     $("#theme_link").attr("href", new_theme);
+
+    $(window).resize();
+};
+
+
+var change_code_theme = blockd3.change_code_theme = function(evt){
+    var tgt = $(evt.target),
+        new_theme = tgt.data("blockd3-code-theme"),
+        theme_file;
+    
+    if(new_theme == "default"){
+        theme_file = "";
+    }else{
+        theme_file = "lib/cm/theme/" + new_theme + ".css";
+    }
+    
+    $("#change_code_theme .active").removeClass("active");
+    
+    
+    tgt.parent().addClass("active");
+    
+    $("#code_theme_link").attr("href", theme_file);
+    
+    _(["xml", "javascript"]).map(function(content){
+        blockd3.editors[content].setOption("theme", new_theme);
+    })
 
     $(window).resize();
 };
