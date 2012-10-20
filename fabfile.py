@@ -176,6 +176,7 @@ def html():
     }
     
     for prod_file, url in prod_files.items():
+        print ".. writing ", prod_file
         open(prod_file, "w").write(
             app.test_client().get(url).data
         )
