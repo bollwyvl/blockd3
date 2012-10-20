@@ -38,7 +38,7 @@ def proj():
 def flake():
     print(". running PyFlakes on test equipment")
     proj()
-    sh.pyflakes("setup.py", "fabfile.py", "blockd3_tests/")
+    sh.pyflakes("setup.py", "fabfile.py", "app/")
 
 
 @task
@@ -168,7 +168,7 @@ def html():
     blockd3_path = os.path.abspath(os.path.dirname(__file__))
     sys.path.append(blockd3_path)
 
-    from blockd3_tests.app import make_app
+    from app.app import make_app
     app = make_app("prod")
     
     prod_files = {
@@ -262,7 +262,7 @@ def serve(env):
     blockd3_path = os.path.abspath(os.path.dirname(__file__))
     sys.path.append(blockd3_path)
 
-    from blockd3_tests.app import make_app
+    from app.app import make_app
     app = make_app(env)
     
     port = {
