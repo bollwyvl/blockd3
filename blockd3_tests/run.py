@@ -4,8 +4,9 @@ import unittest
 import logging
 
 from ghost import GhostTestCase, Ghost
-from app import app
+from app import make_app
 
+app = make_app()
 
 PORT = 5000
 

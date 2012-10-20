@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Blockd3 Blockly Frame</title>
+<link rel="stylesheet" href="{% if env == "dev"
+    %}../css/style.css{% else %}../css/blockd3-min.css{% endif %}"/>
+</head>
+
+<body id="frame">
+{% if env == "dev" %}
+{% for script in scripts %}
+<script type="text/javascript" src="../{{ script }}"></script>
+{% endfor %}
+{% else %}
+<script type="text/javascript" src="../js/blockd3-min.js"></script>
+{% endif %}
+
+<script type="text/javascript">
+    var BLOCKLY_LIB;
+        
+    $(function(){
+        Blockly._blockd3_lib = "../lib/blockly/";
+        Blockly.inject(document.body, {
+            path: Blockly._blockd3_lib
+        });
+
+        if (window.parent.blockd3) {
+            // Let the top-level application know that Blockly is ready.
+            window.parent.blockd3.init(Blockly, b4);
+        } else {
+            // Attempt to diagnose the problem.
+            var msg = "Error: Unable to communicate between frames.\n\n";
+            if (window.parent == window) {
+                msg += "Try loading index.html instead of frame.html";
+            } else if (window.location.protocol == 'file:') {
+                msg += [
+                    "This may be due to a security restriction preventing" +
+                    "access when using the file:// protocol.",
+                    "http://code.google.com/p/chromium/issues/detail?id=47416"
+                ].join("\n")
+            }
+            console.error(msg);
+        }
+    });
+</script>
+</body>
+</html>

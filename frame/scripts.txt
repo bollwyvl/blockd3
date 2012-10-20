@@ -1,0 +1,64 @@
+# non-blockly deps
+lib/d3/d3.v2.min.js
+lib/b4/lib/underscore-min.js
+lib/jquery-1.8.2.min.js
+lib/b4/lib/underscore.string.min.js
+lib/b4/lib/color-min.js
+
+# core blockly deps
+lib/blockly/blockly.js
+lib/blockly/block.js
+lib/blockly/block_svg.js
+lib/blockly/bubble.js
+lib/blockly/comment.js
+lib/blockly/connection.js
+lib/blockly/contextmenu.js
+lib/blockly/field.js
+lib/blockly/field_dropdown.js
+lib/blockly/field_image.js
+lib/blockly/field_label.js
+lib/blockly/field_textinput.js
+lib/blockly/field_variable.js
+lib/blockly/flyout.js
+lib/blockly/generator.js
+lib/blockly/inject.js
+lib/blockly/input.js
+lib/blockly/mutator.js
+lib/blockly/names.js
+lib/blockly/procedures.js
+lib/blockly/scrollbar.js
+lib/blockly/toolbox.js
+lib/blockly/tooltip.js
+lib/blockly/trashcan.js
+lib/blockly/utils.js
+lib/blockly/variables.js
+lib/blockly/warning.js
+lib/blockly/workspace.js
+lib/blockly/xml.js
+
+# blockly language specific
+lib/blockly/generators/javascript.js
+lib/blockly/generators/javascript/control.js
+lib/blockly/generators/javascript/logic.js
+lib/blockly/generators/javascript/math.js
+lib/blockly/generators/javascript/text.js
+lib/blockly/generators/javascript/lists.js
+lib/blockly/generators/javascript/variables.js
+lib/blockly/generators/javascript/procedures.js
+lib/blockly/language/en/_messages.js
+lib/blockly/language/common/control.js
+lib/blockly/language/common/logic.js
+lib/blockly/language/common/math.js
+lib/blockly/language/common/text.js
+lib/blockly/language/common/lists.js
+lib/blockly/language/common/variables.js
+lib/blockly/language/common/procedures.js
+
+# b4
+lib/b4/src/b4.js
+lib/b4/src/b4.fields.js
+js/d3.b4.js
+
+# blockd3
+js/blockd3.b4.js
+lib/b4/blocks/dev.js

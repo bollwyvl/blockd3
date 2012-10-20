@@ -1,0 +1,25 @@
+# deps
+lib/d3/d3.v2.min.js
+lib/b4/lib/color-min.js
+lib/jquery-1.8.2.min.js
+lib/b4/lib/underscore-min.js
+
+# codemirror
+lib/cm/lib/codemirror.js
+lib/cm/mode/javascript/javascript.js
+lib/cm/mode/xml/xml.js
+
+# pretties
+lib/bootstrap/js/bootstrap.min.js
+
+# blockly deps
+js/BlobBuilder.min.js
+js/FileSaver.min.js
+
+# jquery plugins... had these earlier, but they broke things
+lib/tour/deps/jquery.cookie.js
+lib/wheel/jquery.mousewheel.js
+lib/tour/bootstrap-tour.js
+
+# blockd3
+js/editor.js

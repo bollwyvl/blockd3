@@ -8,15 +8,13 @@
     <meta name="author" content="nicholas bollweg">
     <link rel="shortcut icon" href="./favicon.ico" />
 
-    <!--###STYLES-->
-    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./lib/awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="./lib/cm/lib/codemirror.css">
-    <link rel="stylesheet" href="./lib/cm/theme/elegant.css">
-
-
-    <link rel="stylesheet" href="./css/style.css">
-    <!--STYLES###-->
+    {% if env == "dev" %}
+    {% for style in styles %}
+    <link rel="stylesheet" href="./{{ style }}">
+    {% endfor %}
+    {% else %}
+    <link rel="stylesheet" href="./css/blockd3-min.css">
+    {% endif %}
 
     <link rel="stylesheet" id="theme_link">
 
@@ -240,40 +238,13 @@
 
 </div> <!-- /container -->
 
-
-
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-
-
-<!--###SCRIPTS-->
-<script type="text/javascript" src="./lib/d3/d3.v2.min.js"></script>
-<script type="text/javascript" src="./lib/b4/lib/color-min.js"></script>
-<script type="text/javascript" src="./lib/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="./lib/b4/lib/underscore-min.js"></script>
-
-<!-- CM -->
-<script type="text/javascript" src="./lib/cm/lib/codemirror.js"></script>
-<script type="text/javascript" src="./lib/cm/mode/javascript/javascript.js"></script>
-<script type="text/javascript" src="./lib/cm/mode/xml/xml.js"></script>
-
-
-<script type="text/javascript" src="./lib/tour/deps/jquery.cookie.js"></script>
-<script type="text/javascript" src="./lib/wheel/jquery.mousewheel.js"></script>
-
-<script type="text/javascript"  src="./lib/bootstrap/js/bootstrap.min.js"></script>
-
-
-<script type="text/javascript" src="./js/BlobBuilder.min.js"></script>
-<script type="text/javascript" src="./js/FileSaver.min.js"></script>
-
-<script type="text/javascript" src="./lib/tour/bootstrap-tour.js"></script>
-
-<script type="text/javascript" src="./js/editor.js"></script>
-
-<!--SCRIPTS###-->
+{% if env == "dev" %}
+{% for script in scripts %}
+<script type="text/javascript" src="./{{ script }}"></script>
+{% endfor %}
+{% else %}
+<script type="text/javascript" src="./js/blockd3-min.js"></script>
+{% endif %}
 
 </body>
 </html>

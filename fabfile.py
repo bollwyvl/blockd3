@@ -10,13 +10,12 @@ also, the dependency on node.js is more exotic to me than python. ymmv.
 """
 
 import os
+import sys
 from pprint import pprint
 import json
 import re
 
 from fabric.api import task
-
-from bs4 import BeautifulSoup
 
 import sh
 
@@ -39,7 +38,7 @@ def proj():
 def flake():
     print(". running PyFlakes on test equipment")
     proj()
-    sh.pyflakes("setup.py", "fabfile.py", "tests/")
+    sh.pyflakes("setup.py", "fabfile.py", "blockd3_tests/")
 
 
 @task
@@ -52,6 +51,8 @@ def build():
     proj()
     flake()
     clean()
+    copy_assets()
+    html()
     minify()
     favicon()
     sh.cd("dist")
@@ -135,11 +136,10 @@ def favicon():
     print(".. cleaning up")
     sh.rm(sh.glob("/tmp/favicon-*.png"))
 
-
 @task
-def minify():
+def copy_assets():
     proj()
-    print(". minifying ...")
+    print(". copying assets ...")
     copy_patterns = {
         "dist/lib/blockly": ["lib/blockly/blockly.css"],
         "dist/lib/blockly/media":  sh.glob("lib/blockly/media/*") or [],
@@ -157,54 +157,49 @@ def minify():
         for c_file in copy_files:
             print "... copying", c_file, dst
             sh.cp("-r", c_file, dst)
-
-    html = ["index.html", "frame.html"]
-
-    sources = dict(js=[], css=[])
-
-    for html_file in sh.glob("*.html"):
-        print ".. analyzing %s" % html_file
-        anything = re.compile(".+")
-        html = open(html_file).read()
-        soup = BeautifulSoup(html)
-
-        for link in soup.find_all("link", rel="stylesheet", href=anything):
-            sources["css"] += [link["href"]]
-
-        for script in soup.find_all("script", src=anything):
-            sources["js"] += [script["src"]]
-
-        new_file = open(os.path.join("dist", html_file), "w")
-
-        def _html_replace(html, THING, new_thing):
-            tmpl = "<!--%s%s-->"
-            t_start = html.find(tmpl % ("###", THING))
-            t_end = html.find(tmpl % (THING, "###"))
             
-            if -1 in (t_start, t_end):
-                return html
-            
-            return "%s%s%s" % (
-                html[0:t_start],
-                new_thing,
-                html[t_end:]
-            )
+@task
+def html():
+    proj()
+    print ". generating production html"
+    sh.mkdir("-p", "dist/frame")
+    
+    blockd3_path = os.path.abspath(os.path.dirname(__file__))
+    sys.path.append(blockd3_path)
 
-        replacements = dict(
-            STYLES="""<link rel="stylesheet" href="./css/blockd3-min.css">""",
-            SCRIPTS="""<script type="text/javascript"
-            src="./js/blockd3-min.js"></script>""",
-            THEMES=asset_links("THEMES"),
-            EXAMPLES=asset_links("EXAMPLES"),
+    from blockd3_tests.app import make_app
+    app = make_app("prod")
+    
+    prod_files = {
+        "dist/index.html": "/dist/",
+        "dist/frame/index.html": "/dist/frame/"
+    }
+    
+    for prod_file, url in prod_files.items():
+        open(prod_file, "w").write(
+            app.test_client().get(url).data
         )
 
-        for thing, new_thing in replacements.items():
-            html = _html_replace(html, thing, new_thing)
+@task
+def minify():
+    proj()
+    print(". minifying ...")
 
-        print ".. writing out production dist/%s" % html_file
-        new_file.write(html)
-        new_file.close()
-
+    sources = dict(js=[], css=[])
+    
+    for user in ["./frame", "."]:
+        for min_id, asset_list in dict(js="scripts", css="styles").items(): 
+            asset_list = os.path.join(user, asset_list+".txt")
+            if os.path.exists(asset_list):
+                [
+                    sources[min_id].append(asset)
+                    for asset
+                    in [x.strip() for x in open(asset_list).read().split("\n")]
+                    if asset
+                        and not asset.startswith("#")
+                        and asset not in sources[min_id]
+                ]
+    
     cfg = open("setup.cfg", "w")
 
     cfg.writelines([
@@ -249,18 +244,17 @@ def asset_links(asset_type):
     ])
     
 @task
-def serve():
-    """
-    Mostly deprecated, but useful for "full stack" debugging
-    """
-    import SimpleHTTPServer
-    import SocketServer
+def serve_dev():
+    serve("dev")
 
-    PORT = 8000
+@task
+def serve_prod():
+    serve("prod")
+    
+def serve(env):
+    blockd3_path = os.path.abspath(os.path.dirname(__file__))
+    sys.path.append(blockd3_path)
 
-    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-
-    httpd = SocketServer.TCPServer(("", PORT), Handler)
-
-    print "serving at port", PORT
-    httpd.serve_forever()
+    from blockd3_tests.app import make_app
+    app = make_app(env)
+    app.run(port=[5000, 5001][env=="prod"])

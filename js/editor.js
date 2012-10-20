@@ -3,7 +3,7 @@
 
 var window = this;
 
-$('<iframe id="content_blocks" src="./frame.html"></iframe>')
+$('<iframe id="content_blocks" src="frame/"></iframe>')
     .appendTo('#content_blockly');
 
 var VERSION = [0, 1, 0];
@@ -52,7 +52,7 @@ blockd3.init = function(blockly, b4){
     $("#container").fadeIn();
     
 
-    d3.xml(blockly._blockd3_lib + "../../svg/money_problems.svg", "image/svg+xml", function(xml){
+    d3.xml("./svg/money_problems.svg", "image/svg+xml", function(xml){
         d3.select("#content_d3").node().appendChild(
             window.document.importNode(xml.documentElement, true)
         );
