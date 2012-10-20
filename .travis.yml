@@ -10,7 +10,7 @@ install:
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-script: blockd3_tests/run.py -v
+script: blockd3_tests/run.py
 # blacklist
 branches:
   except:

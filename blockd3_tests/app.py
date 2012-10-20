@@ -3,6 +3,8 @@ import os
 from os.path import join as opj
 from os.path import abspath as opa
 
+import sh
+
 from flask import (
     Flask,
     )
@@ -32,6 +34,12 @@ def make_app(env="dev"):
             template_folder="..",
             static_folder=opa(opj(app_home, "..", "dist"))
             )
+        "test": dict(
+            static_url_path="/dist",
+            template_folder="../dist",
+            static_folder=opa(opj(app_home, "..", "dist"))
+            )
+        )
     }[env]
     
     app = Flask(__name__, **cfg)
@@ -41,15 +49,20 @@ def make_app(env="dev"):
 
     @app.route(url_root)
     def home():
-        return render_template("index.html",
-            env=env,
-            **assets())
+        
+        kwargs = {}
+        if env != "test":
+            kwargs(assets())
+        
+        return render_template("index.html", env=env, **kwargs)
 
     @app.route(url_root + "frame/")
     def frame():
-        return render_template("frame/index.html",
-            env=env,
-            **assets("../frame"))
+        kwargs = {}
+        if env != "test":
+            kwargs(assets())
+            
+        return render_template("frame/index.html", env=env, **kwargs)
         
     return app
 
@@ -67,7 +80,36 @@ def assets(for_file="../"):
                 in open(a_list).read().split("\n")
                 if asset.strip() and not asset.strip().startswith("#")
             ]
+
+    if for_file == "../":
+        result.update(runtime_assets())
+    
     return result
+    
+def runtime_assets():
+        rt_cfg = dict(
+            themes=dict(
+                path="lib/swatch/*.css",
+                thing="theme",
+                sub_data=lambda x: x.split(".")[1],
+                sub_text=lambda x: x
+            ),
+            example=dict(
+                path="blockml/*.xml",
+                thing="example",
+                sub_data=lambda x: os.path.basename(x)[0:-4],
+                sub_text=lambda x: " ".join(x.split("_")).title()
+            )
+        )
+        
+        result = {}
+        
+        for thing, cfg in rt_cfg.items():
+            result[thing] = sorted([
+                (cfg["sub_text"](cfg["sub_data"](path)), cfg["sub_data"](path))
+                for path in sh.glob(cfg["path"])
+            ], key=lambda x: x[0].upper())
+        return result
 
 if __name__ == "__main__":
     app = make_app()

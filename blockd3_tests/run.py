@@ -6,7 +6,7 @@ import logging
 from ghost import GhostTestCase, Ghost
 from app import make_app
 
-app = make_app()
+app = make_app("test")
 
 PORT = 5000
 
