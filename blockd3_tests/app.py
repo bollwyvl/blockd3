@@ -94,7 +94,7 @@ def runtime_assets():
                 sub_data=lambda x: x.split(".")[1],
                 sub_text=lambda x: x
             ),
-            example=dict(
+            examples=dict(
                 path="blockml/*.xml",
                 thing="example",
                 sub_data=lambda x: os.path.basename(x)[0:-4],
