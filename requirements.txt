@@ -1,3 +1,4 @@
+Flask
 Fabric==1.4.3
 jslint==0.6.0
 logilab-astng==0.24.0
