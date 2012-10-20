@@ -13,6 +13,7 @@
     
 
     <link rel="stylesheet" id="theme_link">
+    <link rel="stylesheet" id="code_theme_link">
 
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -57,6 +58,21 @@
                             <li><a id="load_xml" href="#">From XML File</a></li>
                             <li class="nav-header">Examples</li>
                             
+                            <li>
+                                <a href="#example" data-blockd3-example="kitchen_sink">Kitchen Sink
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#example" data-blockd3-example="simplest">Simplest
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#example" data-blockd3-example="spreadsheet">Spreadsheet
+                                </a>
+                            </li>
+                            
                         </ul>
                         <form id="file_form">
                             <input type="file" id="load"/>
@@ -73,70 +89,138 @@
                         <i class="icon-trash"></i>
                         <span class="hidden-phone">Discard</span>
                     </a>
-                </div>
-                <div class="nav pull-right">
+
                     <div class="btn-group">
                         <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#themes">
                             <i class="icon-wrench"></i>
                             <span class="hidden-phone">Options</span>
                         </a>
                         
-                        <ul class="dropdown-menu" id="change_theme">
-                            <li class="nav-header">Themes</li>
-                            <li class="active">
-                                <a href="#theme" data-blockd3-theme="">
-                                    <i>Default</i>
-                                </a>
-                            </li>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu" id="change_theme">
+                                <a tabindex="-1" href="#">UI Themes</a>
+                                <ul class="dropdown-menu">
+                                    <li class="active">
+                                        <a href="#theme" data-blockd3-theme="">
+                                            <i>Default</i>
+                                        </a>
+                                    </li>
 
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Journal">Journal</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Readable">Readable</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="simplex">simplex</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Slate">Slate</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Spruce">Spruce</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="Superhero">Superhero</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-theme="United">United</a>
+                                    </li>
+                                    
+                                </ul>
                             </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Journal">Journal</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Readable">Readable</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="simplex">simplex</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Slate">Slate</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Spruce">Spruce</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="Superhero">Superhero</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#theme" data-blockd3-theme="United">United</a>
-                            </li>
-                            
+                            <li class="dropdown-submenu" id="change_code_theme">
+                                <a tabindex="-1" href="#">Code Themes</a>
+                                <ul class="dropdown-menu">
+                                    <li class="active">
+                                        <a href="#code_theme" data-blockd3-theme="defult">
+                                            <i>Default</i>
+                                        </a>
+                                    </li>
 
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="ambiance">Ambiance</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="blackboard">Blackboard</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="cobalt">Cobalt</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="eclipse">Eclipse</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="elegant">Elegant</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="erlang-dark">Erlang Dark</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="lesser-dark">Lesser Dark</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="monokai">Monokai</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="neat">Neat</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="night">Night</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="rubyblue">Rubyblue</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="vibrant-ink">Vibrant Ink</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#theme" data-blockd3-code-theme="xq-dark">Xq Dark</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
                         </ul>
                     </div>
+                </div>
+                <div class="nav pull-right">
                     <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
                         <i class="icon-heart"></i>
                         <span class="hidden-phone">About</span>
