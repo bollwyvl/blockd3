@@ -251,10 +251,22 @@ def serve_dev():
 def serve_prod():
     serve("prod")
     
+@task
+def serve_test():
+    serve("test")
+
+    
 def serve(env):
     blockd3_path = os.path.abspath(os.path.dirname(__file__))
     sys.path.append(blockd3_path)
 
     from blockd3_tests.app import make_app
     app = make_app(env)
-    app.run(port=[5000, 5001][env=="prod"])
+    
+    port = {
+        "dev": 5000,
+        "prod": 5001,
+        "test": 5002
+    }[env]
+    
+    app.run(port=port)

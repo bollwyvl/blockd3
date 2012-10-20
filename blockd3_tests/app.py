@@ -18,7 +18,8 @@ def make_app(env="dev"):
     
     url_root = {
         "dev": "/",
-        "prod": "/dist/"
+        "prod": "/dist/",
+        "test": "/dist/"
     }[env]
     
     app_home = os.path.dirname(__file__)
@@ -33,13 +34,12 @@ def make_app(env="dev"):
             static_url_path="/dist",
             template_folder="..",
             static_folder=opa(opj(app_home, "..", "dist"))
-            )
+            ),
         "test": dict(
             static_url_path="/dist",
             template_folder="../dist",
             static_folder=opa(opj(app_home, "..", "dist"))
             )
-        )
     }[env]
     
     app = Flask(__name__, **cfg)
@@ -52,7 +52,7 @@ def make_app(env="dev"):
         
         kwargs = {}
         if env != "test":
-            kwargs(assets())
+            kwargs.update(assets())
         
         return render_template("index.html", env=env, **kwargs)
 
@@ -60,7 +60,7 @@ def make_app(env="dev"):
     def frame():
         kwargs = {}
         if env != "test":
-            kwargs(assets())
+            kwargs.update(assets("../frame/"))
             
         return render_template("frame/index.html", env=env, **kwargs)
         

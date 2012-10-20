@@ -9,11 +9,11 @@
     <link rel="shortcut icon" href="./favicon.ico" />
 
     {% if env == "dev" %}
-    {% for style in styles %}
-    <link rel="stylesheet" href="./{{ style }}">
-    {% endfor %}
+        {% for style in styles %}
+        <link rel="stylesheet" href="./{{ style }}">
+        {% endfor %}
     {% else %}
-    <link rel="stylesheet" href="./css/blockd3-min.css">
+        <link rel="stylesheet" href="./css/blockd3-min.css">
     {% endif %}
 
     <link rel="stylesheet" id="theme_link">
@@ -60,18 +60,12 @@
                         <ul class="dropdown-menu">
                             <li><a id="load_xml" href="#">From XML File</a></li>
                             <li class="nav-header">Examples</li>
-                            <!--###EXAMPLES-->
+                            {% for example_name, example in examples %}
                             <li>
-                                <a href="#example" data-blockd3-example="simplest">Simplest
+                                <a href="#example" data-blockd3-example="example">{{ example_name }}
                                 </a>
                             </li>
-                            <li>
-                                <a href="#example" data-blockd3-example="kitchen_sink">Kitchen Sink</a>
-                            </li>
-                            <li>
-                                <a href="#example" data-blockd3-example="spreadsheet">Spreadsheet</a>
-                            </li>
-                            <!--EXAMPLES###-->
+                            {% endfor %}
                         </ul>
                         <form id="file_form">
                             <input type="file" id="load"/>
@@ -103,31 +97,13 @@
                                     <i>Default</i>
                                 </a>
                             </li>
-<!--###THEMES-->
+
+                            {% for theme_name, theme in themes %}
                             <li>
-                                <a href="#theme" data-blockd3-theme="Amelia">Amelia</a>
+                                <a href="#theme" data-blockd3-theme="{{ theme_name }}">{{ theme_name }}</a>
                             </li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Cerulean">Cerulean</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Cyborg">Cyborg</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Journal">Journal</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Readable">Readable</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Slate">Slate</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Spacelab">Spacelab</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Spruce">Spruce</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="Superhero">Superhero</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="United">United</a></li>
-                            <li>
-                            <a href="#theme" data-blockd3-theme="simplex">simplex</a></li>
-<!--THEMES###-->
+                            {% endfor %}
+
                         </ul>
                     </div>
                     <a id="show_about" href="#about" role="button" class="btn" data-toggle="modal">
@@ -239,11 +215,11 @@
 </div> <!-- /container -->
 
 {% if env == "dev" %}
-{% for script in scripts %}
-<script type="text/javascript" src="./{{ script }}"></script>
-{% endfor %}
+    {% for script in scripts %}
+    <script type="text/javascript" src="./{{ script }}"></script>
+    {% endfor %}
 {% else %}
-<script type="text/javascript" src="./js/blockd3-min.js"></script>
+    <script type="text/javascript" src="./js/blockd3-min.js"></script>
 {% endif %}
 
 </body>

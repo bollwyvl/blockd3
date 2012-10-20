@@ -9,11 +9,11 @@
 
 <body id="frame">
 {% if env == "dev" %}
-{% for script in scripts %}
-<script type="text/javascript" src="../{{ script }}"></script>
-{% endfor %}
+    {% for script in scripts %}
+    <script type="text/javascript" src="../{{ script }}"></script>
+    {% endfor %}
 {% else %}
-<script type="text/javascript" src="../js/blockd3-min.js"></script>
+    <script type="text/javascript" src="../js/blockd3-min.js"></script>
 {% endif %}
 
 <script type="text/javascript">
