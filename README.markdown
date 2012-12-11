@@ -13,7 +13,7 @@ server. Working on it. In the meantime, if you have Python (included on most
 Linux and OSX systems), check out the `gh-pages` branch, go to that directory 
 and run:
 
-    python -m SimpleHttpServer
+    python -m SimpleHTTPServer
 
 And then visit http://localhost:8000.
 
